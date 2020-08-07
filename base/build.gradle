@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def cfg = rootProject.ext.android
+
+android {
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+
+        testInstrumentationRunner cfg.testInstrumentationRunner
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def dps = rootProject.ext.dependencies
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$dps.ktxVersion"
+    implementation "androidx.appcompat:appcompat:$dps.appCompatVersion"
+    testImplementation "junit:junit:$dps.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$dps.junitExtVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$dps.espressoVersion"
+
+
+
+    //常用依赖库
+    implementation "androidx.constraintlayout:constraintlayout:$dps.constraintLayoutVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dps.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dps.coroutinesVersion"
+    implementation "androidx.recyclerview:recyclerview:$dps.recyclerViewVersion"
+    implementation "com.google.android.material:material:$dps.materialVersion"
+    implementation "com.squareup.retrofit2:retrofit:$dps.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$dps.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$dps.retrofitVersion"
+    implementation "com.github.bumptech.glide:glide:$dps.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$dps.glideVersion"
+//    implementation 'jp.wasabeef:glide-transformations:$rootProject.4.1.0'
+//    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation "androidx.viewpager2:viewpager2:$dps.viewPagerVersion"
+    implementation "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
+
+    //Android Jetpack 组件
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$dps.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$dps.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$dps.lifecycleVersion"
+    implementation "androidx.work:work-runtime:$dps.workVersion"
+
+    //特定功能依赖库
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$dps.leakcanaryVersion"
+    implementation "com.scwang.smart:refresh-header-material:$dps.smartRefreshVersion"
+    implementation "com.scwang.smart:refresh-layout-kernel:$dps.smartRefreshVersion"
+    implementation "com.github.zhpanvip:BannerViewPager:$dps.BannerViewPagerVersion"
+    implementation "com.github.chrisbanes:PhotoView:$dps.PhotoViewVersion"
+    implementation "de.hdodenhof:circleimageview:$dps.circleimageviewVersion"
+    implementation "com.shuyu:GSYVideoPlayer:$dps.GSYVideoPlayerVersion"
+    implementation "com.alibaba:arouter-api:$dps.arouterVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
+}

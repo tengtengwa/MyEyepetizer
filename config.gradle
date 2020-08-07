@@ -1,0 +1,61 @@
+ext {
+    isModule = false
+
+    android = [
+            compileSdkVersion        : 29,
+            minSdkVersion            : 21,
+            targetSdkVersion         : 29,
+            versionCode              : 1,
+            versionName              : "1.0",
+            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
+    ]
+
+    applicationId = [
+            app     : "com.example.app",
+            video   : "com.example.video",
+            web     : "com.example.web",
+            photo   : "com.example.photo",
+            settings: "com.example.settings",
+            login   : "com.example.login",
+    ]
+
+    dependencies = [
+            // App dependencies versison
+            appCompatVersion       : '1.2.0',
+            constraintLayoutVersion: '1.1.3',
+            coreTestingVersion     : '2.1.0',
+            coroutinesVersion      : "1.3.7",
+            espressoVersion        : '3.2.0',
+            fragmentVersion        : '1.1.0-alpha09',
+            gradleVersion          : '4.0.1',
+            gsonVersion            : '2.8.2',
+            junitVersion           : '4.12',
+            junitExtVersion        : '1.1.1',
+            kotlinVersion          : '1.3.72',
+            ktlintVersion          : '0.33.0',
+            ktxVersion             : '1.3.1',
+            lifecycleVersion       : '2.2.0',
+            materialVersion        : '1.2.0',
+            navigationVersion      : '2.2.0',
+            recyclerViewVersion    : '1.1.0',
+            roomVersion            : '2.2.5',
+            runnerVersion          : '1.0.1',
+            truthVersion           : '0.42',
+            testExtJunit           : '1.1.1',
+            uiAutomatorVersion     : '2.2.0',
+            viewPagerVersion       : '1.0.0',
+            workVersion            : '2.4.0',
+
+            glideVersion           : '4.10.0',
+            retrofitVersion        : '2.9.0',
+            permissionxVersion     : '1.3.0',
+            leakcanaryVersion      : '2.4',
+            smartRefreshVersion    : '2.0.1',
+            BannerViewPagerVersion : '3.1.5',
+            PhotoViewVersion       : '2.3.0',
+            circleimageviewVersion : '3.1.0',
+            GSYVideoPlayerVersion  : '7.1.3',
+            arouterVersion         : '1.5.0',
+            arouterCompilerVersion : '1.2.2'
+    ]
+}

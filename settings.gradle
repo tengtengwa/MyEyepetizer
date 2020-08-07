@@ -1,0 +1,8 @@
+include ':login'
+include ':web'
+include ':photo'
+include ':settings'
+include ':video'
+include ':base'
+include ':app'
+rootProject.name = "Eyepetizer"
