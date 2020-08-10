@@ -1,8 +1,4 @@
-if (isModule.toBoolean()) {
-    apply plugin: 'com.android.library'
-} else {
-    apply plugin: 'com.android.application'
-}
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -77,6 +73,6 @@ dependencies {
         implementation project(':settings')
         implementation project(':web')
         implementation project(':login')
-        implementation project(':base')
     }
+    implementation project(':base')
 }

@@ -39,7 +39,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$dps.espressoVersion"
 
 
-
     //常用依赖库
     implementation "androidx.constraintlayout:constraintlayout:$dps.constraintLayoutVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dps.coroutinesVersion"
@@ -72,4 +71,8 @@ dependencies {
     implementation "com.shuyu:GSYVideoPlayer:$dps.GSYVideoPlayerVersion"
     implementation "com.alibaba:arouter-api:$dps.arouterVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
+
+    //工具类库
+    implementation "com.blankj:utilcode:$dps.utilcodeVersion"
+    implementation "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
 }

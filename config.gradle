@@ -48,7 +48,6 @@ ext {
 
             glideVersion           : '4.10.0',
             retrofitVersion        : '2.9.0',
-            permissionxVersion     : '1.3.0',
             leakcanaryVersion      : '2.4',
             smartRefreshVersion    : '2.0.1',
             BannerViewPagerVersion : '3.1.5',
@@ -56,6 +55,8 @@ ext {
             circleimageviewVersion : '3.1.0',
             GSYVideoPlayerVersion  : '7.1.3',
             arouterVersion         : '1.5.0',
-            arouterCompilerVersion : '1.2.2'
+            arouterCompilerVersion : '1.2.2',
+            utilcodeVersion        : '1.3.5',
+            permissionxVersion     : '1.3.0'
     ]
 }
