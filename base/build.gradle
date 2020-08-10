@@ -60,6 +60,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$dps.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$dps.lifecycleVersion"
     implementation "androidx.work:work-runtime:$dps.workVersion"
+    implementation "androidx.room:room-runtime:$dps.roomVersion"
+    // For Kotlin use kapt instead of annotationProcessor
+    annotationProcessor "androidx.room:room-compiler:$dps.roomVersion"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$dps.roomVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$dps.navVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$dps.navVersion"
 
     //特定功能依赖库
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$dps.leakcanaryVersion"
@@ -69,6 +76,7 @@ dependencies {
     implementation "com.github.chrisbanes:PhotoView:$dps.PhotoViewVersion"
     implementation "de.hdodenhof:circleimageview:$dps.circleimageviewVersion"
     implementation "com.shuyu:GSYVideoPlayer:$dps.GSYVideoPlayerVersion"
+    implementation "com.gyf.immersionbar:immersionbar:$dps.immersionbarVersion"
     implementation "com.alibaba:arouter-api:$dps.arouterVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
 
