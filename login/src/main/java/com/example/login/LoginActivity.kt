@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import com.example.base.BaseActivity
 
+
 class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
