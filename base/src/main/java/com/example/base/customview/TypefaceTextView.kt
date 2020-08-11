@@ -23,12 +23,14 @@ class TypefaceTextView @JvmOverloads constructor(
         }
     }
 
-    private fun getTypeface(typefaceType: Int): Typeface? = when (typefaceType) {
-        TypefaceUtil.CONDENSED_BOLD -> TypefaceUtil.getTypeface(TypefaceUtil.CONDENSED_BOLD)
-        TypefaceUtil.CONDENSED_MEDIUM -> TypefaceUtil.getTypeface(TypefaceUtil.CONDENSED_MEDIUM)
-        TypefaceUtil.FZLANTINGHEI_DB1 -> TypefaceUtil.getTypeface(TypefaceUtil.FZLANTINGHEI_DB1)
-        TypefaceUtil.FZLANTINGHEI_L -> TypefaceUtil.getTypeface(TypefaceUtil.FZLANTINGHEI_L)
-        TypefaceUtil.LOBSTER -> TypefaceUtil.getTypeface(TypefaceUtil.LOBSTER)
-        else -> Typeface.DEFAULT
+    companion object {
+        fun getTypeface(typefaceType: Int): Typeface? = when (typefaceType) {
+            TypefaceUtil.CONDENSED_BOLD -> TypefaceUtil.getTypeface(TypefaceUtil.CONDENSED_BOLD)
+            TypefaceUtil.CONDENSED_MEDIUM -> TypefaceUtil.getTypeface(TypefaceUtil.CONDENSED_MEDIUM)
+            TypefaceUtil.FZLANTINGHEI_DB1 -> TypefaceUtil.getTypeface(TypefaceUtil.FZLANTINGHEI_DB1)
+            TypefaceUtil.FZLANTINGHEI_L -> TypefaceUtil.getTypeface(TypefaceUtil.FZLANTINGHEI_L)
+            TypefaceUtil.LOBSTER -> TypefaceUtil.getTypeface(TypefaceUtil.LOBSTER)
+            else -> Typeface.DEFAULT
+        }
     }
 }
