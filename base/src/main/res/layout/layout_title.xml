@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_size"
+    android:id="@+id/title_bar"
+    android:background="@color/colorWhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
 
@@ -55,4 +57,5 @@
         app:layout_constraintEnd_toStartOf="@+id/tftv_right_top"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_share_black_20dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

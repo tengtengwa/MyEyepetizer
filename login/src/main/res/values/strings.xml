@@ -9,4 +9,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+
+    <string name="login_tip">登录后即可关注作者、\n发表评论、同步收藏视频和播放记录</string>
+    <string name="login_tip_line2">发表评论、同步收藏视频和播放记录</string>
+    <string name="agreement_desciption">登陆或注册即同意开眼</string>
+    <string name="user_agreement">用户服务协议</string>
+    <string name="account_tip">请输入手机号/邮箱地址</string>
+    <string name="user_registe">用户注册</string>
+    <string name="author_login">作者注册</string>
+    <string name="password_tip">请输入密码</string>
+    <string name="login">登陆</string>
 </resources>
