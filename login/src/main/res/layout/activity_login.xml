@@ -16,10 +16,12 @@
         android:layout_marginEnd="60dp"
         android:background="@null"
         android:drawableStart="@drawable/ic_password_white_lock_18dp"
+        android:drawablePadding="5dp"
         android:text="@string/password_tip"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
         android:textSize="12sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_account" />
@@ -58,11 +60,12 @@
         android:id="@+id/et_account"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         android:background="@null"
         android:drawableStart="@drawable/ic_person_white_18dp"
+        android:drawablePadding="5dp"
         android:text="@string/account_tip"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
@@ -123,35 +126,35 @@
 
     <ImageView
         android:id="@+id/tv_share_wechat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_share_weibo"
-        app:srcCompat="@drawable/ic_account_login_wechat" />
+        app:srcCompat="@drawable/ic_login_wechat_black" />
 
     <ImageView
         android:id="@+id/iv_share_weibo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toEndOf="@+id/tv_share_wechat"
         app:layout_constraintEnd_toStartOf="@+id/tv_share_qq"
         app:layout_constraintTop_toTopOf="@+id/tv_share_wechat"
-        app:srcCompat="@drawable/ic_account_login_weibo" />
+        app:srcCompat="@drawable/ic_login_weibo_black" />
 
     <ImageView
         android:id="@+id/tv_share_qq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_share_weibo"
         app:layout_constraintTop_toTopOf="@+id/iv_share_weibo"
-        app:srcCompat="@drawable/ic_account_login_qq" />
+        app:srcCompat="@drawable/ic_login_qq_black" />
 
     <com.example.base.customview.TypefaceTextView
         android:id="@+id/tv_user_register"
