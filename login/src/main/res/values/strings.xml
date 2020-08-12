@@ -17,7 +17,8 @@
     <string name="user_agreement">用户服务协议</string>
     <string name="account_tip">请输入手机号/邮箱地址</string>
     <string name="user_registe">用户注册</string>
-    <string name="author_login">作者注册</string>
+    <string name="author_login">作者登陆</string>
     <string name="password_tip">请输入密码</string>
     <string name="login">登陆</string>
+    <string name="RetrievePassword">找回密码</string>
 </resources>
