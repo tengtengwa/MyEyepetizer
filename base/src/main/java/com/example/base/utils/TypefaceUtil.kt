@@ -5,13 +5,13 @@ import com.example.base.MyApplication
 
 object TypefaceUtil {
 
-    const val CONDENSED_BOLD = 1
+    const val CONDENSED_BOLD = 4
 
-    const val CONDENSED_MEDIUM = 2
+    const val CONDENSED_MEDIUM = 3
 
-    const val FZLANTINGHEI_DB1 = 3
+    const val FZLANTINGHEI_DB1 = 2
 
-    const val FZLANTINGHEI_L = 4
+    const val FZLANTINGHEI_L = 1
 
     const val LOBSTER = 5
 
@@ -37,6 +37,7 @@ object TypefaceUtil {
     private fun getTypeface(path: String) = try {
         Typeface.createFromAsset(MyApplication.context.assets, path)
     } catch (e: RuntimeException) {
+        logD("ttw", "加载字体文件失败")
         Typeface.DEFAULT
     }
 }

@@ -33,6 +33,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     sourceSets {
         main {
             if (isModule.toBoolean()) {
@@ -68,5 +73,5 @@ dependencies {
     kapt "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
     implementation "com.alibaba:arouter-api:$dps.arouterVersion"
 
-    implementation project(':base')
+    api project(':base')
 }

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.base.R
 import com.example.base.utils.ActivityCollector
 import com.example.base.utils.logD
+import com.gyf.immersionbar.ImmersionBar
 import java.lang.ref.WeakReference
 
 /**
@@ -98,6 +99,11 @@ open class BaseActivity : AppCompatActivity() {
      * 设置状态栏背景色
      */
     open fun setStatusBarBackground(@ColorRes statusBarColor: Int) {
-        setStatusBarBackground(statusBarColor)
+        ImmersionBar
+            .with(this)
+            .autoStatusBarDarkModeEnable(true, 0.2f)
+            .statusBarColor(statusBarColor)
+            .fitsSystemWindows(true)
+            .init()
     }
 }
