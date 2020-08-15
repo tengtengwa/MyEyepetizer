@@ -1,7 +1,9 @@
 package com.example.base.utils
 
+import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 
 /**
  * 一些全局工具函数
@@ -26,3 +28,9 @@ fun setOnClickListener(vararg views: View?, block: View.() -> Unit) {
     //遍历views，给它们设置监听器
     views.forEach { it?.setOnClickListener(listener) }
 }
+
+/**
+ * toast的懒人方法，默认时间为short
+ */
+fun String.toast(context: Context, duration: Int = Toast.LENGTH_SHORT) =
+    Toast.makeText(context, this, duration).show()

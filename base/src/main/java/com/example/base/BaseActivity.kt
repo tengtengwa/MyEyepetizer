@@ -89,10 +89,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun setupViews() {
-/*        val navigateBefore = findViewById<ImageView>(R.id.tv_back)
-        val tvTitle = findViewById<TextView>(R.id.tv_title)
-        navigateBefore?.setOnClickListener { finish() }
-        tvTitle?.isSelected = true   //获取焦点，实现跑马灯效果。*/
     }
 
     /**
