@@ -61,6 +61,8 @@ class LoginActivity : BaseActivity() {
                 }
                 tv_right_top -> {
                 }
+                //下面两个TextView的点击效果中，必须使用findViewById获取对应View的引用，
+                // 直接引用会找不到相应的View对象。暂不清楚问题的原因
                 tv_user_registe -> {
                     if (isUserRegisteClicked) {
                         shareGroup.visibility = View.VISIBLE
