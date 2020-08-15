@@ -59,6 +59,7 @@ ext {
             utilcodeVersion        : '1.3.5',
             permissionxVersion     : '1.3.0',
             immersionbarVersion    : '3.0.0',
-            navVersion             : '2.3.0'
+            navVersion             : '2.3.0',
+            sonicVersion           : '3.1.0'
     ]
 }

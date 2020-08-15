@@ -90,6 +90,7 @@ dependencies {
     implementation "com.gyf.immersionbar:immersionbar:$dps.immersionbarVersion"
     implementation "com.alibaba:arouter-api:$dps.arouterVersion"
     kapt "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
+    implementation "com.tencent.sonic:sdk:$dps.sonicVersion"
 
     //工具类库
     implementation "com.blankj:utilcode:$dps.utilcodeVersion"

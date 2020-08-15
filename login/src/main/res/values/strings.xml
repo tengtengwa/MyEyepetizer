@@ -12,11 +12,13 @@
 
 
     <string name="login_tip">登录后即可关注作者、\n发表评论、同步收藏视频和播放记录</string>
-    <string name="login_tip_line2">发表评论、同步收藏视频和播放记录</string>
+    <string name="auther_login_tip">想成为开眼作者？\n请到 http://open.eyepetizer.net/ 申请注册作者账号吧</string>
+    <string name="user_login_tip">仅支持中国大陆手机号注册，\n其他地区用户请联系客服 helper@eyepetizer.net</string>
     <string name="agreement_desciption">登陆或注册即同意开眼</string>
     <string name="user_agreement">用户服务协议</string>
     <string name="account_tip">请输入手机号/邮箱地址</string>
     <string name="user_registe">用户注册</string>
+    <string name="user_login">用户登陆</string>
     <string name="author_login">作者登陆</string>
     <string name="password_tip">请输入密码</string>
     <string name="login">登陆</string>
