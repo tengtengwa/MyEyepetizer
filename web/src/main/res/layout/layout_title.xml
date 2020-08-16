@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_size"
-    android:background="@color/colorWhite"
+    android:background="@color/base_colorWhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tool="http://schemas.android.com/tools">
+    xmlns:tool="http://schemas.android.com/tools"
+    tool:ignore="ResourceName">
 
     <ImageView
         android:id="@+id/iv_back"
@@ -20,12 +21,12 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:layout_margin="10dp"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
-        android:textColor="@color/colorTextBlack"
+        android:textColor="@color/base_colorTextBlack"
         android:gravity="center_horizontal"
         app:typeface="fzdb1Typeface"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,8 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:visibility="gone"
-        android:text="@string/RetrievePassword"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/base_colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
