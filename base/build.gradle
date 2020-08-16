@@ -4,10 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 def cfg = rootProject.ext.android
+def dps = rootProject.ext.dependencies
 
 android {
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion "30.0.1"
+    resourcePrefix "base_"
 
     defaultConfig {
         minSdkVersion cfg.minSdkVersion
@@ -37,8 +39,6 @@ kapt {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
-
-def dps = rootProject.ext.dependencies
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

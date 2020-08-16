@@ -9,10 +9,12 @@ apply plugin: 'kotlin-kapt'
 
 def appId = rootProject.ext.applicationId
 def cfg = rootProject.ext.android
+def dps = rootProject.ext.dependencies
 
 android {
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion "30.0.1"
+    resourcePrefix "login_"
 
     defaultConfig {
         if (isModule.toBoolean()) {
@@ -55,7 +57,6 @@ kapt {
     }
 }
 
-def dps = rootProject.ext.dependencies
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

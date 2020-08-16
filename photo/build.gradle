@@ -5,13 +5,16 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def appId = rootProject.ext.applicationId
 def cfg = rootProject.ext.android
+def dps = rootProject.ext.dependencies
 
 android {
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion "30.0.1"
+    resourcePrefix "photo_"
 
     defaultConfig {
         if (isModule.toBoolean()) {
@@ -54,4 +57,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     api project(':base')
+    kapt "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
+    implementation "com.alibaba:arouter-api:$dps.arouterVersion"
 }

@@ -8,6 +8,7 @@ def cfg = rootProject.ext.android
 android {
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion "30.0.1"
+    resourcePrefix "app_"
 
     defaultConfig {
         if (isModule.toBoolean()) {
@@ -74,5 +75,4 @@ dependencies {
         implementation project(':web')
         implementation project(':login')
     }
-    implementation project(':base')
 }
