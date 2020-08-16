@@ -57,6 +57,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     api project(':base')
-    kapt "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
-    implementation "com.alibaba:arouter-api:$dps.arouterVersion"
 }

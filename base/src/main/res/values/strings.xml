@@ -1,13 +1,12 @@
 <resources>
-    <string name="app_name">Eyepetizer</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="base_app_name">Eyepetizer</string>
+    <string name="base_action_settings">Settings</string>
+    <!-- Strings ubase_sed for fragments for navigation -->
+    <string name="base_first_fragment_label">First Fragment</string>
+    <string name="base_second_fragment_label">Second Fragment</string>
+    <string name="base_next">Next</string>
+    <string name="base_previous">Previous</string>
 
-
-    <string name="error_view_tip_1stline">网络错误</string>
-    <string name="error_view_tip_2codline">点击屏幕重试</string>
+    <string name="base_error_view_tip_1stline">网络错误</string>
+    <string name="base_error_view_tip_2codline">点击屏幕重试</string>
 </resources>

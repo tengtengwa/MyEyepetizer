@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.layout_title.*
 
-@Route(path = "/epetizer/loginActivity")
+@Route(path = "/epetizer/login")
 class LoginActivity : BaseActivity() {
 
     private var isAuthorLoginClicked = false
@@ -79,6 +79,7 @@ class LoginActivity : BaseActivity() {
                 tv_author_login -> {
                     if (isAuthorLoginClicked) {
                         shareGroup.visibility = View.VISIBLE
+                        findPassword.visibility = View.VISIBLE
                         authorLogin.text = resources.getString(R.string.author_login)
                         loginTip.text = resources.getString(R.string.login_tip)
                         isAuthorLoginClicked = false
@@ -105,7 +106,7 @@ class LoginActivity : BaseActivity() {
         loginTip = findViewById(R.id.tv_login_tip)
         findPassword = findViewById(R.id.tv_right_top)
 
-        setStatusBarBackground(R.color.colorBlack)
+        setStatusBarBackground(R.color.base_colorBlack)
         layout_title.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
         iv_back.setImageResource(R.drawable.ic_close_white_24dp)
         iv_share.visibility = View.INVISIBLE

@@ -41,58 +41,57 @@ kapt {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:$dps.ktxVersion"
-    implementation "androidx.appcompat:appcompat:$dps.appCompatVersion"
+    api fileTree(dir: "libs", include: ["*.jar"])
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "androidx.core:core-ktx:$dps.ktxVersion"
+    api "androidx.appcompat:appcompat:$dps.appCompatVersion"
     testImplementation "junit:junit:$dps.junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$dps.junitExtVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$dps.espressoVersion"
 
 
     //常用依赖库
-    implementation "androidx.constraintlayout:constraintlayout:$dps.constraintLayoutVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dps.coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dps.coroutinesVersion"
-    implementation "androidx.recyclerview:recyclerview:$dps.recyclerViewVersion"
-    implementation "com.google.android.material:material:$dps.materialVersion"
-    implementation "com.squareup.retrofit2:retrofit:$dps.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$dps.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-scalars:$dps.retrofitVersion"
-    implementation "com.github.bumptech.glide:glide:$dps.glideVersion"
+    api "androidx.constraintlayout:constraintlayout:$dps.constraintLayoutVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dps.coroutinesVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dps.coroutinesVersion"
+    api "androidx.recyclerview:recyclerview:$dps.recyclerViewVersion"
+    api "com.google.android.material:material:$dps.materialVersion"
+    api "com.squareup.retrofit2:retrofit:$dps.retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$dps.retrofitVersion"
+    api "com.squareup.retrofit2:converter-scalars:$dps.retrofitVersion"
+    api "com.github.bumptech.glide:glide:$dps.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$dps.glideVersion"
 //    implementation 'jp.wasabeef:glide-transformations:$rootProject.4.1.0'
 //    implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation "androidx.viewpager2:viewpager2:$dps.viewPagerVersion"
-    implementation "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
+    api "androidx.viewpager2:viewpager2:$dps.viewPagerVersion"
+    api "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
 
     //Android Jetpack 组件
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$dps.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$dps.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$dps.lifecycleVersion"
-    implementation "androidx.work:work-runtime:$dps.workVersion"
-    implementation "androidx.room:room-runtime:$dps.roomVersion"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$dps.lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$dps.lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-extensions:$dps.lifecycleVersion"
+    api "androidx.work:work-runtime:$dps.workVersion"
+    api "androidx.room:room-runtime:$dps.roomVersion"
     // For Kotlin use kapt instead of annotationProcessor
     annotationProcessor "androidx.room:room-compiler:$dps.roomVersion"
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:$dps.roomVersion"
-    implementation "androidx.navigation:navigation-fragment-ktx:$dps.navVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$dps.navVersion"
+    api "androidx.room:room-ktx:$dps.roomVersion"
+    api "androidx.navigation:navigation-fragment-ktx:$dps.navVersion"
+    api "androidx.navigation:navigation-ui-ktx:$dps.navVersion"
 
     //特定功能依赖库
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$dps.leakcanaryVersion"
-    implementation "com.scwang.smart:refresh-header-material:$dps.smartRefreshVersion"
-    implementation "com.scwang.smart:refresh-layout-kernel:$dps.smartRefreshVersion"
-    implementation "com.github.zhpanvip:BannerViewPager:$dps.BannerViewPagerVersion"
-    implementation "com.github.chrisbanes:PhotoView:$dps.PhotoViewVersion"
-    implementation "de.hdodenhof:circleimageview:$dps.circleimageviewVersion"
-    implementation "com.shuyu:GSYVideoPlayer:$dps.GSYVideoPlayerVersion"
-    implementation "com.gyf.immersionbar:immersionbar:$dps.immersionbarVersion"
-    implementation "com.alibaba:arouter-api:$dps.arouterVersion"
+    api "com.scwang.smart:refresh-header-material:$dps.smartRefreshVersion"
+    api "com.scwang.smart:refresh-layout-kernel:$dps.smartRefreshVersion"
+    api "com.github.zhpanvip:BannerViewPager:$dps.BannerViewPagerVersion"
+    api "com.github.chrisbanes:PhotoView:$dps.PhotoViewVersion"
+    api "de.hdodenhof:circleimageview:$dps.circleimageviewVersion"
+    api "com.shuyu:GSYVideoPlayer:$dps.GSYVideoPlayerVersion"
+    api "com.gyf.immersionbar:immersionbar:$dps.immersionbarVersion"
+    api "com.alibaba:arouter-api:$dps.arouterVersion"
     kapt "com.alibaba:arouter-compiler:$dps.arouterCompilerVersion"
-    implementation "com.tencent.sonic:sdk:$dps.sonicVersion"
 
     //工具类库
-    implementation "com.blankj:utilcode:$dps.utilcodeVersion"
-    implementation "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
+    api "com.blankj:utilcode:$dps.utilcodeVersion"
+    api "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
 }
