@@ -44,15 +44,6 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main {
-            if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
 }
 
 dependencies {
@@ -74,6 +65,7 @@ dependencies {
         implementation project(':settings')
         implementation project(':web')
         implementation project(':login')
+        implementation project(':main')
     } else {
         implementation project(':base')
     }

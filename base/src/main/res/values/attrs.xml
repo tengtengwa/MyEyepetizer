@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="TypefaceTextView">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="TypefaceTextView" tools:ignore="ResourceName">
         <attr name="typeface">
             <enum name="fzlLTypeface" value="1" />
             <enum name="fzdb1Typeface" value="2" />
@@ -10,7 +10,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="NoStatusFooter">
+    <declare-styleable name="NoStatusFooter" tools:ignore="ResourceName">
         <attr name="srlPrimaryColor" />
         <attr name="srlAccentColor" />
         <attr name="srlTextSizeTitle" />
@@ -24,7 +24,7 @@
         <attr name="srlTextNothing" />
     </declare-styleable>
 
-    <declare-styleable name="LoadingView">
+    <declare-styleable name="LoadingView" tools:ignore="ResourceName">
         <attr name="min_radius" format="integer" />
         <attr name="max_radius" format="integer" />
         <attr name="ballColor" format="color" />
