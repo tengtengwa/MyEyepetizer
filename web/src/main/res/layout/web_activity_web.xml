@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/title_bar"
-        layout="@layout/layout_title"
+        layout="@layout/web_layout_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

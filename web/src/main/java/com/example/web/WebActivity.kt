@@ -15,8 +15,8 @@ import com.example.web.vassonic.SonicRuntimeImpl
 import com.eyepetizer.android.ui.common.ui.vassonic.OfflinePkgSessionConnection
 import com.eyepetizer.android.ui.common.ui.vassonic.SonicSessionClientImpl
 import com.tencent.sonic.sdk.*
-import kotlinx.android.synthetic.main.activity_web.*
-import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.android.synthetic.main.web_activity_web.*
+import kotlinx.android.synthetic.main.web_layout_title.*
 
 @Route(path = "/epetizer/web")
 class WebActivity : BaseActivity() {
@@ -25,7 +25,7 @@ class WebActivity : BaseActivity() {
     private var title: String = ""
 
     @Autowired
-    private var url: String = ""
+    private var url: String = "https://github.com/VIPyinzhiwei/Eyepetizer"
 
     @Autowired
     private var isTitleFixed: Boolean = false
@@ -42,7 +42,7 @@ class WebActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_web)
+        setContentView(R.layout.web_activity_web)
         ARouter.getInstance().inject(this)
     }
 

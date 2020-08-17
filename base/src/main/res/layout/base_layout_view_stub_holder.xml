@@ -5,6 +5,6 @@
         android:id="@+id/loadErrorView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout="@layout/layout_load_error_view" />
+        android:layout="@layout/base_layout_load_error_view" />
 
 </merge>

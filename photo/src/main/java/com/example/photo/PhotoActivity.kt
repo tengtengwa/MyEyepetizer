@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
-import kotlinx.android.synthetic.main.activity_photo.*
+import kotlinx.android.synthetic.main.photo_activity_photo.*
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -59,7 +59,7 @@ class PhotoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_photo)
+        setContentView(R.layout.photo_activity_photo)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         isFullscreen = true

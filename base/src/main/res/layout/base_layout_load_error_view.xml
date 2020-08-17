@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/loadErrorkRootView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,7 +13,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:padding="14dp"
-        android:src="@drawable/ic_response_error"
+        android:src="@drawable/base_ic_response_error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/error_view_tip_1stline"
-        android:textColor="@color/colorTextPrimary"
+        android:text="@string/base_error_view_tip_1stline"
+        android:textColor="@color/base_colorTextPrimary"
         android:textSize="12sp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/error_view_tip_2codline"
-        android:textColor="@color/colorTextPrimary"
+        android:text="@string/base_error_view_tip_2codline"
+        android:textColor="@color/base_colorTextPrimary"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

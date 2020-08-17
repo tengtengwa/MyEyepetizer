@@ -2,17 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_size"
-    android:background="@color/base_colorWhite"
+    android:background="@color/colorWhite"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tool="http://schemas.android.com/tools"
-    tool:ignore="ResourceName">
+    xmlns:tool="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:src="@drawable/ic_navigate_before_black_44dp"
+        android:src="@drawable/base_ic_navigate_before_black_44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,12 +20,12 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:layout_margin="10dp"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
-        android:textColor="@color/base_colorTextBlack"
+        android:textColor="@color/colorTextBlack"
         android:gravity="center_horizontal"
         app:typeface="fzdb1Typeface"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:visibility="gone"
-        android:textColor="@color/base_colorWhite"
+        android:text="@string/RetrievePassword"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,6 +57,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_right_top"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_share_black_20dp" />
+        app:srcCompat="@drawable/base_ic_share_black_20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

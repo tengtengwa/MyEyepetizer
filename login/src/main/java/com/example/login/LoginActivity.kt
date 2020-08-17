@@ -10,9 +10,9 @@ import com.example.base.BaseActivity
 import com.example.base.customview.TypefaceTextView
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
-import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.android.synthetic.main.login_activity_login.*
+import kotlinx.android.synthetic.main.login_activity_login.view.*
+import kotlinx.android.synthetic.main.login_layout_title.*
 
 @Route(path = "/epetizer/login")
 class LoginActivity : BaseActivity() {
@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.login_activity_login)
 
     }
 
@@ -108,7 +108,7 @@ class LoginActivity : BaseActivity() {
 
         setStatusBarBackground(R.color.base_colorBlack)
         layout_title.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        iv_back.setImageResource(R.drawable.ic_close_white_24dp)
+        iv_back.setImageResource(R.drawable.login_ic_close_white_24dp)
         iv_share.visibility = View.INVISIBLE
         tv_right_top.visibility = View.VISIBLE
     }
