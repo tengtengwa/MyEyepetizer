@@ -17,6 +17,7 @@ ext {
             photo   : "com.example.photo",
             settings: "com.example.settings",
             login   : "com.example.login",
+            main    : "com.example.main"
     ]
 
     dependencies = [

@@ -1,0 +1,5 @@
+<resources>
+    <string name="main_app_name">MainModule</string>
+    <string name="main_tab_text_1">Tab 1</string>
+    <string name="main_tab_text_2">Tab 2</string>
+</resources>
