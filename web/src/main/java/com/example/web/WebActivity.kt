@@ -2,7 +2,9 @@ package com.example.web
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Typeface
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.view.WindowManager
 import android.webkit.*
@@ -43,19 +45,15 @@ class WebActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.web_activity_web)
-        ARouter.getInstance().inject(this)
+        /**
+         * 这里集成开发模式的时候再使用依赖注入，单独开发的时候会报错
+         */
+//        ARouter.getInstance().inject(this)
     }
 
     override fun setupViews() {
         super.setupViews()
-        tv_title.text = title
-        tv_title.textSize = when (titleTextSize) {
-            TITLE_TEXT_SIZE_BIG ->  resources.getDimension(R.dimen.web_title_textsize_big)
-            TITLE_TEXT_SIZE_SMALL ->  resources.getDimension(R.dimen.web_title_textsize_small)
-            else -> resources.getDimension(R.dimen.web_title_textsize_normal)
-        }
-
-        iv_share.visibility = View.INVISIBLE
+        initParams()
         initWebView()
         preloadInitVasSonic()
         if (sonicSessionClient != null) {
@@ -64,8 +62,31 @@ class WebActivity : BaseActivity() {
         } else {
             webview.loadUrl(url)
         }
-
     }
+
+    private fun initParams() {
+        tv_title.text = title
+        tv_title.apply {
+            when (titleTextSize) {
+                TITLE_TEXT_SIZE_BIG -> setTextSize(
+                    TypedValue.COMPLEX_UNIT_SP,
+                    20F         //这里很奇怪，不能使用dimen资源文件中定义的float类型的大小
+                )
+                TITLE_TEXT_SIZE_SMALL -> setTextSize(
+                    TypedValue.COMPLEX_UNIT_SP,
+                    12F
+                )
+                else -> setTextSize(
+                    TypedValue.COMPLEX_UNIT_SP,
+                    16F
+                )
+            }
+        }
+        iv_share.visibility = View.INVISIBLE
+        tv_title.isSelected = true          //想要实现跑马灯效果，它必须获得焦点
+        setStatusBarBackground(R.color.base_colorBlack)
+    }
+
 
     private fun initWebView() {
         webview.settings.apply {
@@ -163,14 +184,6 @@ class WebActivity : BaseActivity() {
             super.onReceivedError(view, request, error)
             tv_load_error_tip.visibility = View.VISIBLE
             loadingview.visibility = View.INVISIBLE
-        }
-
-        override fun shouldOverrideUrlLoading(
-            view: WebView?,
-            request: WebResourceRequest?
-        ): Boolean {
-            view?.loadUrl(url)
-            return true
         }
 
         //vassonic根据情况拦截网页加载

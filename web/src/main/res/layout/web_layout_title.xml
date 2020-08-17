@@ -28,11 +28,11 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:textColor="@color/base_colorTextBlack"
         android:gravity="center_horizontal"
-        app:typeface="fzdb1Typeface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_share"
         app:layout_constraintStart_toEndOf="@+id/iv_back"
         app:layout_constraintTop_toTopOf="parent"
+        app:typeface="fzdb1Typeface"
         tool:text="收集初夏碎片 用镜头拼凑属于你的夏天"
         />
 

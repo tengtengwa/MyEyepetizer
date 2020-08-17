@@ -7,4 +7,6 @@
 
     <color name="web_colorWhite">#FFFFFF</color>
     <color name="web_colorGray">#7A7A7A</color>
+    <color name="web_progressbar_startColor">#0064FB</color>
+    <color name="web_progressbar_endColor">#0087FF</color>
 </resources>

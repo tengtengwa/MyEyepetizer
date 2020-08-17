@@ -1,7 +1,3 @@
 <resources>
-    <dimen name="web_fab_margin">16dp</dimen>
-    <dimen name="web_title_textsize_normal">16dp</dimen>
-    <dimen name="web_title_textsize_big">20dp</dimen>
-    <dimen name="web_title_textsize_small">12dp</dimen>
-
+    <dimen name="web_fab_margin" >16dp</dimen>
 </resources>
