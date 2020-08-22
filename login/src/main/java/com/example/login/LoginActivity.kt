@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.base.BaseActivity
+import com.example.base.StartService
+import com.example.base.bean.Const
 import com.example.base.customview.CustomFontTextView
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
@@ -105,7 +107,10 @@ class LoginActivity : BaseActivity() {
                     }
                 }
                 tv_agreement -> {
-                    TODO("点击跳转用户服务协议web页面")
+                    StartService.startWeb(
+                        "开眼用户协议", true, Const.Url.USER_AGREEMENT,
+                        Const.Web.MODE_DEFAULT, Const.Web.TITLE_TEXT_SIZE_NORMAL
+                    )
                 }
                 iv_back -> finish()
             }
@@ -125,13 +130,6 @@ class LoginActivity : BaseActivity() {
         iv_back.setImageResource(R.drawable.login_ic_close_white_24dp)
         iv_share.visibility = View.INVISIBLE
         tv_right_top.visibility = View.VISIBLE
-    }
-
-
-    companion object {
-        fun start() {
-            ARouter.getInstance().build("/epetizer/loginActivity").navigation()
-        }
     }
 }
 

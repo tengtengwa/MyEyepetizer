@@ -12,6 +12,11 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.base.BaseActivity
+import com.example.base.bean.Const.Web.MODE_DEFAULT
+import com.example.base.bean.Const.Web.MODE_SONIC_WITH_OFFLINE_CACHE
+import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_BIG
+import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_NORMAL
+import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_SMALL
 import com.example.base.utils.logD
 import com.example.web.vassonic.SonicRuntimeImpl
 import com.eyepetizer.android.ui.common.ui.vassonic.OfflinePkgSessionConnection
@@ -224,41 +229,5 @@ class WebActivity : BaseActivity() {
         sonicSession?.destroy()
         sonicSession = null
         super.onDestroy()
-    }
-
-    companion object {
-
-        //加载模式：MODE_DEFAULT 默认使用WebView加载；
-        // MODE_SONIC 使用VasSonic框架加载；
-        // MODE_SONIC_WITH_OFFLINE_CACHE 使用VasSonic框架离线加载
-        const val MODE_DEFAULT = 0
-
-        const val MODE_SONIC = 1
-
-        const val MODE_SONIC_WITH_OFFLINE_CACHE = 2
-
-        //标题字体大小,正常为16sp，大字体为20sp，小字体为12sp
-        const val TITLE_TEXT_SIZE_NORMAL = 3
-
-        const val TITLE_TEXT_SIZE_BIG = 4
-
-        const val TITLE_TEXT_SIZE_SMALL = 5
-
-        fun start(
-            title: String,
-            isTitleFixed: Boolean,
-            url: String,
-            mode: Int,
-            titleTextSize: Int
-        ) {
-            ARouter.getInstance()
-                .build("/epetizer/web")
-                .withString("title", title)
-                .withBoolean("isTitleFixed", isTitleFixed)
-                .withString("url", url)
-                .withInt("loadMode", mode)
-                .withInt("titleTextSize", titleTextSize)
-                .navigation()
-        }
     }
 }
