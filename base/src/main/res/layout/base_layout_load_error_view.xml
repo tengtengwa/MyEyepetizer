@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/loadErrorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:typeface="fzlLTypeface" />
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -37,7 +37,7 @@ object TypefaceUtil {
     private fun getTypeface(path: String) = try {
         Typeface.createFromAsset(MyApplication.context.assets, path)
     } catch (e: RuntimeException) {
-        logD("ttw", "加载字体文件失败")
+        logD("typeface", "加载字体文件失败")
         Typeface.DEFAULT
     }
 }

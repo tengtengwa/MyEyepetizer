@@ -4,10 +4,12 @@ import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
+import com.example.base.MyApplication
 import com.example.base.R
 import com.example.base.utils.TypefaceUtil
+import com.example.base.utils.logD
 
-class TypefaceTextView @JvmOverloads constructor(
+class CustomFontTextView @JvmOverloads constructor(
     context: Context,
     private val attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -16,10 +18,11 @@ class TypefaceTextView @JvmOverloads constructor(
     init {
         //使用自定义TypefaceTextView就是为了更换字体，所以基本上都会设置typeface这个自定义属性，感觉这个判空有点多余...
         attrs?.apply {
-            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TypefaceTextView, 0, 0)
-            val typefaceType = typedArray.getInt(R.styleable.TypefaceTextView_typeface, 0)
+            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomFontTextView, 0, 0)
+            val typefaceType = typedArray.getInt(R.styleable.CustomFontTextView_typeface, 0)
             typeface = getTypeface(typefaceType)
             typedArray.recycle()
+            logD("typeface", "${MyApplication.context}")
         }
     }
 

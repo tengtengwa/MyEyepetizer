@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import com.example.base.R
 
 @SuppressLint("CustomViewStyleable")
-class TypefaceEditText @JvmOverloads constructor(
+class CustomFontEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -15,9 +15,9 @@ class TypefaceEditText @JvmOverloads constructor(
 
     init {
         attrs?.let {
-            val array = context.obtainStyledAttributes(it, R.styleable.TypefaceTextView, 0, 0)
-            val typefaceType = array.getInt(R.styleable.TypefaceTextView_typeface, 0)
-            typeface = TypefaceTextView.getTypeface(typefaceType)
+            val array = context.obtainStyledAttributes(it, R.styleable.CustomFontTextView, 0, 0)
+            val typefaceType = array.getInt(R.styleable.CustomFontTextView_typeface, 0)
+            typeface = CustomFontTextView.getTypeface(typefaceType)
             array.recycle()
         }
     }
