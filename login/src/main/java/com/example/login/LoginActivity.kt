@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.base.BaseActivity
-import com.example.base.customview.TypefaceTextView
+import com.example.base.customview.CustomFontTextView
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
 import kotlinx.android.synthetic.main.login_activity_login.*
@@ -19,12 +19,12 @@ class LoginActivity : BaseActivity() {
 
     private var isAuthorLoginClicked = false
     private var isUserRegisteClicked = false
-    private lateinit var userRegiste: TypefaceTextView
-    private lateinit var authorLogin: TypefaceTextView
-    private lateinit var userRegisteTip: TypefaceTextView
+    private lateinit var userRegiste: CustomFontTextView
+    private lateinit var authorLogin: CustomFontTextView
+    private lateinit var userRegisteTip: CustomFontTextView
     private lateinit var shareGroup: Group
-    private lateinit var loginTip: TypefaceTextView
-    private lateinit var findPassword: TypefaceTextView
+    private lateinit var loginTip: CustomFontTextView
+    private lateinit var findPassword: CustomFontTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +60,7 @@ class LoginActivity : BaseActivity() {
                     "开发小哥偷了个懒~".toast(this@LoginActivity)
                 }
                 tv_right_top -> {
+                    "先去登陆吧".toast(this@LoginActivity)
                 }
                 //下面两个TextView的点击效果中，必须使用findViewById获取对应View的引用，
                 // 直接引用会找不到相应的View对象。暂不清楚问题的原因
@@ -67,31 +68,44 @@ class LoginActivity : BaseActivity() {
                     if (isUserRegisteClicked) {
                         shareGroup.visibility = View.VISIBLE
                         userRegisteTip.visibility = View.INVISIBLE
-                        userRegiste.text = resources.getString(R.string.user_registe)
+                        userRegiste.text = resources.getString(R.string.login_user_registe)
                         isUserRegisteClicked = false
                     } else {
                         shareGroup.visibility = View.INVISIBLE
                         userRegisteTip.visibility = View.VISIBLE
-                        userRegiste.text = resources.getString(R.string.user_login)
+                        userRegiste.text = resources.getString(R.string.login_user_login)
                         isUserRegisteClicked = true
+                        if (isAuthorLoginClicked) {
+                            shareGroup.visibility = View.INVISIBLE
+                            findPassword.visibility = View.VISIBLE
+                            authorLogin.text = resources.getString(R.string.login_author_login)
+                            loginTip.text = resources.getString(R.string.login_login_tip)
+                            isAuthorLoginClicked = false
+                        }
                     }
                 }
                 tv_author_login -> {
                     if (isAuthorLoginClicked) {
                         shareGroup.visibility = View.VISIBLE
                         findPassword.visibility = View.VISIBLE
-                        authorLogin.text = resources.getString(R.string.author_login)
-                        loginTip.text = resources.getString(R.string.login_tip)
+                        authorLogin.text = resources.getString(R.string.login_author_login)
+                        loginTip.text = resources.getString(R.string.login_login_tip)
                         isAuthorLoginClicked = false
                     } else {
                         shareGroup.visibility = View.INVISIBLE
                         findPassword.visibility = View.INVISIBLE
-                        authorLogin.text = resources.getString(R.string.user_login)
-                        loginTip.text = resources.getString(R.string.auther_login_tip)
+                        authorLogin.text = resources.getString(R.string.login_user_login)
+                        loginTip.text = resources.getString(R.string.login_auther_login_tip)
                         isAuthorLoginClicked = true
+                        if (isUserRegisteClicked) {
+                            userRegisteTip.visibility = View.INVISIBLE
+                            userRegiste.text = resources.getString(R.string.login_user_registe)
+                            isUserRegisteClicked = false
+                        }
                     }
                 }
                 tv_agreement -> {
+                    TODO("点击跳转用户服务协议web页面")
                 }
                 iv_back -> finish()
             }

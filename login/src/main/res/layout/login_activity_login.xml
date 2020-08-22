@@ -10,7 +10,7 @@
     android:background="@drawable/login_bg_login"
     tools:context=".LoginActivity">
 
-    <com.example.base.customview.TypefaceEditText
+    <com.example.base.customview.CustomFontEditText
         android:id="@+id/et_password"
         android:layout_width="0dp"
         android:layout_height="44dp"
@@ -21,7 +21,7 @@
         android:drawableStart="@drawable/login_ic_password_white_lock_18dp"
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:hint="@string/password_tip"
+        android:hint="@string/login_password_tip"
         android:inputType="textPassword"
         android:textColor="@color/base_colorWhite"
         android:textColorHint="@color/base_colorWhite"
@@ -36,7 +36,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/base_colorDivider"
+        android:background="@color/login_whiteAlpha85"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,14 +58,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_title" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_title"/>
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_login_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/login_tip"
+        android:text="@string/login_login_tip"
         android:textColor="@color/base_colorWhite"
         android:textSize="12sp"
         android:gravity="center"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_logo"
         app:typeface="fzlLTypeface" />
 
-    <com.example.base.customview.TypefaceEditText
+    <com.example.base.customview.CustomFontEditText
         android:id="@+id/et_account"
         android:layout_width="0dp"
         android:layout_height="44dp"
@@ -85,7 +85,7 @@
         android:drawablePadding="5dp"
         android:focusable="true"
         android:gravity="center_vertical"
-        android:hint="@string/account_tip"
+        android:hint="@string/login_account_tip"
         android:imeOptions="actionDone"
         android:textColor="@color/base_colorWhite"
         android:textColorHint="@color/base_colorWhite"
@@ -99,7 +99,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/base_colorDivider"
+        android:background="@color/login_whiteAlpha85"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintBottom_toTopOf="@+id/et_password"
@@ -111,7 +111,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/base_colorDivider"
+        android:background="@color/login_whiteAlpha85"
         app:layout_constraintBottom_toTopOf="@+id/group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -130,11 +130,11 @@
     <!--设置chainStyle为packed时需要子控件左右相互约束
     layout_constraintEnd_toStartOf、layout_constraintStart_toEndOf
     这两个属性不要弄错了，否则中间会有间隔-->
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_agreement_desciption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/agreement_desciption"
+        android:text="@string/login_agreement_desciption"
         android:textColor="#403b47"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_agreement"
@@ -143,11 +143,11 @@
         app:layout_constraintTop_toTopOf="@+id/group"
         app:typeface="fzlLTypeface" />
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_agreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_agreement"
+        android:text="@string/login_user_agreement"
         android:textColor="@color/base_colorWhite"
         android:textSize="12sp"
         android:layout_marginStart="5dp"
@@ -195,12 +195,12 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="iv_share_qq,iv_share_wechat,iv_share_weibo" />
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_user_registe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
-        android:text="@string/user_registe"
+        android:text="@string/login_user_registe"
         android:textColor="@color/base_colorWhite"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_author_login"
@@ -208,11 +208,11 @@
         app:layout_constraintStart_toStartOf="@+id/tv_login"
         app:typeface="fzdb1Typeface"/>
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_author_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/author_login"
+        android:text="@string/login_author_login"
         android:textColor="@color/base_colorWhite"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/tv_user_registe"
@@ -221,26 +221,26 @@
         app:layout_constraintTop_toTopOf="@+id/tv_user_registe"
         app:typeface="fzdb1Typeface"/>
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_login"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginBottom="30dp"
         android:background="@color/login_whiteAlpha50"
         android:gravity="center"
-        android:text="@string/login"
+        android:text="@string/login_login"
         android:textColor="@color/login_blackAlpha85"
         app:layout_constraintBottom_toTopOf="@+id/tv_user_registe"
         app:layout_constraintEnd_toEndOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="@+id/et_password"
         app:typeface="fzdb1Typeface" />
 
-    <com.example.base.customview.TypefaceTextView
+    <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_user_registe_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/user_login_tip"
+        android:text="@string/login_user_login_tip"
         android:textColor="@color/base_colorWhite"
         android:gravity="center"
         android:visibility="invisible"

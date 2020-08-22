@@ -2,6 +2,7 @@
     package="com.example.login">
 
     <application
+        android:name="com.example.base.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/login_ic_launcher"
         android:label="@string/app_name"
