@@ -14,7 +14,7 @@ object StartService {
         titleTextSize: Int
     ) {
         ARouter.getInstance()
-            .build("/epetizer/web")
+            .build("/epetizer/webActivity")
             .withString("title", title)
             .withBoolean("isTitleFixed", isTitleFixed)
             .withString("url", url)
@@ -25,5 +25,9 @@ object StartService {
 
     fun startLogin() {
         ARouter.getInstance().build("/epetizer/loginActivity").navigation()
+    }
+
+    fun startMain() {
+        ARouter.getInstance().build("/epetizer/mainActivity").navigation()
     }
 }
