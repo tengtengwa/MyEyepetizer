@@ -25,7 +25,7 @@ import com.tencent.sonic.sdk.*
 import kotlinx.android.synthetic.main.web_activity_web.*
 import kotlinx.android.synthetic.main.web_layout_title.*
 
-@Route(path = "/epetizer/web")
+@Route(path = "/epetizer/webActivity")
 class WebActivity : BaseActivity() {
 
     @Autowired

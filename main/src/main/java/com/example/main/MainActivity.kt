@@ -6,8 +6,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.main.ui.main.SectionsPagerAdapter
 
+@Route(path = "/epetizer/mainActivity")
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
