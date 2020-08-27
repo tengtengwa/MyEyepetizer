@@ -6,4 +6,16 @@
     <string name="main_community">社区</string>
     <string name="main_notification">通知</string>
     <string name="main_profile">我的</string>
+
+
+    <string name="main_profile_tip">点击登陆即可评论及发布内容</string>
+    <string name="main_favorites">收藏</string>
+    <string name="main_cache">缓存</string>
+    <string name="main_my_follow">我的关注</string>
+    <string name="main_watch_history">观看记录</string>
+    <string name="main_notification_toggle">通知开关</string>
+    <string name="main_my_badge">我的徽章</string>
+    <string name="main_feedback">意见反馈</string>
+    <string name="main_contribution">我要投稿</string>
+    <string name="main_version">Version 6.3.5</string>
 </resources>
