@@ -1,8 +1,7 @@
-package com.example.main.settings
+package com.example.main.profile.settings
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.base.BaseActivity
 import com.example.main.R

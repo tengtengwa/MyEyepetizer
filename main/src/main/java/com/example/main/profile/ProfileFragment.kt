@@ -1,7 +1,6 @@
 package com.example.main.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import com.example.base.StartService
 import com.example.base.bean.Const
 import com.example.base.utils.setOnClickListener
 import com.example.main.R
-import com.example.main.settings.SettingsActivity
+import com.example.main.profile.settings.SettingsActivity
 import kotlinx.android.synthetic.main.main_fragment_profile.*
 
 
