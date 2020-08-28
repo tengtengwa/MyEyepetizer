@@ -1,27 +1,17 @@
 package com.example.web
 
-import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Typeface
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import android.view.WindowManager
 import android.webkit.*
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.example.base.BaseActivity
-import com.example.base.bean.Const.Web.MODE_DEFAULT
-import com.example.base.bean.Const.Web.MODE_SONIC_WITH_OFFLINE_CACHE
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_BIG
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_NORMAL
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_SMALL
-import com.example.base.utils.logD
-import com.example.web.vassonic.SonicRuntimeImpl
-import com.eyepetizer.android.ui.common.ui.vassonic.OfflinePkgSessionConnection
-import com.eyepetizer.android.ui.common.ui.vassonic.SonicSessionClientImpl
-import com.tencent.sonic.sdk.*
+import com.tencent.sonic.sdk.SonicSession
 import kotlinx.android.synthetic.main.web_activity_web.*
 import kotlinx.android.synthetic.main.web_layout_title.*
 
@@ -38,14 +28,10 @@ class WebActivity : BaseActivity() {
     private var isTitleFixed: Boolean = false
 
     @Autowired
-    private var loadMode: Int = MODE_DEFAULT
-
-    @Autowired
     private var titleTextSize = TITLE_TEXT_SIZE_NORMAL
 
     private var sonicSession: SonicSession? = null
 
-    private var sonicSessionClient: SonicSessionClientImpl? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,13 +46,7 @@ class WebActivity : BaseActivity() {
         super.setupViews()
         initParams()
         initWebView()
-        preloadInitVasSonic()
-        if (sonicSessionClient != null) {
-            sonicSessionClient?.bindWebView(webview)
-            sonicSessionClient?.clientReady()
-        } else {
-            webview.loadUrl(url)
-        }
+        webview.loadUrl(url)
     }
 
     private fun initParams() {
@@ -116,51 +96,6 @@ class WebActivity : BaseActivity() {
         }
     }
 
-    private fun preloadInitVasSonic() {
-        window.addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED)
-
-        // init sonic engine if necessary, or maybe u can do this when application created
-        if (!SonicEngine.isGetInstanceAllowed()) {
-            SonicEngine.createInstance(SonicRuntimeImpl(application), SonicConfig.Builder().build())
-        }
-
-        // if it's sonic mode , startup sonic session at first time
-        if (MODE_DEFAULT != loadMode) { // sonic mode
-            val sessionConfigBuilder = SonicSessionConfig.Builder()
-            sessionConfigBuilder.setSupportLocalServer(true)
-
-            // if it's offline pkg mode, we need to intercept the session connection
-            if (MODE_SONIC_WITH_OFFLINE_CACHE == loadMode) {
-                sessionConfigBuilder.setCacheInterceptor(object : SonicCacheInterceptor(null) {
-                    override fun getCacheData(session: SonicSession): String? {
-                        return null // offline pkg does not need cache
-                    }
-                })
-                sessionConfigBuilder.setConnectionInterceptor(object :
-                    SonicSessionConnectionInterceptor() {
-                    override fun getConnection(
-                        session: SonicSession,
-                        intent: Intent
-                    ): SonicSessionConnection {
-                        return OfflinePkgSessionConnection(this@WebActivity, session, intent)
-                    }
-                })
-            }
-
-            // create sonic session and run sonic flow
-            sonicSession =
-                SonicEngine.getInstance().createSession(url, sessionConfigBuilder.build())
-            if (null != sonicSession) {
-                sonicSession?.bindClient(SonicSessionClientImpl().also { sonicSessionClient = it })
-            } else {
-                // this only happen when a same sonic session is already running,
-                // u can comment following codes to feedback as a default mode.
-                // throw new UnknownError("create session fail!");
-                logD(TAG, "${title},${url}:create sonic session fail!")
-            }
-        }
-    }
-
     override fun onBackPressed() {
         if (webview.canGoBack()) {
             webview.goBack()
@@ -189,15 +124,6 @@ class WebActivity : BaseActivity() {
             super.onReceivedError(view, request, error)
             tv_load_error_tip.visibility = View.VISIBLE
             loadingview.visibility = View.INVISIBLE
-        }
-
-        //vassonic根据情况拦截网页加载
-        override fun shouldInterceptRequest(view: WebView?, url: String?): WebResourceResponse? {
-            if (sonicSession != null) {
-                val requestResponse = sonicSessionClient?.requestResource(url)
-                if (requestResponse is WebResourceResponse) return requestResponse
-            }
-            return null
         }
     }
 
