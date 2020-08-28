@@ -2,12 +2,9 @@ package com.example.base
 
 import android.app.Activity
 import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
@@ -37,14 +34,14 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * 此Fragment依附的Activity
      */
-    lateinit var activity: Activity
+    lateinit var hostActivity: Activity
 
     protected val TAG: String = this.javaClass.simpleName
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         // 缓存当前依附的activity
-        activity = requireActivity()
+        hostActivity = requireActivity()
         logD(TAG, "BaseFragment-->onAttach()")
     }
 

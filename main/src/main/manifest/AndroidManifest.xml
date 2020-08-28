@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.main">
 
@@ -8,6 +9,8 @@
         android:roundIcon="@mipmap/main_ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Eyepetizer">
+        <activity android:name=".profile.CacheActivity"></activity>
+        <activity android:name=".settings.SettingsActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -19,4 +22,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

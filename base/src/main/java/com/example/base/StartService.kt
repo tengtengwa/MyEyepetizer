@@ -10,7 +10,6 @@ object StartService {
         title: String,
         isTitleFixed: Boolean,
         url: String,
-        mode: Int,
         titleTextSize: Int
     ) {
         ARouter.getInstance()
@@ -18,7 +17,6 @@ object StartService {
             .withString("title", title)
             .withBoolean("isTitleFixed", isTitleFixed)
             .withString("url", url)
-            .withInt("loadMode", mode)
             .withInt("titleTextSize", titleTextSize)
             .navigation()
     }

@@ -1,4 +1,4 @@
-package com.example.main.ui
+package com.example.main.profile
 
 import android.content.Context
 import androidx.fragment.app.Fragment
@@ -16,7 +16,7 @@ private val TAB_TITLES = arrayOf(
  * one of the sections/tabs/pages.
  */
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
-    FragmentPagerAdapter(fm) {
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.

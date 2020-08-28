@@ -7,7 +7,7 @@
     <string name="main_notification">通知</string>
     <string name="main_profile">我的</string>
 
-
+    <!--我的页面相关字符串-->
     <string name="main_profile_tip">点击登陆即可评论及发布内容</string>
     <string name="main_favorites">收藏</string>
     <string name="main_cache">缓存</string>
