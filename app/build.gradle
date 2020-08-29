@@ -7,7 +7,7 @@ def cfg = rootProject.ext.android
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion "30.0.1"
+    buildToolsVersion '29.0.3'
     resourcePrefix "app_"
 
     defaultConfig {

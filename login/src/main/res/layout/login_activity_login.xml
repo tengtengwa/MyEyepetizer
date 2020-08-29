@@ -52,8 +52,8 @@
 
     <ImageView
         android:id="@+id/tv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
         android:src="@drawable/base_ic_logo_slogan"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
         android:background="@null"
         android:drawableStart="@drawable/login_ic_person_white_18dp"
         android:drawablePadding="5dp"
-        android:focusable="true"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:hint="@string/login_account_tip"
         android:imeOptions="actionDone"

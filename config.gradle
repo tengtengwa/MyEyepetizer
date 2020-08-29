@@ -23,14 +23,14 @@ ext {
     dependencies = [
             // App dependencies versison
             appCompatVersion       : '1.2.0',
-            constraintLayoutVersion: '1.1.3',
+            constraintLayoutVersion: '2.0.0',
             coreTestingVersion     : '2.1.0',
             coroutinesVersion      : "1.3.7",
             espressoVersion        : '3.3.0',
             fragmentVersion        : '1.1.0-alpha09',
             gradleVersion          : '4.0.1',
             gsonVersion            : '2.8.2',
-            junitVersion           : '4.12',
+            junitVersion           : "4.12",
             junitExtVersion        : '1.1.2',
             kotlinVersion          : '1.4.0',
             ktlintVersion          : '0.33.0',
