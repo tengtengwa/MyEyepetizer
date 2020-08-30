@@ -8,6 +8,7 @@ import android.view.ViewStub
 import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.base.callback.RequestLifecycle
 import com.example.base.utils.logD
 
@@ -34,9 +35,9 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * 此Fragment依附的Activity
      */
-    lateinit var hostActivity: Activity
+    lateinit var hostActivity: FragmentActivity
 
-    protected val TAG: String = this.javaClass.simpleName
+    protected val TAG: String = "BaseFragment"
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -50,7 +51,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
         logD(TAG, "BaseFragment-->onResume()")
         //当Fragment在屏幕上可见并且没有加载过数据时调用
         if (!mHasLoadedData) {
-            loadDataOnce()
+            lazyLoadData()
             logD(TAG, "BaseFragment-->loadDataOnce()")
             mHasLoadedData = true
         }
@@ -107,7 +108,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * 页面首次可见时调用一次该方法，在这里可以请求网络数据等。
      */
-    open fun loadDataOnce() {
+    open fun lazyLoadData() {
     }
 
     /**
