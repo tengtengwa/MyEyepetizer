@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="MainTheme" parent="Theme.AppCompat.Light.DarkActionBar" tools:ignore="ResourceName">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/base_colorWhite</item>
-        <item name="colorPrimaryDark">@color/base_colorWhite</item>
+        <item name="colorPrimary">#fafafa</item>
+        <item name="colorPrimaryDark">#fafafa</item>
         <item name="colorAccent">@color/main_colorAccent</item>
     </style>
 
@@ -16,4 +16,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" tools:ignore="ResourceName" />
 
+
+    <!--自定义Tablayout样式-->
+    <style name="CustomTabLayoutStyle" parent="Widget.Design.TabLayout" tools:ignore="ResourceName">
+        <item name="tabIndicatorColor">@color/base_colorBlack</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/main_colorTextPrimary</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab" tools:ignore="ResourceName">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/main_colorTextSecondary</item>
+        <item name="android:font">"font/FZLanTingHeiS-DB1-GB-Regular"</item>
+    </style>
 </resources>

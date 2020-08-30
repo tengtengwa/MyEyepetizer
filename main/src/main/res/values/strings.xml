@@ -1,7 +1,8 @@
 <resources>
     <string name="main_app_name">MainModule</string>
-    <string name="main_tab_text_1">Tab 1</string>
-    <string name="main_tab_text_2">Tab 2</string>
+    <string name="main_tab_text_1">发现</string>
+    <string name="main_tab_text_2">推荐</string>
+    <string name="main_tab_text_3">日报</string>
     <string name="main_home">首页</string>
     <string name="main_community">社区</string>
     <string name="main_notification">通知</string>

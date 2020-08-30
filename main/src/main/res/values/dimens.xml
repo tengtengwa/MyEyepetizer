@@ -1,8 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="main_activity_horizontal_margin">16dp</dimen>
     <dimen name="main_activity_vertical_margin">16dp</dimen>
     <dimen name="main_appbar_padding">16dp</dimen>
     <dimen name="main_fab_margin">16dp</dimen>
     <dimen name="main_appbar_padding_top">8dp</dimen>
+
+    <!-- 常见界面标题栏大小 -->
+    <dimen name="actionBarSize" tools:ignore="ResourceName">48dp</dimen>
+
+    <!-- 其他界面标题栏大小 -->
+    <dimen name="actionBarSizeSecondary" tools:ignore="ResourceName">44dp</dimen>
+
+    <!-- 常见列表左边or右边，距离屏幕间隔。 -->
+    <dimen name="listSpaceSize" tools:ignore="ResourceName">14dp</dimen>
+
+    <!-- 常见列表封面高度 -->
+    <dimen name="coverSize" tools:ignore="ResourceName">183dp</dimen>
+
+    <!-- 视频详情页，播放器高度 -->
+    <dimen name="videoPlayerSize" tools:ignore="ResourceName">202dp</dimen>
 </resources>
