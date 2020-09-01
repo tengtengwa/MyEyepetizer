@@ -3,11 +3,13 @@ package com.example.main
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.base.BaseFragment
 import com.example.base.StartService
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
 import com.google.android.material.tabs.TabLayoutMediator
+import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.main_fragment_home.*
 import kotlinx.android.synthetic.main.main_layout_home_titlebar.*
 
