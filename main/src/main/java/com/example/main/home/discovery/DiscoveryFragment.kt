@@ -1,12 +1,11 @@
 package com.example.main.home.discovery
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
 import com.example.main.MainViewModel
 import com.example.main.R
@@ -26,8 +25,8 @@ class DiscoveryFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DiscoveryViewModel::class.java)
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[DiscoveryViewModel::class.java]
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         observe()
     }
 

@@ -1,13 +1,13 @@
 package com.example.main
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.base.BaseActivity
 import com.example.base.StartService
 import com.example.base.utils.setOnClickListener
+import com.example.base.utils.toastNotShow
 import com.example.main.community.CommunityFragment
 import com.example.main.home.HomeFragment
 import com.example.main.notification.NotificationFragment
@@ -25,7 +25,9 @@ class MainActivity : BaseActivity() {
 
     private lateinit var profileFragment: ProfileFragment
 
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
+
+    private lateinit var toast: Toast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +52,19 @@ class MainActivity : BaseActivity() {
         communityFragment = CommunityFragment.newInstance()
         notificationFragment = NotificationFragment.newInstance()
         profileFragment = ProfileFragment.newInstance()
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        toast = "再按一次退出应用".toastNotShow(this)
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            if (toast.view.parent == null) {
+                toast.show()
+            } else {
+                finish()
+            }
+        }
     }
 }

@@ -34,3 +34,6 @@ fun setOnClickListener(vararg views: View?, block: View.() -> Unit) {
  */
 fun String.toast(context: Context, duration: Int = Toast.LENGTH_SHORT) =
     Toast.makeText(context, this, duration).show()
+
+fun String.toastNotShow(context: Context, duration: Int = Toast.LENGTH_SHORT): Toast =
+    Toast.makeText(context, this, duration)

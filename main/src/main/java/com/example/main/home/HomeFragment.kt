@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.main.BaseViewPagerFragment
 import com.example.main.MainViewModel
 import com.example.main.R
@@ -43,7 +43,7 @@ class HomeFragment : BaseViewPagerFragment() {
         super.onActivityCreated(savedInstanceState)
         viewpager.currentItem = 1
         iv_calender.visibility = View.VISIBLE
-        mainViewModel = ViewModelProviders.of(hostActivity).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(hostActivity)[MainViewModel::class.java]
         mainViewModel.isRefreshHomePage.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 mainViewModel.apply {
