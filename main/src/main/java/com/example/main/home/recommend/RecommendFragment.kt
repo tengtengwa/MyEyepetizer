@@ -31,8 +31,8 @@ class RecommendFragment : BaseFragment() {
     }
 
     private fun observe() {
-        mainViewModel.homePageRefresh.observe(viewLifecycleOwner, Observer {
-            if (it == MainViewModel.REFRESH_HOME_RECOMMEND) {
+        mainViewModel.isRefreshHomeRecommend.observe(viewLifecycleOwner, Observer {
+            it.getEventIfNotHandled()?.let {
                 TODO("在这里刷新数据")
             }
         })

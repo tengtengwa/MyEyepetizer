@@ -45,17 +45,13 @@ class HomeFragment : BaseViewPagerFragment() {
         iv_calender.visibility = View.VISIBLE
         mainViewModel = ViewModelProvider(hostActivity)[MainViewModel::class.java]
         mainViewModel.isRefreshHomePage.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
+            it.getEventIfNotHandled()?.let {
                 mainViewModel.apply {
                     when (viewpager.currentItem) {
-                        0 -> homePageRefresh.value = MainViewModel.REFRESH_HOME_DISCOVERY
-                        1 -> homePageRefresh.value = MainViewModel.REFRESH_HOME_RECOMMEND
-                        2 -> homePageRefresh.value = MainViewModel.REFRESH_HOME_DAILY
+                        0 -> refreshHomeDiscovery()
+                        1 -> refreshHomeRecommend()
+                        2 -> refreshHomeDaily()
                     }
-                    //本次事件通知完成后将这两个值重置，以便接收下一次通知
-                    homePageRefresh.value = -1
-                    isRefreshHomePage.value = false
-                    TODO("这里将两个值重置可能会出现bug，完了调试的时候再看")
                 }
             }
         })

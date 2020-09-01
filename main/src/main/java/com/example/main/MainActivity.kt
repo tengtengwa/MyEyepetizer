@@ -38,10 +38,10 @@ class MainActivity : BaseActivity() {
         initParams()
         setOnClickListener(btn_community, btn_profile, btn_home, btn_notification, iv_release) {
             when (this) {
-                btn_community -> viewModel.isRefreshCommunityPage.value = true
-                btn_profile -> viewModel.isRefreshProfilePage.value = true
-                btn_home -> viewModel.isRefreshHomePage.value = true
-                btn_notification -> viewModel.isRefreshNotificationPage.value = true
+                btn_community -> viewModel.refreshCommunityPage()
+                btn_profile -> viewModel.refreshProfilePage()
+                btn_home -> viewModel.refreshHomePage()
+                btn_notification -> viewModel.refreshNotificationPage()
                 iv_release -> StartService.startLogin()
             }
         }
