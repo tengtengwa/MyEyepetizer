@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
 import com.example.main.MainViewModel
 import com.example.main.R
+import com.example.main.utils.EventObserver
 
 class RecommendFragment : BaseFragment() {
 
@@ -31,10 +32,8 @@ class RecommendFragment : BaseFragment() {
     }
 
     private fun observe() {
-        mainViewModel.isRefreshHomeRecommend.observe(viewLifecycleOwner, Observer {
-            it.getEventIfNotHandled()?.let {
-                TODO("在这里刷新数据")
-            }
+        mainViewModel.isRefreshHomeRecommend.observe(viewLifecycleOwner, EventObserver {
+            TODO("在这里刷新数据")
         })
     }
 

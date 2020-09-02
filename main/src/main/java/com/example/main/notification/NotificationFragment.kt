@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
 import com.example.main.MainViewModel
 import com.example.main.R
+import com.example.main.utils.EventObserver
 
 class NotificationFragment : BaseFragment() {
 
@@ -31,10 +32,8 @@ class NotificationFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        mainViewModel.isRefreshNotificationPage.observe(viewLifecycleOwner, Observer {
-            it.getEventIfNotHandled()?.let {
-                TODO("根据ViewPager不同的页面让不同的Fragment刷新数据")
-            }
+        mainViewModel.isRefreshNotificationPage.observe(viewLifecycleOwner, EventObserver {
+            TODO("根据ViewPager不同的页面让不同的Fragment刷新数据")
         })
     }
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.main.BaseViewPagerFragment
 import com.example.main.MainViewModel
@@ -13,6 +12,7 @@ import com.example.main.R
 import com.example.main.home.daily.DailyFragment
 import com.example.main.home.discovery.DiscoveryFragment
 import com.example.main.home.recommend.RecommendFragment
+import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_fragment_home.*
 import kotlinx.android.synthetic.main.main_layout_home_titlebar.*
 
@@ -44,14 +44,12 @@ class HomeFragment : BaseViewPagerFragment() {
         viewpager.currentItem = 1
         iv_calender.visibility = View.VISIBLE
         mainViewModel = ViewModelProvider(hostActivity)[MainViewModel::class.java]
-        mainViewModel.isRefreshHomePage.observe(viewLifecycleOwner, Observer {
-            it.getEventIfNotHandled()?.let {
-                mainViewModel.apply {
-                    when (viewpager.currentItem) {
-                        0 -> refreshHomeDiscovery()
-                        1 -> refreshHomeRecommend()
-                        2 -> refreshHomeDaily()
-                    }
+        mainViewModel.isRefreshHomePage.observe(viewLifecycleOwner, EventObserver {
+            mainViewModel.apply {
+                when (viewpager.currentItem) {
+                    0 -> refreshHomeDiscovery()
+                    1 -> refreshHomeRecommend()
+                    2 -> refreshHomeDaily()
                 }
             }
         })
