@@ -1,7 +1,49 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.main.notification.interaction.InteractionFragment">
 
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/main_imageview"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="77dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/main_ic_login_tips_gray_100dp"/>
+
+    <com.example.base.customview.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/main_interaction_tip1"
+        android:textColor="@color/base_colorTextBlack"
+        android:textSize="15sp"
+        app:typeface="fzdb1Typeface" />
+
+    <com.example.base.customview.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/main_interaction_tip2"
+        android:textColor="@color/base_colorTextBlack"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:typeface="fzlLTypeface"/>
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_login"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:textColor="@color/base_colorWhite"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:text="登录"
+        android:background="@color/main_colorBlue"
+        android:textSize="15sp" />
+</LinearLayout>

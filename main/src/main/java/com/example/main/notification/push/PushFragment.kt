@@ -1,7 +1,6 @@
 package com.example.main.notification.push
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +36,6 @@ class PushFragment : BaseFragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) = PushFragment()
+        fun newInstance() = PushFragment()
     }
 }

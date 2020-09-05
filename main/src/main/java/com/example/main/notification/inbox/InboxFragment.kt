@@ -7,10 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
+import com.example.base.StartService
 import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
+import kotlinx.android.synthetic.main.main_fragment_interaction.*
 
+/**
+ * 首页-通知中的私信页面
+ */
 class InboxFragment : BaseFragment() {
 
     override fun onCreateView(
@@ -21,8 +26,14 @@ class InboxFragment : BaseFragment() {
         return onCreateView(inflater.inflate(R.layout.main_fragment_inbox, container, false))
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tv_login.setOnClickListener {
+            StartService.startLogin()
+        }
+    }
+
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() = InboxFragment()
     }

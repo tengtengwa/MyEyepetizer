@@ -8,7 +8,7 @@
     tool:ignore="ResourceName">
 
     <ImageView
-        android:id="@+id/iv_calender"
+        android:id="@+id/iv_calendar"
         android:layout_width="38.5dp"
         android:layout_height="38.5dp"
         android:padding="10dp"
@@ -20,29 +20,29 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
+        style="@style/CustomTabLayoutStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
-        style="@style/CustomTabLayoutStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_search"
-        app:layout_constraintStart_toEndOf="@+id/iv_calender"
+        app:layout_constraintStart_toEndOf="@+id/iv_calendar"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_tab_text_1" />
+            android:text="@string/main_home_tab1" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_tab_text_2" />
+            android:text="@string/main_home_tab2" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_tab_text_3" />
+            android:text="@string/main_home_tab3" />
     </com.google.android.material.tabs.TabLayout>
 
     <ImageView

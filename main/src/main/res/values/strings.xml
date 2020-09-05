@@ -1,12 +1,19 @@
 <resources>
     <string name="main_app_name">MainModule</string>
-    <string name="main_tab_text_1">发现</string>
-    <string name="main_tab_text_2">推荐</string>
-    <string name="main_tab_text_3">日报</string>
+    <!--主页面底部四个导航按键名称-->
     <string name="main_home">首页</string>
     <string name="main_community">社区</string>
     <string name="main_notification">通知</string>
     <string name="main_profile">我的</string>
+    <!--主页面所有tab的名称-->
+    <string name="main_home_tab1">发现</string>
+    <string name="main_home_tab2">推荐</string>
+    <string name="main_home_tab3">日报</string>
+    <string name="main_community_tab1">推荐</string>
+    <string name="main_community_tab2">关注</string>
+    <string name="main_notification_tab1">推送</string>
+    <string name="main_notification_tab2">互动</string>
+    <string name="main_notification_tab3">私信</string>
 
     <!--我的页面相关字符串-->
     <string name="main_profile_tip">点击登陆即可评论及发布内容</string>
@@ -19,4 +26,6 @@
     <string name="main_feedback">意见反馈</string>
     <string name="main_contribution">我要投稿</string>
     <string name="main_version">Version 6.3.5</string>
+    <string name="main_interaction_tip1">别错过重要的信息</string>
+    <string name="main_interaction_tip2">登录后即可查看评论回复、点赞及关注等通知信息</string>
 </resources>
