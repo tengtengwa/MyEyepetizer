@@ -63,7 +63,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$dps.glideVersion"
     api "androidx.legacy:legacy-support-v4:$dps.legacySupportV4Version"
 //    implementation 'jp.wasabeef:glide-transformations:$rootProject.4.1.0'
-//    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation "org.greenrobot:eventbus:$dps.eventbusVersion"
     api "androidx.viewpager2:viewpager2:$dps.viewPagerVersion"
     api "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"
 
