@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
+import com.example.base.event.MessageEvent
+import com.example.base.event.RefreshEvent
 import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
 
 class RecommendFragment : BaseFragment() {
-
-    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,14 +25,18 @@ class RecommendFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         observe()
     }
 
-    private fun observe() {
-        mainViewModel.isRefreshCommunityRecommend.observe(viewLifecycleOwner, EventObserver {
+    override fun handleMessageEvent(event: MessageEvent) {
+        super.handleMessageEvent(event)
+        //javaClass这个内联函数会返回当前对象的运行时java类，作用相当于this::class.java
+        if (event is RefreshEvent && event.clazz == javaClass) {
             TODO("在这里刷新数据")
-        })
+        }
+    }
+
+    private fun observe() {
     }
 
     companion object {

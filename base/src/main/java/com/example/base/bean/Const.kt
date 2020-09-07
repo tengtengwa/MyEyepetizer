@@ -6,7 +6,6 @@ object Const {
         const val USER_AGREEMENT = "http://www.eyepetizer.net/agreement.html"
     }
 
-
     /**
      * web模块相关的常量
      */

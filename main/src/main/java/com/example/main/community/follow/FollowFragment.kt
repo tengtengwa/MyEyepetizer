@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.BaseFragment
+import com.example.base.event.MessageEvent
+import com.example.base.event.RefreshEvent
 import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
 
 
 class FollowFragment : BaseFragment() {
-
-    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,14 +26,22 @@ class FollowFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         observe()
     }
 
-    private fun observe() {
-        mainViewModel.isRefreshCommunityFollow.observe(viewLifecycleOwner, EventObserver {
+    override fun lazyLoadData() {
+        super.lazyLoadData()
+
+    }
+
+    override fun handleMessageEvent(event: MessageEvent) {
+        super.handleMessageEvent(event)
+        if (event is RefreshEvent && event.clazz == this::class.java) {
             TODO("在这里刷新数据")
-        })
+        }
+    }
+
+    private fun observe() {
     }
 
     companion object {

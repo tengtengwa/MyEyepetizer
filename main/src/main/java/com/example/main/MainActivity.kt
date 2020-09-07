@@ -70,6 +70,7 @@ class MainActivity : BaseActivity() {
                 HOME_PAGE -> {
                     iv_home.isSelected = true
                     tv_home.isSelected = true
+                    //注意下面这种检查lateinit var变量是否初始化的写法
                     if (::homeFragment.isInitialized) {
                         show(homeFragment)
                     } else {

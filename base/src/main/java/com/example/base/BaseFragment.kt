@@ -9,7 +9,10 @@ import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.base.callback.RequestLifecycle
+import com.example.base.event.MessageEvent
 import com.example.base.utils.logD
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 /**
@@ -105,9 +108,13 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     }
 
     /**
-     * 页面首次可见时调用一次该方法，在这里可以请求网络数据等。
+     * ViewPager中的Fragment页面首次可见或收到刷新页面的事件通知时调用一次该方法，在这里请求网络数据等。
      */
     open fun lazyLoadData() {
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    open fun handleMessageEvent(event: MessageEvent) {
     }
 
     /**
