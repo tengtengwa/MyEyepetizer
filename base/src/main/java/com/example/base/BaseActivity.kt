@@ -2,13 +2,9 @@ package com.example.base
 
 import android.app.Activity
 import android.content.Intent
-import android.nfc.NfcEvent
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import com.example.base.R
 import com.example.base.event.MessageEvent
 import com.example.base.utils.ActivityCollector
 import com.example.base.utils.logD
