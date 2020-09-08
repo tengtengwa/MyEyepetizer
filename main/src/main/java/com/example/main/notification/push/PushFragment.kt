@@ -8,6 +8,7 @@ import com.example.base.BaseFragment
 import com.example.base.event.MessageEvent
 import com.example.base.event.RefreshEvent
 import com.example.main.R
+import kotlinx.android.synthetic.main.main_fragment_push.*
 
 class PushFragment : BaseFragment() {
 
@@ -15,7 +16,6 @@ class PushFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return onCreateView(inflater.inflate(R.layout.main_fragment_push, container, false))
     }
 
@@ -27,7 +27,10 @@ class PushFragment : BaseFragment() {
     override fun handleMessageEvent(event: MessageEvent) {
         super.handleMessageEvent(event)
         if (event is RefreshEvent && event.clazz == javaClass) {
-            TODO("在这里刷新数据")
+            if (rl_push_list.adapter?.itemCount ?: 0 > 0) {
+                rl_push_list.scrollToPosition(0)
+            }
+            sRefreshLayout.autoRefresh()
         }
     }
 
