@@ -5,6 +5,9 @@ package com.example.main.logic
  */
 class MainRepository {
 
+
+
+
     companion object {
 
         private var instance: MainRepository? = null
@@ -14,6 +17,5 @@ class MainRepository {
             instance ?: synchronized(this) {
                 instance ?: MainRepository().apply { instance = this }
             }
-
     }
 }

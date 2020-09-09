@@ -70,8 +70,8 @@ class MainActivity : BaseActivity() {
                 HOME_PAGE -> {
                     iv_home.isSelected = true
                     tv_home.isSelected = true
-                    //注意下面这种检查lateinit var变量是否初始化的写法
-                    if (::homeFragment.isInitialized) {
+                    //Fragment已经创建就直接show，否则创建新实例并add
+                    if (::homeFragment.isInitialized) { //注意这种检查lateinit var变量是否初始化的写法
                         show(homeFragment)
                     } else {
                         homeFragment = HomeFragment.newInstance()
@@ -109,7 +109,7 @@ class MainActivity : BaseActivity() {
                     }
                 }
             }
-        }
+        }.commitAllowingStateLoss()
     }
 
     private fun makeAllUnSelected() {

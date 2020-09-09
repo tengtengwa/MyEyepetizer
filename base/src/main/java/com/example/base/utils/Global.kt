@@ -11,12 +11,6 @@ import android.widget.Toast
 
 
 /**
- * 懒人打印日志函数
- */
-fun logD(TAG: String, message: String) = Log.d(TAG, message)
-
-
-/**
  * 批量注册监听器的方法
  *
  * @param views 所有需要设置监听器的view对象

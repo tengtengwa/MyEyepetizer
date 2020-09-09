@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.base.BaseFragment
 import com.example.base.event.MessageEvent
 import com.example.base.event.RefreshEvent
@@ -12,7 +12,7 @@ import com.example.main.R
 
 class DiscoveryFragment : BaseFragment() {
 
-    private lateinit var viewModel: DiscoveryViewModel
+    private val viewModel by viewModels<DiscoveryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +23,6 @@ class DiscoveryFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[DiscoveryViewModel::class.java]
         observe()
     }
 
