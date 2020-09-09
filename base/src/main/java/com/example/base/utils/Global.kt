@@ -1,14 +1,18 @@
 package com.example.base.utils
 
 import android.content.Context
-import android.util.Log
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.Toast
+import com.example.base.MyApplication
 
 /**
  * 一些全局工具函数
  */
 
+//获取sp的实例，它的key固定为sp
+val sharedPreferences: SharedPreferences =
+    MyApplication.context.getSharedPreferences("sp", Context.MODE_PRIVATE)
 
 /**
  * 批量注册监听器的方法
