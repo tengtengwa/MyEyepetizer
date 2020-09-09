@@ -41,6 +41,9 @@ class PushFragment : BaseFragment() {
     }
 
     private fun observe() {
+        pushViewModel.switchedDataList.observe(viewLifecycleOwner) {
+
+        }
     }
 
     companion object {

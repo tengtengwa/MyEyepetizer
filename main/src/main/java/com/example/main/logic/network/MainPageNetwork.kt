@@ -28,10 +28,10 @@ class MainPageNetwork private constructor() {
 
         private var instance: MainPageNetwork? = null
 
-        fun getInstance() {
-            instance ?: synchronized(this) {
+        fun getInstance(): MainPageNetwork? =
+            instance ?: synchronized(MainPageNetwork::class.java) {
                 instance ?: MainPageNetwork().apply { instance = this }
             }
-        }
+
     }
 }

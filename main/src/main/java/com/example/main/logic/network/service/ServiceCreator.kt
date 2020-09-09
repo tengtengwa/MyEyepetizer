@@ -2,8 +2,8 @@ package com.example.main.logic.network.service
 
 import android.os.Build
 import com.blankj.utilcode.utils.ScreenUtils
-import com.example.main.utils.GlobalUtil
-import com.example.main.utils.logV
+import com.example.base.utils.GlobalUtil
+import com.example.base.utils.logV
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
