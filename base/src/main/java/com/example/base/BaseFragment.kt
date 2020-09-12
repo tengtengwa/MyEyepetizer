@@ -1,6 +1,7 @@
 package com.example.base
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
@@ -9,10 +10,7 @@ import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.base.callback.RequestLifecycle
-import com.example.base.event.MessageEvent
 import com.example.base.utils.logD
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 
 /**
@@ -53,7 +51,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
         logD(TAG, "BaseFragment-->onResume()")
         //当Fragment在屏幕上可见并且没有加载过数据时调用
         if (!mHasLoadedData) {
-            lazyLoadData()
+            loadData()
             logD(TAG, "BaseFragment-->loadDataOnce()")
             mHasLoadedData = true
         }
@@ -107,14 +105,20 @@ open class BaseFragment : Fragment(), RequestLifecycle {
         return view
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        observe()
+    }
+
+    /**
+     * 在onActivityCreated方法中回调，用来观察ViewModel中的LiveData来接收事件通知
+     */
+    open fun observe() {}
+
     /**
      * ViewPager中的Fragment页面首次可见或收到刷新页面的事件通知时调用一次该方法，在这里请求网络数据等。
      */
-    open fun lazyLoadData() {
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    open fun handleMessageEvent(event: MessageEvent) {
+    open fun loadData() {
     }
 
     /**

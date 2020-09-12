@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.base.event.MessageEvent
-import com.example.base.event.RefreshEvent
-import com.example.base.event.SwitchPageEvent
+import androidx.fragment.app.activityViewModels
 import com.example.main.BaseViewPagerFragment
+import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.notification.inbox.InboxFragment
 import com.example.main.notification.interaction.InteractionFragment
 import com.example.main.notification.push.PushFragment
+import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_fragment_notification.*
 import kotlinx.android.synthetic.main.main_layout_tabbar.*
-import org.greenrobot.eventbus.EventBus
 
 class NotificationFragment : BaseViewPagerFragment() {
+
+    private val mainViewModel by activityViewModels<MainViewModel>()
 
     override val fragments: Array<Fragment> = arrayOf(
         PushFragment.newInstance(),
@@ -44,22 +45,23 @@ class NotificationFragment : BaseViewPagerFragment() {
         viewpager.currentItem = 0
     }
 
-    override fun handleMessageEvent(event: MessageEvent) {
-        super.handleMessageEvent(event)
-        //下面其实可以偷点懒，因为砍掉了登陆功能，只有PushFragment可以刷新
-        if (event is RefreshEvent && event.clazz == this::class.java) {
-            when (viewpager.currentItem) {
-                NOTIFICATION_PUSH -> EventBus.getDefault().post(PushFragment::class.java)
-                NOTIFICATION_INBOX -> EventBus.getDefault().post(InboxFragment::class.java)
-                NOTIFICATION_INTERACTION -> EventBus.getDefault().post(InteractionFragment::class.java)
+    override fun observe() {
+        mainViewModel.refreshPageEvent.observe(this, EventObserver {
+            if (it == this::class.java) {
+                when (viewpager.currentItem) {
+                    NOTIFICATION_PUSH -> mainViewModel.refreshPage(PushFragment::class.java)
+                    NOTIFICATION_INBOX -> mainViewModel.refreshPage(InboxFragment::class.java)
+                    NOTIFICATION_INTERACTION -> mainViewModel.refreshPage(InteractionFragment::class.java)
+                }
             }
-        } else if (event is SwitchPageEvent) {
-            when (event.clazz) {
+        })
+        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+            when (it) {
                 PushFragment::class.java -> viewpager.currentItem = 0
                 InteractionFragment::class.java -> viewpager.currentItem = 1
                 InboxFragment::class.java -> viewpager.currentItem = 2
             }
-        }
+        })
     }
 
     companion object {

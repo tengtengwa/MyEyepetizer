@@ -1,20 +1,19 @@
 package com.example.main.community.follow
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.example.base.BaseFragment
-import com.example.base.event.MessageEvent
-import com.example.base.event.RefreshEvent
 import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
 
 
 class FollowFragment : BaseFragment() {
+
+    private val mainViewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,19 +28,15 @@ class FollowFragment : BaseFragment() {
         observe()
     }
 
-    override fun lazyLoadData() {
-        super.lazyLoadData()
-
+    override fun loadData() {
     }
 
-    override fun handleMessageEvent(event: MessageEvent) {
-        super.handleMessageEvent(event)
-        if (event is RefreshEvent && event.clazz == this::class.java) {
-            TODO("在这里刷新数据")
-        }
-    }
-
-    private fun observe() {
+    override fun observe() {
+        mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
+            if (it == this::class.java) {
+                TODO("在这里刷新数据")
+            }
+        })
     }
 
     companion object {

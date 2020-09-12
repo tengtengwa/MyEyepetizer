@@ -5,13 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import com.example.base.event.MessageEvent
 import com.example.base.utils.ActivityCollector
 import com.example.base.utils.logD
 import com.gyf.immersionbar.ImmersionBar
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
 /**
@@ -41,14 +37,7 @@ open class BaseActivity : AppCompatActivity() {
         activity = this
         activityWR = WeakReference(activity!!)
         ActivityCollector.pushTask(activityWR)
-        EventBus.getDefault().register(this)
     }
-
-    /**
-     * 处理事件的方法，供子Activity重新
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    open fun onHandleEvent(event: MessageEvent) {}
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -88,7 +77,6 @@ open class BaseActivity : AppCompatActivity() {
 
         activity = null
         ActivityCollector.removeTask(activityWR)
-        EventBus.getDefault().unregister(this)
     }
 
     override fun setContentView(layoutResID: Int) {
@@ -97,6 +85,13 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun setupViews() {
+        observe()
+    }
+
+    /**
+     * 观察ViewModel中的LiveData，用来接收事件
+     */
+    open fun observe() {
     }
 
     /**

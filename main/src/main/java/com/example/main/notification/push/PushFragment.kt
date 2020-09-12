@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.base.BaseFragment
-import com.example.base.event.MessageEvent
-import com.example.base.event.RefreshEvent
+import com.example.main.MainViewModel
 import com.example.main.R
+import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_fragment_push.*
 
 class PushFragment : BaseFragment() {
 
-    private val pushViewModel by activityViewModels<PushViewModel>()
+    private val pushViewModel by viewModels<PushViewModel>()
+
+    private val mainViewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,23 +30,21 @@ class PushFragment : BaseFragment() {
         rl_push_list.apply {
 
         }
-        observe()
     }
 
-    override fun handleMessageEvent(event: MessageEvent) {
-        super.handleMessageEvent(event)
-        if (event is RefreshEvent && event.clazz == javaClass) {
-            if (rl_push_list.adapter?.itemCount ?: 0 > 0) {
-                rl_push_list.scrollToPosition(0)
-            }
-            sRefreshLayout.autoRefresh()
-        }
-    }
-
-    private fun observe() {
+    override fun observe() {
         pushViewModel.switchedDataList.observe(viewLifecycleOwner) {
-
         }
+        mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
+            when (it) {
+                this::class.java -> {
+                    if (rl_push_list.adapter?.itemCount ?: 0 > 0) {
+                        rl_push_list.scrollToPosition(0)
+                    }
+                    sRefreshLayout.autoRefresh()
+                }
+            }
+        })
     }
 
     companion object {

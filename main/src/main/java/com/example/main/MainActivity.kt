@@ -2,22 +2,19 @@ package com.example.main
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.FragmentTransaction
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.base.BaseActivity
 import com.example.base.StartService
-import com.example.base.event.MessageEvent
-import com.example.base.event.RefreshEvent
-import com.example.base.event.SwitchPageEvent
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toastNotShow
 import com.example.main.community.CommunityFragment
 import com.example.main.home.HomeFragment
-import com.example.main.home.recommend.RecommendFragment
 import com.example.main.notification.NotificationFragment
 import com.example.main.profile.ProfileFragment
+import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_layout_bottom_nav.*
-import org.greenrobot.eventbus.EventBus
 
 @Route(path = "/epetizer/mainActivity")
 class MainActivity : BaseActivity() {
@@ -31,6 +28,8 @@ class MainActivity : BaseActivity() {
     private lateinit var profileFragment: ProfileFragment
 
     private lateinit var toast: Toast
+
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +59,25 @@ class MainActivity : BaseActivity() {
                 iv_release -> StartService.startLogin()
             }
         }
+    }
+
+    override fun observe() {
+        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+            when (it) {
+                HomeFragment::class.java -> {
+
+                }
+                CommunityFragment::class.java -> {
+
+                }
+                NotificationFragment::class.java -> {
+
+                }
+                ProfileFragment::class.java -> {
+
+                }
+            }
+        })
     }
 
     private fun replaceWithSpecificFragment(fragmentNum: Int) {
@@ -133,28 +151,20 @@ class MainActivity : BaseActivity() {
     }
 
     private fun notificationFragmentRefresh(fragmentNum: Int) {
-        when (fragmentNum) {
-            HOME_PAGE -> if (iv_home.isSelected) {
-                EventBus.getDefault().post(RefreshEvent(HomeFragment::class.java))
-            }
-            COMMUNITY_PAGE -> if (iv_community.isSelected) {
-                EventBus.getDefault().post(RefreshEvent(CommunityFragment::class.java))
-            }
-            NOTIFICATION_PAGE -> if (iv_notification.isSelected) {
-                EventBus.getDefault().post(RefreshEvent(NotificationFragment::class.java))
-            }
-            PROFILE_PAGE -> if (iv_profile.isSelected) {
-                EventBus.getDefault().post(RefreshEvent(ProfileFragment::class.java))
-            }
-        }
-
-    }
-
-    override fun onHandleEvent(event: MessageEvent) {
-        super.onHandleEvent(event)
-        when {
-            event is SwitchPageEvent && event.clazz == RecommendFragment::class.java -> {
-
+        mainViewModel.apply {
+            when (fragmentNum) {
+                HOME_PAGE -> if (iv_home.isSelected) {
+                    refreshPage(HomeFragment::class.java)
+                }
+                COMMUNITY_PAGE -> if (iv_community.isSelected) {
+                    refreshPage(CommunityFragment::class.java)
+                }
+                NOTIFICATION_PAGE -> if (iv_notification.isSelected) {
+                    refreshPage(NotificationFragment::class.java)
+                }
+                PROFILE_PAGE -> if (iv_profile.isSelected) {
+                    refreshPage(ProfileFragment::class.java)
+                }
             }
         }
     }

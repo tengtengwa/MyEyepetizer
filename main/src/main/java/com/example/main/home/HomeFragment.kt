@@ -5,17 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.base.event.MessageEvent
-import com.example.base.event.RefreshEvent
-import com.example.base.event.SwitchPageEvent
+import androidx.fragment.app.activityViewModels
 import com.example.main.BaseViewPagerFragment
+import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.home.daily.DailyFragment
 import com.example.main.home.discovery.DiscoveryFragment
 import com.example.main.home.recommend.RecommendFragment
+import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_fragment_home.*
 import kotlinx.android.synthetic.main.main_layout_tabbar.*
-import org.greenrobot.eventbus.EventBus
 
 /**
  * 主页面中含有ViewPager的HomeFragment
@@ -34,6 +33,8 @@ class HomeFragment : BaseViewPagerFragment() {
         DailyFragment.newInstance()
     )
 
+    private val mainViewModel by activityViewModels<MainViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,26 +48,32 @@ class HomeFragment : BaseViewPagerFragment() {
         iv_calendar.visibility = View.VISIBLE
     }
 
-    override fun handleMessageEvent(event: MessageEvent) {
-        super.handleMessageEvent(event)
-        if (event is RefreshEvent && event.clazz == this::class.java) {
-            when (viewpager.currentItem) {
-                HOME_DISCOVERY -> EventBus.getDefault().post(DiscoveryFragment::class.java)
-                HOME_RECOMMEND -> EventBus.getDefault().post(RecommendFragment::class.java)
-                HOME_DAILY -> EventBus.getDefault().post(DailyFragment::class.java)
+    override fun observe() {
+        mainViewModel.refreshPageEvent.observe(this, EventObserver {
+            if (it == this::class.java) {
+                when (viewpager.currentItem) {
+                    HOME_DISCOVERY -> mainViewModel.refreshPage(DiscoveryFragment::class.java)
+                    HOME_RECOMMEND -> mainViewModel.refreshPage(RecommendFragment::class.java)
+                    HOME_DAILY -> mainViewModel.refreshPage(DailyFragment::class.java)
+                }
             }
-        } else if (event is SwitchPageEvent) {
-            when (event.clazz) {
+        })
+        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+            when (it) {
                 DiscoveryFragment::class.java -> viewpager.currentItem = 0
                 RecommendFragment::class.java -> viewpager.currentItem = 1
                 DailyFragment::class.java -> viewpager.currentItem = 2
             }
-        }
+        })
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
+
+        /**
+         * 所有带有ViewPager的Fragment都通过这些常量替代tab的下标来表示相应的Fragment
+         */
         const val HOME_DISCOVERY = 0
         const val HOME_RECOMMEND = 1
         const val HOME_DAILY = 2

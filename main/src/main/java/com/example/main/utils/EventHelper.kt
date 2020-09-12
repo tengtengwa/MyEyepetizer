@@ -19,6 +19,7 @@ open class Event<out T>(private val content: T) {   //使用了泛型的协变�
         }
     }
 
+    //获取事件的参数，即使它已经被处理
     fun peekCount(): T? = content
 }
 
