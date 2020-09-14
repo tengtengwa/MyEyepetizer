@@ -7,7 +7,7 @@
         android:layout_height="match_parent">
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
-            android:id="@+id/sRefreshLayout"
+            android:id="@+id/srl_push"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

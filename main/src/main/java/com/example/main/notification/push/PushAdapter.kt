@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.main.databinding.MainItemPushBinding
 import com.example.main.logic.model.PushMessage
 
-class PushAdapter(val fragment: PushFragment, private val dataList: List<PushMessage.Message>) :
+class PushAdapter(val fragment: PushFragment, var dataList: List<PushMessage.Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PushViewHolder(
