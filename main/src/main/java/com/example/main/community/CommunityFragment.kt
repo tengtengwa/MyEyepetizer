@@ -27,8 +27,8 @@ class CommunityFragment : BaseViewPagerFragment() {
     )
 
     override val fragments: Array<Fragment> = arrayOf(
-        FollowFragment.newInstance(),
-        RecommendFragment.newInstance()
+        RecommendFragment.newInstance(),
+        FollowFragment.newInstance()
     )
 
     private val mainViewModel by activityViewModels<MainViewModel>()
