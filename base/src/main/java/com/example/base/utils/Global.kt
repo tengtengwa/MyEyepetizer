@@ -30,8 +30,8 @@ fun setOnClickListener(vararg views: View?, block: View.() -> Unit) {
 /**
  * toast的懒人方法，默认时间为short
  */
-fun String.toast(context: Context, duration: Int = Toast.LENGTH_SHORT) =
+fun String.toast(context: Context = MyApplication.context, duration: Int = Toast.LENGTH_SHORT) =
     Toast.makeText(context, this, duration).show()
 
-fun String.toastNotShow(context: Context, duration: Int = Toast.LENGTH_SHORT): Toast =
+fun String.toastNotShow(context: Context = MyApplication.context, duration: Int = Toast.LENGTH_SHORT): Toast =
     Toast.makeText(context, this, duration)

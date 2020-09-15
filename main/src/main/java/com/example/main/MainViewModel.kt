@@ -9,26 +9,20 @@ import com.example.main.utils.Event
  */
 class MainViewModel : ViewModel() {
 
-    private val _refreshPageEvent = MutableLiveData<Event<Class<*>?>>()
-
-    private val _switchPageEvent = MutableLiveData<Event<Class<*>?>>()
-
     //下面这些LiveData供外部观察，上面这些仅供公共刷新方法内部更改
-    val refreshPageEvent: MutableLiveData<Event<Class<*>?>>
-        get() = _refreshPageEvent
+    val refreshPageEvent = MutableLiveData<Event<Class<*>?>>()
 
-    val switchPagerEvent: MutableLiveData<Event<Class<*>?>>
-        get() = _switchPageEvent
+    val switchPageEvent = MutableLiveData<Event<Class<*>?>>()
 
     fun refreshPage(clazz: Class<*>? = null) {
-        _refreshPageEvent.value = Event(clazz)
+        refreshPageEvent.value = Event(clazz)
     }
 
     /**
      * 此方法用于通知MainActivity切换页面
      * @param clazz 需要切换到的Fragment的java类
      */
-    fun switchMainPage(clazz: Class<*>? = null) {
-        _switchPageEvent.value = Event(clazz)
+    fun switchPage(clazz: Class<*>? = null) {
+        switchPageEvent.value = Event(clazz)
     }
 }

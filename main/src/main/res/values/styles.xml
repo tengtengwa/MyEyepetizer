@@ -29,8 +29,7 @@
 
     <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab" tools:ignore="ResourceName">
         <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/main_colorTextSecondary</item>
-        <item name="android:font">"font/FZLanTingHeiS-DB1-GB-Regular"</item>
+        <item name="android:fontFamily">@font/main_lanling_db1</item>
     </style>
 </resources>

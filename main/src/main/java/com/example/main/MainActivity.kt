@@ -12,6 +12,7 @@ import com.example.base.utils.toastNotShow
 import com.example.main.community.CommunityFragment
 import com.example.main.home.HomeFragment
 import com.example.main.notification.NotificationFragment
+import com.example.main.notification.push.PushFragment
 import com.example.main.profile.ProfileFragment
 import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_layout_bottom_nav.*
@@ -56,26 +57,25 @@ class MainActivity : BaseActivity() {
                     notificationFragmentRefresh(PROFILE_PAGE)
                     replaceWithSpecificFragment(PROFILE_PAGE)
                 }
-                iv_release -> StartService.startLogin()
+                iv_release -> {
+                    //todo("打开搜索Fragment")
+                }
             }
         }
+        //别忘记开始时候选中Home页面
+        replaceWithSpecificFragment(HOME_PAGE)
     }
 
     override fun observe() {
-        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+        mainViewModel.switchPageEvent.observe(this, EventObserver {
             when (it) {
-                HomeFragment::class.java -> {
-
+                PushFragment::class.java -> {
+                    btn_notification.performClick()
                 }
-                CommunityFragment::class.java -> {
-
-                }
-                NotificationFragment::class.java -> {
-
-                }
-                ProfileFragment::class.java -> {
-
-                }
+//                HomeFragment::class.java -> { }
+//                CommunityFragment::class.java -> { }
+//                NotificationFragment::class.java -> { }
+//                ProfileFragment::class.java -> { }
             }
         })
     }
@@ -143,10 +143,18 @@ class MainActivity : BaseActivity() {
 
     private fun hideAllFragments(fragmentTransaction: FragmentTransaction) {
         fragmentTransaction.apply {
-            hide(homeFragment)
-            hide(communityFragment)
-            hide(notificationFragment)
-            hide(profileFragment)
+            if (::homeFragment.isInitialized) {
+                hide(homeFragment)
+            }
+            if (::communityFragment.isInitialized) {
+                hide(communityFragment)
+            }
+            if (::notificationFragment.isInitialized) {
+                hide(notificationFragment)
+            }
+            if (::profileFragment.isInitialized) {
+                hide(profileFragment)
+            }
         }
     }
 

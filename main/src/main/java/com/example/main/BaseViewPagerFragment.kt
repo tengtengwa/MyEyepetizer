@@ -2,6 +2,7 @@ package com.example.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.base.BaseFragment
@@ -9,7 +10,6 @@ import com.example.base.StartService
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.main_fragment_home.*
 import kotlinx.android.synthetic.main.main_layout_tabbar.*
 
 /**
@@ -24,7 +24,7 @@ abstract class BaseViewPagerFragment : BaseFragment() {
     //ViewPager2默认实现了懒加载，因此无需手动实现
     private var viewPager: ViewPager2? = null
 
-    private val viewPagerAdapter by lazy { ViewPagerAdapter() }
+    private val viewPagerAdapter by lazy { ViewPagerAdapter(requireActivity()).apply { addFragment(fragments) } }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -52,7 +52,14 @@ abstract class BaseViewPagerFragment : BaseFragment() {
         }
     }
 
-    inner class ViewPagerAdapter : FragmentStateAdapter(hostActivity) {
+    inner class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+
+        private val fragmentList = mutableListOf<Fragment>()
+
+        fun addFragment(fragments: Array<Fragment>) {
+            fragmentList.addAll(fragments)
+        }
+
         override fun getItemCount() = fragments.size
 
         override fun createFragment(position: Int) = fragments[position]

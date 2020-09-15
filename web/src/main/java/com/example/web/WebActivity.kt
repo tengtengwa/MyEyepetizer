@@ -11,7 +11,6 @@ import com.example.base.BaseActivity
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_BIG
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_NORMAL
 import com.example.base.bean.Const.Web.TITLE_TEXT_SIZE_SMALL
-import com.tencent.sonic.sdk.SonicSession
 import kotlinx.android.synthetic.main.web_activity_web.*
 import kotlinx.android.synthetic.main.web_layout_title.*
 
@@ -29,9 +28,6 @@ class WebActivity : BaseActivity() {
 
     @Autowired
     private var titleTextSize = TITLE_TEXT_SIZE_NORMAL
-
-    private var sonicSession: SonicSession? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,7 +108,6 @@ class WebActivity : BaseActivity() {
 
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
-            sonicSession?.sessionClient?.pageFinish(url)
             loadingview.visibility = View.INVISIBLE
         }
 
@@ -152,8 +147,6 @@ class WebActivity : BaseActivity() {
             container.removeView(it)
             it.destroy()
         }
-        sonicSession?.destroy()
-        sonicSession = null
         super.onDestroy()
     }
 }

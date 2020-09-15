@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.base.utils.GlobalUtil
 import com.example.main.BaseViewPagerFragment
 import com.example.main.MainViewModel
 import com.example.main.R
@@ -22,9 +23,9 @@ import kotlinx.android.synthetic.main.main_layout_tabbar.*
 class HomeFragment : BaseViewPagerFragment() {
 
     override val tabTitles: Array<String> = arrayOf(
-        resources.getString(R.string.main_home_tab1),
-        resources.getString(R.string.main_home_tab2),
-        resources.getString(R.string.main_home_tab3)
+        GlobalUtil.getString(R.string.main_home_tab1),      //这里通过Fragment的getResource方法会调用到Activity的getResource方法而导致异常
+        GlobalUtil.getString(R.string.main_home_tab2),      //因此通过GlobalUtil的getString方法通过Application的context来获取
+        GlobalUtil.getString(R.string.main_home_tab3)
     )
 
     override val fragments: Array<Fragment> = arrayOf(
@@ -58,7 +59,7 @@ class HomeFragment : BaseViewPagerFragment() {
                 }
             }
         })
-        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+        mainViewModel.switchPageEvent.observe(this, EventObserver {
             when (it) {
                 DiscoveryFragment::class.java -> viewpager.currentItem = 0
                 RecommendFragment::class.java -> viewpager.currentItem = 1

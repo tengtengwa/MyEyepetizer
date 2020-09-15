@@ -5,7 +5,6 @@ import android.view.View
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.example.base.BaseActivity
 import com.example.base.StartService
 import com.example.base.bean.Const
@@ -108,9 +107,7 @@ class LoginActivity : BaseActivity() {
                 }
                 tv_agreement -> {
                     StartService.startWeb(
-                        "开眼用户协议", true, Const.Url.USER_AGREEMENT,
-                        Const.Web.MODE_DEFAULT, Const.Web.TITLE_TEXT_SIZE_NORMAL
-                    )
+                        "开眼用户协议", true, Const.Url.USER_AGREEMENT)
                 }
                 iv_back -> finish()
             }

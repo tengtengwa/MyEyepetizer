@@ -28,6 +28,7 @@
     <string name="main_version">Version 6.3.5</string>
     <string name="main_interaction_tip1">别错过重要的信息</string>
     <string name="main_interaction_tip2">登录后即可查看评论回复、点赞及关注等通知信息</string>
+    <string name="main_not_support_yet">开发小哥偷了个懒~</string>
 
     <!--主页面通用字符串-->
     <string name="main_load_error_unknown">未知错误</string>

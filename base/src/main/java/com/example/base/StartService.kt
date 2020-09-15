@@ -1,6 +1,7 @@
 package com.example.base
 
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.base.bean.Const
 
 /**
  * 跳转各个模块的方法的服务类
@@ -10,7 +11,7 @@ object StartService {
         title: String,
         isTitleFixed: Boolean,
         url: String,
-        titleTextSize: Int
+        titleTextSize: Int = Const.Web.TITLE_TEXT_SIZE_NORMAL
     ) {
         ARouter.getInstance()
             .build("/epetizer/webActivity")

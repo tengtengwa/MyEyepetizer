@@ -22,7 +22,7 @@ class CustomFontTextView @JvmOverloads constructor(
             val typefaceType = typedArray.getInt(R.styleable.CustomFontTextView_typeface, 0)
             typeface = getTypeface(typefaceType)
             typedArray.recycle()
-            logD("typeface", "${MyApplication.context}")
+//            logD("typeface", "${MyApplication.context}")
         }
     }
 

@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
+        app:tabMinWidth="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_search"
         app:layout_constraintStart_toEndOf="@+id/iv_calendar"

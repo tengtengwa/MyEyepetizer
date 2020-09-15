@@ -1,5 +1,6 @@
 package com.example.base
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -35,7 +36,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * 此Fragment依附的Activity
      */
-    lateinit var hostActivity: FragmentActivity
+    lateinit var hostActivity: Activity
 
     protected val TAG: String = "BaseFragment"
 

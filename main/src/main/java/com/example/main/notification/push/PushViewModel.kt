@@ -23,7 +23,7 @@ class PushViewModel(private val repository: MainRepository) : ViewModel() {
                 val pushResponse = repository.refreshNotificationPush(url)
                 Result.success(pushResponse)
             } catch (e: Exception) {
-                Result.failure(e)
+                Result.failure<PushMessage>(e)
             }
             emit(response)
         }

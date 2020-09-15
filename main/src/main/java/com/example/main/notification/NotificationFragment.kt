@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.base.utils.GlobalUtil
 import com.example.main.BaseViewPagerFragment
 import com.example.main.MainViewModel
 import com.example.main.R
@@ -27,9 +28,9 @@ class NotificationFragment : BaseViewPagerFragment() {
     )
 
     override val tabTitles: Array<String> = arrayOf(
-        resources.getString(R.string.main_notification_tab1),
-        resources.getString(R.string.main_notification_tab2),
-        resources.getString(R.string.main_notification_tab3)
+        GlobalUtil.getString(R.string.main_notification_tab1),
+        GlobalUtil.getString(R.string.main_notification_tab2),
+        GlobalUtil.getString(R.string.main_notification_tab3)
     )
 
     override fun onCreateView(
@@ -55,7 +56,7 @@ class NotificationFragment : BaseViewPagerFragment() {
                 }
             }
         })
-        mainViewModel.switchPagerEvent.observe(this, EventObserver {
+        mainViewModel.switchPageEvent.observe(this, EventObserver {
             when (it) {
                 PushFragment::class.java -> viewpager.currentItem = 0
                 InteractionFragment::class.java -> viewpager.currentItem = 1
