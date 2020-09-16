@@ -20,7 +20,7 @@ fun bindImageFromUrl(view: ImageView, url: String) {
 
 @BindingAdapter("pushPageImageFromUrl")
 fun bindPushFragmentImageFromUrl(view: ImageView, url: String) {
-    if (url.isNotEmpty()) {
+    if (url.isNullOrEmpty() or (url == "http://img.wdjimg.com/image/video/418d281e65bf010c38c7b07bdd7b6a94_0_0.png")) {
         Glide.with(view.context)
             .load(R.mipmap.main_ic_launcher)
             .into(view)

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.base.utils.logD
+import com.example.base.utils.logV
 import com.example.main.databinding.MainItemPushBinding
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.ActionUrlUtil
@@ -35,7 +35,7 @@ class PushAdapter(val fragment: PushFragment, private var dataList: ArrayList<Pu
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val dataItem = dataList[position]
-        logD("dataitem", dataItem.title)
+        logV("dataitem", dataItem.title)
         (holder as PushViewHolder).bind(dataItem)
     }
 

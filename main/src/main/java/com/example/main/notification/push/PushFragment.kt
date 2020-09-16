@@ -19,8 +19,9 @@ import kotlinx.android.synthetic.main.main_fragment_push.*
 
 class PushFragment : BaseFragment() {
 
+    //这个Fragment的扩展函数viewModels其实还是调用了ViewModelProvider的get方法来创建相应的ViewModel，但是它做了缓存
     private val pushViewModel by viewModels<PushViewModel>({ this }, { InjectUtil.getPushViewModelFactory() })
-
+    //这个activityViewModels方法类似
     private val mainViewModel by activityViewModels<MainViewModel>()
 
     private lateinit var pushAdapter: PushAdapter
