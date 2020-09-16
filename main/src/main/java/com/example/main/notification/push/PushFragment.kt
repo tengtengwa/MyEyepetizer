@@ -21,10 +21,11 @@ class PushFragment : BaseFragment() {
 
     //这个Fragment的扩展函数viewModels其实还是调用了ViewModelProvider的get方法来创建相应的ViewModel，但是它做了缓存
     private val pushViewModel by viewModels<PushViewModel>({ this }, { InjectUtil.getPushViewModelFactory() })
+
     //这个activityViewModels方法类似
     private val mainViewModel by activityViewModels<MainViewModel>()
 
-    private lateinit var pushAdapter: PushAdapter
+    private lateinit var pushAdapter: PushAsyncAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +36,7 @@ class PushFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        pushAdapter = PushAdapter(this@PushFragment, pushViewModel.dataList)
+        pushAdapter = PushAsyncAdapter()
         rl_push_list.apply {
             adapter = pushAdapter
             layoutManager = LinearLayoutManager(hostActivity)
@@ -89,7 +90,8 @@ class PushFragment : BaseFragment() {
             val newDataList = ArrayList<PushMessage.Message>()
             newDataList.addAll(pushViewModel.dataList)
             newDataList.addAll(response.itemList)
-            pushAdapter.setData(newDataList)
+            pushAdapter.submitList(newDataList)
+            pushViewModel.dataList.addAll(response.itemList)
             if (pushViewModel.nextPageUrl.isNullOrEmpty()) {
                 srl_push.finishLoadMoreWithNoMoreData()
             } else {
@@ -97,13 +99,11 @@ class PushFragment : BaseFragment() {
             }
         })
         mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
-            when (it) {
-                this::class.java -> {
-                    if (rl_push_list.adapter?.itemCount ?: 0 > 0) { //Adapter没有初始化的时候不会执行下面代码
-                        rl_push_list.scrollToPosition(0)
-                    }
-                    srl_push.autoRefresh()
+            if (it == this::class.java) {
+                if (rl_push_list.adapter?.itemCount ?: 0 > 0) { //Adapter没有初始化的时候不会执行下面代码
+                    rl_push_list.scrollToPosition(0)
                 }
+                srl_push.autoRefresh()
             }
         })
     }
