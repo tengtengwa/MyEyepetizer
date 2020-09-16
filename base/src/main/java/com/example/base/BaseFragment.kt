@@ -38,7 +38,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
      */
     lateinit var hostActivity: Activity
 
-    protected val TAG: String = "BaseFragment"
+    protected val TAG: String = this::class.java.toString()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -150,7 +150,7 @@ open class BaseFragment : Fragment(), RequestLifecycle {
     /**
      * 将load error view进行隐藏。
      */
-    protected fun hideLoadErrorView() {
+    private fun hideLoadErrorView() {
         loadErrorView?.visibility = View.GONE
     }
 

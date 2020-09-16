@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseFragment
 import com.example.base.utils.GlobalUtil
+import com.example.base.utils.logD
 import com.example.main.MainViewModel
 import com.example.main.R
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.EventObserver
 import com.example.main.utils.InjectUtil
+import com.scwang.smart.refresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.main_fragment_push.*
 
 class PushFragment : BaseFragment() {
@@ -47,9 +49,11 @@ class PushFragment : BaseFragment() {
         srl_push.apply {
             setOnRefreshListener {
                 pushViewModel.requestDataList()
+                logD(TAG, "refreshing")
             }
             setOnLoadMoreListener {
                 pushViewModel.requestNextPageData()
+                logD(TAG, "loading")
             }
         }
     }
@@ -86,12 +90,22 @@ class PushFragment : BaseFragment() {
                 srl_push.finishLoadMoreWithNoMoreData()
                 return@Observer
             }
-            //下面数据变化通过DiffUtil来计算并进行局部刷新，防止在刷新时重新走一遍绘制流程，也就是解决闪一下屏的问题
-            val newDataList = ArrayList<PushMessage.Message>()
-            newDataList.addAll(pushViewModel.dataList)
-            newDataList.addAll(response.itemList)
-            pushAdapter.submitList(newDataList)
+            when (srl_push.state) {
+                RefreshState.None, RefreshState.Refreshing -> {
+                    pushViewModel.dataList.clear()
+                    pushAdapter.submitList(response.itemList)
+                }
+                RefreshState.Loading -> {
+                    val newList = ArrayList<PushMessage.Message>().apply {
+                        addAll(pushViewModel.dataList)
+                        addAll(response.itemList)
+                    }
+                    pushAdapter.submitList(newList)
+                }
+                else -> {}
+            }
             pushViewModel.dataList.addAll(response.itemList)
+            logD(TAG, "fetch data size : ${response.itemList.size} cur size：${pushViewModel.dataList.size}")
             if (pushViewModel.nextPageUrl.isNullOrEmpty()) {
                 srl_push.finishLoadMoreWithNoMoreData()
             } else {

@@ -93,6 +93,7 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$dps.leakcanaryVersion"
     api "com.scwang.smart:refresh-header-material:$dps.smartRefreshVersion"
     api "com.scwang.smart:refresh-layout-kernel:$dps.smartRefreshVersion"
+    api  "com.scwang.smart:refresh-header-classics:$dps.smartRefreshVersion"    //经典刷新头
     api "com.github.zhpanvip:BannerViewPager:$dps.BannerViewPagerVersion"
     api "com.github.chrisbanes:PhotoView:$dps.PhotoViewVersion"
     api "de.hdodenhof:circleimageview:$dps.circleimageviewVersion"

@@ -2,17 +2,16 @@ package com.example.main.notification.push
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.base.utils.logV
 import com.example.main.databinding.MainItemPushBinding
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.ActionUrlUtil
 
-class PushAsyncAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PushAsyncAdapter : ListAdapter<PushMessage.Message, RecyclerView.ViewHolder>(PushMessageDiffCallback()) {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<PushMessage.Message>() {
+    private class PushMessageDiffCallback : DiffUtil.ItemCallback<PushMessage.Message>() {
         override fun areItemsTheSame(
             oldItem: PushMessage.Message,
             newItem: PushMessage.Message
@@ -23,14 +22,6 @@ class PushAsyncAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             newItem: PushMessage.Message
         ): Boolean = oldItem.content == newItem.content
     }
-
-    private var mDiffer: AsyncListDiffer<PushMessage.Message> = AsyncListDiffer(this, diffCallback)
-
-    fun submitList(dataList: List<PushMessage.Message>) {
-        mDiffer.submitList(dataList)
-    }
-
-    private fun getItemByPosition(pos: Int) = mDiffer.currentList[pos]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val holder = PushViewHolder(
@@ -45,7 +36,7 @@ class PushAsyncAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
              * https://blog.csdn.net/guolin_blog/article/details/10560640yyy9
              *
              */
-            val item = mDiffer.currentList[holder.bindingAdapterPosition]
+            val item = this.currentList[holder.bindingAdapterPosition]
             it.setOnClickListener {
                 ActionUrlUtil.process(item.actionUrl)
             }
@@ -54,12 +45,12 @@ class PushAsyncAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val dataItem = getItemByPosition(position)
+        val dataItem = getItem(position)
         //logV("PushAsyncAdapter", dataItem.title)
         (holder as PushViewHolder).bind(dataItem)
     }
 
-    override fun getItemCount() = mDiffer.currentList.size
+    override fun getItemCount() = this.currentList.size
 
     class PushViewHolder(private val binding: MainItemPushBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -53,13 +53,17 @@ class PushAdapter(val fragment: PushFragment, private var dataList: ArrayList<Pu
 
     override fun getItemCount() = dataList.size
 
-    fun setData(newList: ArrayList<PushMessage.Message>) {
-        val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(dataList, newList), false)
+    fun setData(newList: List<PushMessage.Message>) {
+        val newDataList = ArrayList<PushMessage.Message>()
+        newDataList.addAll(dataList)
+        newDataList.addAll(newList)
+        val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(dataList, newDataList), false)
         diffResult.dispatchUpdatesTo(this)
-        dataList.apply {
-            clear()
-            addAll(newList)
-        }
+        dataList = newDataList
+    }
+
+    fun insertData(newList: List<PushMessage.Message>) {
+        dataList.addAll(newList)
     }
 
     class PushViewHolder(private val binding: MainItemPushBinding) :

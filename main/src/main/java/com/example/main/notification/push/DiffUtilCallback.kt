@@ -9,8 +9,8 @@ import com.example.main.logic.model.PushMessage
  * https://developer.android.google.cn/reference/kotlin/androidx/recyclerview/widget/AsyncListDiffer
  */
 class DiffUtilCallback(
-    private val oldList: ArrayList<PushMessage.Message>,
-    private val newList: ArrayList<PushMessage.Message>
+    private val oldList: List<PushMessage.Message>,
+    private val newList: List<PushMessage.Message>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size

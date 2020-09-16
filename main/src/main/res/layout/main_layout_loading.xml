@@ -4,5 +4,6 @@
     android:id="@+id/loading"
     android:layout_width="50dp"
     android:layout_height="50dp"
+    android:visibility="invisible"
     android:src="@drawable/ic_eye_loading_progress"
     android:layout_gravity="center"/>
