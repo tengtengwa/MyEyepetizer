@@ -2,12 +2,14 @@ package com.example.main.notification.push
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.base.utils.logD
 import com.example.main.databinding.MainItemPushBinding
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.ActionUrlUtil
 
-class PushAdapter(val fragment: PushFragment, var dataList: List<PushMessage.Message>) :
+class PushAdapter(val fragment: PushFragment, private var dataList: ArrayList<PushMessage.Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PushViewHolder {
@@ -33,10 +35,32 @@ class PushAdapter(val fragment: PushFragment, var dataList: List<PushMessage.Mes
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val dataItem = dataList[position]
+        logD("dataitem", dataItem.title)
         (holder as PushViewHolder).bind(dataItem)
     }
 
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isEmpty()) {
+            super.onBindViewHolder(holder, position, payloads)
+            return
+        }
+        onBindViewHolder(holder, position)
+    }
+
     override fun getItemCount() = dataList.size
+
+    fun setData(newList: ArrayList<PushMessage.Message>) {
+        val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(dataList, newList), false)
+        diffResult.dispatchUpdatesTo(this)
+        dataList.apply {
+            clear()
+            addAll(newList)
+        }
+    }
 
     class PushViewHolder(private val binding: MainItemPushBinding) :
         RecyclerView.ViewHolder(binding.root) {

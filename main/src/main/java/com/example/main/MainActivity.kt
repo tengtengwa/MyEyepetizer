@@ -16,6 +16,7 @@ import com.example.main.notification.push.PushFragment
 import com.example.main.profile.ProfileFragment
 import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_layout_bottom_nav.*
+import kotlinx.android.synthetic.main.main_layout_tabbar.*
 
 @Route(path = "/epetizer/mainActivity")
 class MainActivity : BaseActivity() {
@@ -39,7 +40,7 @@ class MainActivity : BaseActivity() {
 
     override fun setupViews() {
         toast = "再按一次退出应用".toastNotShow(this)
-        setOnClickListener(btn_community, btn_profile, btn_home, btn_notification, iv_release) {
+        setOnClickListener(btn_community, btn_profile, btn_home, btn_notification, iv_release, iv_search) {
             when (this) {
                 btn_home -> {
                     notificationFragmentRefresh(HOME_PAGE)
@@ -57,8 +58,9 @@ class MainActivity : BaseActivity() {
                     notificationFragmentRefresh(PROFILE_PAGE)
                     replaceWithSpecificFragment(PROFILE_PAGE)
                 }
-                iv_release -> {
-                    //todo("打开搜索Fragment")
+                iv_release -> StartService.startLogin()
+                iv_search -> {
+                    //todo("在这里打开searchFragment")
                 }
             }
         }

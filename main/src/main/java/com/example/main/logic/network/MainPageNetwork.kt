@@ -28,7 +28,7 @@ class MainPageNetwork private constructor() {
 
         private var instance: MainPageNetwork? = null
 
-        fun getInstance(): MainPageNetwork? =
+        fun getInstance(): MainPageNetwork =
             instance ?: synchronized(MainPageNetwork::class.java) {
                 instance ?: MainPageNetwork().apply { instance = this }
             }

@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseFragment
 import com.example.base.utils.GlobalUtil
 import com.example.main.MainViewModel
 import com.example.main.R
+import com.example.main.logic.model.PushMessage
 import com.example.main.utils.EventObserver
-import com.scwang.smart.refresh.layout.constant.RefreshState
+import com.example.main.utils.InjectUtil
 import kotlinx.android.synthetic.main.main_fragment_push.*
 
 class PushFragment : BaseFragment() {
 
-    private val pushViewModel by viewModels<PushViewModel>()
+    private val pushViewModel by viewModels<PushViewModel>({ this }, { InjectUtil.getPushViewModelFactory() })
 
     private val mainViewModel by activityViewModels<MainViewModel>()
 
@@ -52,9 +52,14 @@ class PushFragment : BaseFragment() {
         }
     }
 
+    override fun loadData() {
+        pushViewModel.requestDataList()
+    }
+
     override fun loadFailed(msg: String?) {
         super.loadFailed(msg)
         showLoadErrorView(msg ?: GlobalUtil.getString(R.string.main_load_error_unknown)) {
+            loadingView?.visibility = View.VISIBLE
             loadData()
         }
     }
@@ -80,17 +85,10 @@ class PushFragment : BaseFragment() {
                 return@Observer
             }
             //下面数据变化通过DiffUtil来计算并进行局部刷新，防止在刷新时重新走一遍绘制流程，也就是解决闪一下屏的问题
-            val oldDataList = pushViewModel.dataList
-            if (srl_push.state == RefreshState.Refreshing) {
-                pushViewModel.dataList.clear()
-            }
-            pushViewModel.dataList.addAll(response.itemList)    //ArrayList的addAdd方法返回的是boolean...
-            val newDataList = pushViewModel.dataList
-            val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(oldDataList, newDataList), false)
-            pushAdapter.apply {
-                dataList = newDataList      //必须先将新数据给Adapter,否则会造成ui刷新了但数据未更新的bug
-                diffResult.dispatchUpdatesTo(this)
-            }
+            val newDataList = ArrayList<PushMessage.Message>()
+            newDataList.addAll(pushViewModel.dataList)
+            newDataList.addAll(response.itemList)
+            pushAdapter.setData(newDataList)
             if (pushViewModel.nextPageUrl.isNullOrEmpty()) {
                 srl_push.finishLoadMoreWithNoMoreData()
             } else {

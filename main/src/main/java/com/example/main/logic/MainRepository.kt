@@ -66,7 +66,7 @@ class MainRepository private constructor(
 
         private var instance: MainRepository? = null
 
-        fun getInstance(mainNetwork: MainPageNetwork, mainDao: MainPageDao): MainRepository? =
+        fun getInstance(mainNetwork: MainPageNetwork, mainDao: MainPageDao): MainRepository =
             instance ?: synchronized(this) {
                 instance ?: MainRepository(mainNetwork, mainDao).apply { instance = this }
             }

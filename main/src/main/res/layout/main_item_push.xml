@@ -15,7 +15,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="@{clickListener}">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -24,7 +24,7 @@
             android:layout_height="35dp"
             android:layout_margin="14dp"
             android:src="@mipmap/main_ic_launcher"
-            imageFromUrl="@{messageItem.icon}"
+            app:pushPageImageFromUrl="@{messageItem.icon}"
             app:civ_border_color="#cdcdcd"
             app:civ_border_width="1dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:textColor="@color/main_colorTextSecondary"
-            dateMillis2Text="@{messageItem.date}"
+            app:dateMillis2Text="@{messageItem.date}"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:typeface="fzlLTypeface"
             tools:text="一周前" />
 
         <ImageView

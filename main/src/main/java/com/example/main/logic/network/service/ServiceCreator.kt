@@ -1,9 +1,9 @@
 package com.example.main.logic.network.service
 
 import android.os.Build
-import com.blankj.utilcode.utils.ScreenUtils
 import com.example.base.utils.GlobalUtil
 import com.example.base.utils.logV
+import com.example.main.utils.DensityUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -74,15 +74,13 @@ object ServiceCreator {
                 addQueryParameter("udid", GlobalUtil.getDeviceSerial())
                 addQueryParameter("vc", GlobalUtil.eyepetizerVersionCode.toString())
                 addQueryParameter("vn", GlobalUtil.eyepetizerVersionName)
-                addQueryParameter(
-                    "size",
-                    "${ScreenUtils.getScreenWidth()}X${ScreenUtils.getScreenHeight()}"
-                )
+                addQueryParameter("size", DensityUtil.getScreenPx())
                 addQueryParameter("deviceModel", GlobalUtil.deviceModel)
                 addQueryParameter("first_channel", GlobalUtil.deviceBrand)
                 addQueryParameter("last_channel", GlobalUtil.deviceBrand)
                 addQueryParameter("system_version_code", "${Build.VERSION.SDK_INT}")
             }.build()
+            logV("BaseInterceptor", "完整URL：$url")
             val request = originalRequest.newBuilder().url(url)
                 .method(originalRequest.method(), originalRequest.body()).build()
             return chain.proceed(request)

@@ -32,4 +32,5 @@
 
     <!--主页面通用字符串-->
     <string name="main_load_error_unknown">未知错误</string>
+    <string name="main_login">登录</string>
 </resources>

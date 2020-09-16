@@ -1,17 +1,29 @@
 package com.example.main.notification.push
 
+import android.graphics.BitmapFactory
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.base.customview.CustomFontTextView
+import com.example.main.R
 import com.example.main.utils.DateUtil
 
 @BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(imageView: ImageView, url: String) {
+fun bindImageFromUrl(view: ImageView, url: String) {
     if (url.isNotEmpty()) {
-        Glide.with(imageView.context)
+        Glide.with(view.context)
             .load(url)
-            .into(imageView)
+            .into(view)
+    }
+}
+
+@BindingAdapter("pushPageImageFromUrl")
+fun bindPushFragmentImageFromUrl(view: ImageView, url: String) {
+    if (url.isNotEmpty()) {
+        Glide.with(view.context)
+            .load(R.mipmap.main_ic_launcher)
+            .into(view)
     }
 }
 

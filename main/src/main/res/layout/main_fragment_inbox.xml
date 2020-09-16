@@ -39,11 +39,12 @@
         android:id="@+id/tv_login"
         android:layout_width="220dp"
         android:layout_height="40dp"
-        android:textColor="@color/base_colorWhite"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="60dp"
-        android:text="登录"
         android:background="@color/main_colorBlue"
-        android:textSize="15sp" />
+        android:textColor="@color/base_colorWhite"
+        android:textSize="15sp"
+        android:text="@string/main_login"
+        app:typeface="fzdb1Typeface" />
 </LinearLayout>

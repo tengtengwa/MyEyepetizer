@@ -23,7 +23,7 @@ class PushViewModel(private val repository: MainRepository) : ViewModel() {
                 val pushResponse = repository.refreshNotificationPush(url)
                 Result.success(pushResponse)
             } catch (e: Exception) {
-                Result.failure<PushMessage>(e)
+                Result.failure<PushMessage>(e)   //这里虽然不加泛型不会报错，但是不加的话编译会报KotlinFrontEndException，巨坑
             }
             emit(response)
         }

@@ -43,7 +43,8 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="60dp"
-        android:text="登录"
+        android:text="@string/main_login"
         android:background="@color/main_colorBlue"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:typeface="fzdb1Typeface"/>
 </LinearLayout>
