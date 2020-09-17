@@ -49,25 +49,30 @@ class PushFragment : BaseFragment() {
         srl_push.apply {
             setOnRefreshListener {
                 pushViewModel.requestDataList()
-                logD(TAG, "refreshing")
             }
             setOnLoadMoreListener {
                 pushViewModel.requestNextPageData()
-                logD(TAG, "loading")
             }
         }
     }
 
     override fun loadData() {
         pushViewModel.requestDataList()
+        startLoading()
     }
 
     override fun loadFailed(msg: String?) {
         super.loadFailed(msg)
+        rl_push_list.visibility = View.INVISIBLE
         showLoadErrorView(msg ?: GlobalUtil.getString(R.string.main_load_error_unknown)) {
             loadingView?.visibility = View.VISIBLE
             loadData()
         }
+    }
+
+    override fun loadFinished() {
+        super.loadFinished()
+        rl_push_list.visibility = View.VISIBLE
     }
 
     override fun observe() {
