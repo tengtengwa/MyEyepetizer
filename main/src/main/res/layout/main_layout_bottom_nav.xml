@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="42dp">
 
-    <ImageView
-        android:id="@+id/iv_home"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="24dp"
-        android:src="@drawable/main_sel_home"
-        app:layout_constraintBottom_toTopOf="@id/tv_home"
-        app:layout_constraintVertical_chainStyle="packed"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/main_colorGrayDark"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_home"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:src="@drawable/main_sel_home"
+        app:layout_constraintBottom_toTopOf="@id/tv_home"
+        app:layout_constraintEnd_toStartOf="@+id/main_guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/main_home"
-        android:textSize="8sp"
-        android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:layout_marginTop="3dp"
         android:gravity="center_horizontal"
+        android:text="@string/main_home"
+        android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_home"
         app:layout_constraintStart_toStartOf="@+id/iv_home"
@@ -46,10 +54,11 @@
         android:id="@+id/tv_community"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/main_community"
-        android:textSize="8sp"
-        android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:layout_marginTop="3dp"
         android:gravity="center_horizontal"
+        android:text="@string/main_community"
+        android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_community"
         app:layout_constraintStart_toStartOf="@+id/iv_community"
@@ -59,14 +68,14 @@
 
     <ImageView
         android:id="@+id/iv_community"
-        android:layout_width="23dp"
+        android:layout_width="0dp"
         android:layout_height="23dp"
         android:src="@drawable/main_sel_community"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/tv_community"
-        app:layout_constraintEnd_toStartOf="@+id/iv_release"
-        app:layout_constraintStart_toEndOf="@+id/iv_home"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/main_guideline5"
+        app:layout_constraintStart_toStartOf="@+id/main_guideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/btn_community"
@@ -80,11 +89,13 @@
 
     <ImageView
         android:id="@+id/iv_release"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_notification"
+        app:layout_constraintStart_toEndOf="@+id/btn_community"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btn_release_normal" />
 
@@ -92,10 +103,11 @@
         android:id="@+id/tv_notification"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:gravity="center_horizontal"
         android:text="@string/main_notification"
-        android:textSize="8sp"
         android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_notification"
         app:layout_constraintStart_toStartOf="@+id/iv_notification"
@@ -105,13 +117,13 @@
 
     <ImageView
         android:id="@+id/iv_notification"
-        android:layout_width="23dp"
+        android:layout_width="0dp"
         android:layout_height="23dp"
         android:src="@drawable/main_sel_notification"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/tv_notification"
         app:layout_constraintEnd_toStartOf="@+id/btn_profile"
-        app:layout_constraintStart_toEndOf="@+id/iv_release"
+        app:layout_constraintStart_toStartOf="@+id/main_guideline3"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.constraintlayout.widget.Group
@@ -128,10 +140,11 @@
         android:id="@+id/tv_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:gravity="center_horizontal"
         android:text="@string/main_profile"
-        android:textSize="8sp"
         android:textColor="@drawable/main_sel_bottom_navigation_text_color"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/iv_profile"
         app:layout_constraintStart_toStartOf="@+id/iv_profile"
@@ -141,12 +154,12 @@
 
     <ImageView
         android:id="@+id/iv_profile"
-        android:layout_width="23dp"
+        android:layout_width="0dp"
         android:layout_height="23dp"
         android:src="@drawable/main_sel_profile"
-        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@id/tv_profile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/main_guideline4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -159,4 +172,32 @@
         app:layout_constraintEnd_toEndOf="@+id/iv_profile"
         app:layout_constraintStart_toStartOf="@+id/iv_profile"
         app:layout_constraintTop_toTopOf="@+id/iv_profile" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18978103" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.62287104" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82481754" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.38" />
 </androidx.constraintlayout.widget.ConstraintLayout>

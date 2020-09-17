@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import com.alibaba.android.arouter.launcher.ARouter
+import leakcanary.LeakCanary
 
 
 class MyApplication : Application() {
