@@ -27,7 +27,7 @@ class CommunityFragment : BaseViewPagerFragment() {
     )
 
     override val fragments: Array<Fragment> = arrayOf(
-        RecommendFragment.newInstance(),
+        com.example.main.community.recommend.RecommendFragment.newInstance(),
         FollowFragment.newInstance()
     )
 
@@ -48,7 +48,7 @@ class CommunityFragment : BaseViewPagerFragment() {
     }
 
     override fun observe() {
-        mainViewModel.refreshPageEvent.observe(this, EventObserver {
+        mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
             if (it == this::class.java) {
                 when (viewpager.currentItem) {
                     COMMUNITY_RECOMMEND -> mainViewModel.refreshPage(com.example.main.community.recommend.RecommendFragment::class.java)

@@ -19,7 +19,7 @@ class RecommendFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return onCreateView(inflater.inflate(R.layout.main_fragment_recommend, container, false))
+        return onCreateView(inflater.inflate(R.layout.main_fragment_community_recommend, container, false))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class RecommendFragment : BaseFragment() {
     override fun observe() {
         mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
             if (it == this::class.java) {
-                TODO("在这里刷新数据")
+                //TODO("在这里刷新数据")
             }
         })
     }

@@ -1,6 +1,7 @@
 package com.example.main.utils
 
 import androidx.lifecycle.Observer
+import com.example.base.utils.logD
 
 /**
  * 数据的包装类，通过代表一个事件的LiveData暴露给外部
@@ -19,7 +20,7 @@ open class Event<out T>(private val content: T) {   //使用了泛型的协变�
         }
     }
 
-    //获取事件的参数，即使它已经被处理
+    //获取事件的参数，即使它已经被处理，
     fun peekCount(): T? = content
 }
 
@@ -28,7 +29,11 @@ open class Event<out T>(private val content: T) {   //使用了泛型的协变�
  */
 class EventObserver<T>(private val onEventUnhandledContent: (T) -> Unit) : Observer<Event<T>> {
     override fun onChanged(event: Event<T>?) {
-        event?.getEventIfNotHandled()?.let { value->
+        /**
+         * 这里需要通知所有的事件接受者，所以调用peekCount函数
+         */
+        event?.peekCount()?.let { value ->
+            logD("refreshPageEvent", "class:${value}")
             onEventUnhandledContent(value)
         }
     }

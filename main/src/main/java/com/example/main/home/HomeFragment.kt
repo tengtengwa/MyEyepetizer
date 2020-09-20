@@ -50,7 +50,7 @@ class HomeFragment : BaseViewPagerFragment() {
     }
 
     override fun observe() {
-        mainViewModel.refreshPageEvent.observe(this, EventObserver {
+        mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
             if (it == this::class.java) {
                 when (viewpager.currentItem) {
                     HOME_DISCOVERY -> mainViewModel.refreshPage(DiscoveryFragment::class.java)

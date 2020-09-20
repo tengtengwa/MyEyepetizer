@@ -21,7 +21,7 @@ class RecommendFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return onCreateView(inflater.inflate(R.layout.main_recommend_fragment, container, false))
+        return onCreateView(inflater.inflate(R.layout.main_fragment_home_recommend, container, false))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class RecommendFragment : BaseFragment() {
     override fun observe() {
         mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
             if (it == this::class.java) {
-                TODO("在这里刷新数据")
+                //TODO("在这里刷新数据")
             }
         })
     }

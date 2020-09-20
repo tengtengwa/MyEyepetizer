@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.base.utils.GlobalUtil
+import com.example.base.utils.logD
 import com.example.main.BaseViewPagerFragment
 import com.example.main.MainViewModel
 import com.example.main.R
@@ -47,8 +48,9 @@ class NotificationFragment : BaseViewPagerFragment() {
     }
 
     override fun observe() {
-        mainViewModel.refreshPageEvent.observe(this, EventObserver {
-            if (it == this::class.java) {
+        mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
+            logD("refreshPageEvent", "class: notification.class")
+            if (it == NotificationFragment::class.java) {
                 when (viewpager.currentItem) {
                     NOTIFICATION_PUSH -> mainViewModel.refreshPage(PushFragment::class.java)
                     NOTIFICATION_INBOX -> mainViewModel.refreshPage(InboxFragment::class.java)

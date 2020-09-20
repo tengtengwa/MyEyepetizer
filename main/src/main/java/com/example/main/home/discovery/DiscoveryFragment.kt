@@ -21,7 +21,7 @@ class DiscoveryFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return onCreateView(inflater.inflate(R.layout.main_discovery_fragment, container, false))
+        return onCreateView(inflater.inflate(R.layout.main_fragment_discovery, container, false))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
