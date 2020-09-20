@@ -100,7 +100,7 @@ class MainActivity : BaseActivity() {
                 }
                 COMMUNITY_PAGE -> {
                     iv_community.isSelected = true
-                    tv_home.isSelected = true
+                    tv_community.isSelected = true
                     if (::communityFragment.isInitialized) {
                         show(communityFragment)
                     } else {
@@ -136,7 +136,7 @@ class MainActivity : BaseActivity() {
         iv_home.isSelected = false
         tv_home.isSelected = false
         iv_community.isSelected = false
-        tv_home.isSelected = false
+        tv_community.isSelected = false
         iv_notification.isSelected = false
         tv_notification.isSelected = false
         iv_profile.isSelected = false
