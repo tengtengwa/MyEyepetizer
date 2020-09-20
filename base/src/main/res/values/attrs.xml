@@ -31,4 +31,21 @@
         <attr name="duration" format="integer" />
         <attr name="internal" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="LoadingHeader" tools:ignore="ResourceName">
+        <attr name="radius" format="float" />
+        <attr name="millisPerCircle" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="LoadingFooter" tools:ignore="ResourceName">
+        <attr name="tipText" format="string" />
+        <attr name="android:textSize" format="float" />
+        <attr name="srlTextTypeface">
+            <enum name="fzlLTypeface" value="1" />
+            <enum name="fzdb1Typeface" value="2" />
+            <enum name="futuraTypeface" value="3" />
+            <enum name="dinTypeface" value="4" />
+            <enum name="lobsterTypeface" value="5" />
+        </attr>
+    </declare-styleable>
 </resources>

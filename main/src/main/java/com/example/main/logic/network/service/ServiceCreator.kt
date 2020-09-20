@@ -3,7 +3,7 @@ package com.example.main.logic.network.service
 import android.os.Build
 import com.example.base.utils.GlobalUtil
 import com.example.base.utils.logV
-import com.example.main.utils.DensityUtil
+import com.example.base.utils.DensityUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

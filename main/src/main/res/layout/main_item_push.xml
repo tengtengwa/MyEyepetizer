@@ -16,6 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/base_colorWhite"
         android:onClick="@{clickListener}">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:textColor="@color/main_colorTextSecondary"
+            android:textSize="12sp"
             app:dateMillis2Text="@{messageItem.date}"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -62,6 +64,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/main_ic_into_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/main_guideline"
             app:layout_constraintTop_toTopOf="@+id/tv_time" />
@@ -71,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="44dp" />
+            app:layout_constraintGuide_end="49dp" />
 
         <com.example.base.customview.CustomFontTextView
             android:id="@+id/tv_content"
@@ -79,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@{messageItem.content}"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/main_guideline"
             app:layout_constraintStart_toStartOf="@+id/tv_time"
             app:layout_constraintTop_toBottomOf="@+id/tv_time"
