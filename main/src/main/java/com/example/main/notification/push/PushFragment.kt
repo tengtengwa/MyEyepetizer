@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseFragment
 import com.example.base.utils.GlobalUtil
 import com.example.base.utils.logD
-import com.example.main.MainViewModel
+import com.example.main.common.MainViewModel
 import com.example.main.R
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.EventObserver
@@ -39,7 +39,7 @@ class PushFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         pushAdapter = PushAsyncAdapter()
-        rl_push_list.apply {
+        rv_push_list.apply {
             adapter = pushAdapter
             layoutManager = LinearLayoutManager(hostActivity)
             //itemview数据的改变不会影响RecyclerView的宽高时，置为true可以避免RecyclerView重新layout
@@ -63,7 +63,7 @@ class PushFragment : BaseFragment() {
 
     override fun loadFailed(msg: String?) {
         super.loadFailed(msg)
-        rl_push_list.visibility = View.INVISIBLE
+        rv_push_list.visibility = View.INVISIBLE
         showLoadErrorView(msg ?: GlobalUtil.getString(R.string.main_load_error_unknown)) {
             loadingView?.visibility = View.VISIBLE
             loadData()
@@ -72,7 +72,7 @@ class PushFragment : BaseFragment() {
 
     override fun loadFinished() {
         super.loadFinished()
-        rl_push_list.visibility = View.VISIBLE
+        rv_push_list.visibility = View.VISIBLE
     }
 
     override fun observe() {
@@ -119,8 +119,8 @@ class PushFragment : BaseFragment() {
         })
         mainViewModel.refreshPageEvent.observe(viewLifecycleOwner, EventObserver {
             if (it == this::class.java) {
-                if (rl_push_list.adapter?.itemCount ?: 0 > 0) { //Adapter没有初始化的时候不会执行下面代码
-                    rl_push_list.scrollToPosition(0)
+                if (rv_push_list.adapter?.itemCount ?: 0 > 0) { //Adapter没有初始化的时候不会执行下面代码
+                    rv_push_list.scrollToPosition(0)
                 }
                 srl_push.autoRefresh()
             }

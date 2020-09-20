@@ -20,10 +20,7 @@ import com.example.base.StartService
 import com.example.base.bean.Const
 import com.example.base.utils.GlobalUtil
 import com.example.base.utils.toast
-import com.example.main.MainViewModel
 import com.example.main.R
-import com.example.main.home.daily.DailyFragment
-import com.example.main.notification.push.PushFragment
 import java.net.URLDecoder
 
 /**

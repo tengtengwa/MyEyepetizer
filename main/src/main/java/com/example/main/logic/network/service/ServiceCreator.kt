@@ -43,7 +43,7 @@ object ServiceCreator {
             logV(TAG, "请求基本信息\nurl：${request.url()}，headers：${request.headers()}")
             val response = chain.proceed(request)
             val receivedTime = System.nanoTime()
-            logV(TAG, "响应基本信息\n请求用时：${receivedTime - sendTime}毫秒，响应状态码：${response.code()}")
+            logV(TAG, "响应基本信息\n请求用时：${(receivedTime - sendTime) / 1000}毫秒，响应状态码：${response.code()}")
             return response
         }
 

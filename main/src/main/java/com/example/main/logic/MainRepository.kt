@@ -2,7 +2,6 @@ package com.example.main.logic
 
 import com.example.main.logic.dao.MainPageDao
 import com.example.main.logic.network.MainPageNetwork
-import com.example.main.logic.network.service.MainPageService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

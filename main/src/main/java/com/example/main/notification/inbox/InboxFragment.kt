@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.base.BaseFragment
 import com.example.base.StartService
-import com.example.main.MainViewModel
+import com.example.main.common.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
 import kotlinx.android.synthetic.main.main_fragment_interaction.*

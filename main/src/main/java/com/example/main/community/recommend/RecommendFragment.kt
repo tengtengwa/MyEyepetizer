@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.base.BaseFragment
-import com.example.main.MainViewModel
+import com.example.main.common.MainViewModel
 import com.example.main.R
 import com.example.main.utils.EventObserver
 
