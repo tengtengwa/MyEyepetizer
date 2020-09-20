@@ -1,4 +1,4 @@
-package com.example.main
+package com.example.main.common
 
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +9,7 @@ import com.example.base.BaseActivity
 import com.example.base.StartService
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toastNotShow
+import com.example.main.R
 import com.example.main.community.CommunityFragment
 import com.example.main.home.HomeFragment
 import com.example.main.notification.NotificationFragment

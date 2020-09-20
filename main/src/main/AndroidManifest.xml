@@ -5,7 +5,7 @@
     <application
         android:theme="@style/Eyepetizer">
         <activity
-            android:name=".MainActivity"
+            android:name=".common.MainActivity"
             android:theme="@style/Eyepetizer.NoActionBar">
         </activity>
     </application>

@@ -5,10 +5,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.main.home.discovery.DiscoveryFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="discoveryFragment"
-        android:layout_gravity="center_horizontal"/>
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_discovery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_discovery_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    <include layout="@layout/main_layout_loading" />
+
+    <include layout="@layout/main_layout_view_stub_holder" />
 </FrameLayout>

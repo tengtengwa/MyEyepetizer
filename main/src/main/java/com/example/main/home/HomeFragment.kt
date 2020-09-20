@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.base.utils.GlobalUtil
-import com.example.main.BaseViewPagerFragment
-import com.example.main.MainViewModel
+import com.example.main.common.BaseViewPagerFragment
+import com.example.main.common.MainViewModel
 import com.example.main.R
 import com.example.main.home.daily.DailyFragment
 import com.example.main.home.discovery.DiscoveryFragment

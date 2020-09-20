@@ -1,4 +1,4 @@
-package com.example.main
+package com.example.main.common
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import com.example.base.BaseFragment
 import com.example.base.StartService
 import com.example.base.utils.setOnClickListener
 import com.example.base.utils.toast
+import com.example.main.R
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.main_layout_tabbar.*
 

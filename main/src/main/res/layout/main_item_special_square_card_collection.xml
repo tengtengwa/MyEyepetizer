@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="squareCardData"
+            type="com.example.main.logic.model.Discovery.DataX" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="107dp"
+        android:layout_height="107dp"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            imageFromUrl="@{squareCardData.image}"
+            android:src="@drawable/base_ic_launcher_background"/>
+
+        <com.example.base.customview.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{squareCardData.title}"
+            android:textColor="@color/base_colorWhite"
+            android:textSize="14sp"
+            app:typeface="fzdb1Typeface"
+            tools:text="#运动"
+            />
+    </FrameLayout>
+</layout>
