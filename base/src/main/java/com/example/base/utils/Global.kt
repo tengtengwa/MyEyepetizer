@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.view.View
 import android.widget.Toast
+import androidx.constraintlayout.widget.Group
 import com.example.base.MyApplication
 
 /**
@@ -35,3 +36,12 @@ fun String.toast(context: Context = MyApplication.context, duration: Int = Toast
 
 fun String.toastNotShow(context: Context = MyApplication.context, duration: Int = Toast.LENGTH_SHORT): Toast =
     Toast.makeText(context, this, duration)
+
+/**
+ * 为Constraintlayout中Group组件引用的所有控件注册同一个点击事件的扩展函数
+ */
+fun Group.setAllOnClickListener(listener: View.OnClickListener?) {
+    referencedIds.forEach { id ->
+        rootView.findViewById<View>(id).setOnClickListener(listener)
+    }
+}
