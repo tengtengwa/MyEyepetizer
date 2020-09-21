@@ -57,7 +57,7 @@
             app:constraint_referenced_ids="tv_top_categories, tv_all_categories, iv_all_categories" />
 
         <!--todo("待解决滑动冲突，itemview也暂未写")-->
-        <androidx.recyclerview.widget.RecyclerView
+        <com.example.base.customview.HorizontalRecyclerView
             android:id="@+id/hrv_top_categories_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -68,7 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_all_categories"
             app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/main_item_special_square_card_collection"
             tools:itemCount="16"
             />

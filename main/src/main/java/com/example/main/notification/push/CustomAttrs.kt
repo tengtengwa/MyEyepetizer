@@ -1,11 +1,12 @@
 package com.example.main.notification.push
 
-import android.graphics.BitmapFactory
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.base.customview.CustomFontTextView
+import com.example.base.utils.DensityUtil
 import com.example.main.R
 import com.example.main.utils.DateUtil
 
@@ -15,6 +16,23 @@ fun bindImageFromUrl(view: ImageView, url: String) {
         Glide.with(view.context)
             .load(url)
             .into(view)
+    }
+}
+
+@BindingAdapter("roundImageFromUrl")
+fun bindRoundImageFromUrl(view: ImageView, url: String) = view.load(url, 4f)
+
+fun ImageView.load(url: String, corner: Float = 0f) {
+    if (corner == 0f) {
+        Glide.with(this)
+            .load(url)
+            .into(this)
+    } else {
+        Glide.with(this)
+            .load(url)
+            .apply(RequestOptions().transform(RoundedCorners(DensityUtil.dp2px(corner))))
+            .placeholder(R.drawable.main_shape_top_categories)
+            .into(this)
     }
 }
 

@@ -70,8 +70,8 @@ dependencies {
     api "com.squareup.retrofit2:converter-scalars:$dps.retrofitVersion"
     api "com.github.bumptech.glide:glide:$dps.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$dps.glideVersion"
+//    api "jp.wasabeef:glide-transformations:$dps.glideVersion"
     api "androidx.legacy:legacy-support-v4:$dps.legacySupportV4Version"
-//    implementation 'jp.wasabeef:glide-transformations:$rootProject.4.1.0'
     api "org.greenrobot:eventbus:$dps.eventbusVersion"
     api "androidx.viewpager2:viewpager2:$dps.viewPagerVersion"
     api "com.permissionx.guolindev:permissionx:$dps.permissionxVersion"

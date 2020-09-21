@@ -16,8 +16,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            imageFromUrl="@{squareCardData.image}"
-            android:src="@drawable/base_ic_launcher_background"/>
+            android:src="@drawable/base_ic_launcher_background"
+            app:roundImageFromUrl="@{squareCardData.image}" />
 
         <com.example.base.customview.CustomFontTextView
             android:layout_width="wrap_content"
@@ -27,7 +27,6 @@
             android:textColor="@color/base_colorWhite"
             android:textSize="14sp"
             app:typeface="fzdb1Typeface"
-            tools:text="#运动"
-            />
+            tools:text="#运动" />
     </FrameLayout>
 </layout>
