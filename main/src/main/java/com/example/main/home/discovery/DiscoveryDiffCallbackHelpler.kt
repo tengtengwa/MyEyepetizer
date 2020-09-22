@@ -14,7 +14,10 @@ class DiscoveryDiffCallback : DiffUtil.ItemCallback<Discovery.Item>() {
     }
 }
 
-class TopCategoriesItemDiffCallback : DiffUtil.ItemCallback<Discovery.ItemX>() {
+/**
+ * 首页-发现中热门分类、专题策划等布局中RecyclerView子项的比较器
+ */
+class SquareCardDiffCallback : DiffUtil.ItemCallback<Discovery.ItemX>() {
     override fun areItemsTheSame(oldItem: Discovery.ItemX, newItem: Discovery.ItemX) =
         oldItem.data.title == newItem.data.title
 

@@ -33,6 +33,4 @@
     <!--主页面通用字符串-->
     <string name="main_load_error_unknown">未知错误</string>
     <string name="main_login">登录</string>
-    <string name="main_top_categories">热门分类</string>
-    <string name="main_all_categories">查看全部分类</string>
 </resources>
