@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp">
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingEnd="0dp"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:typeface="fzdb1Typeface"
+        tools:text="专题策划" />
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_right"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_weight="1"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/main_colorBlue"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_all"
+        app:layout_constraintStart_toEndOf="@+id/tv_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:typeface="fzdb1Typeface"
+        tools:text="查看全部" />
+
+    <ImageView
+        android:id="@+id/iv_all"
+        android:layout_width="30dp"
+        android:layout_height="53dp"
+        android:src="@drawable/main_ic_into_blue_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gp_theme_classification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_title, @+id/tv_right, @+id/iv_all" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_theme_classification"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_right"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="4"
+        tools:listitem="@layout/main_item_sqaure_card_column" />
+
+    <View
+        android:id="@+id/main_view3"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@color/main_colorGrayDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

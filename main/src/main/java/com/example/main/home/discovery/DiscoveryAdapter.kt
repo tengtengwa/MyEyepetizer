@@ -12,15 +12,22 @@ import com.example.base.utils.toast
 import com.example.main.R
 import com.example.main.common.RecyclerViewHelper
 import com.example.main.common.SpecialSquareCardCollectionViewHolder
+import com.example.main.common.SquareCardOfColumnViewHolder
+import com.example.main.common.TextCardHeader7ViewHolder
 import com.example.main.logic.model.Discovery
 import com.example.main.notification.push.load
 
-class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
+class DiscoveryAdapter(
+    private val fragment: DiscoveryFragment,
+    private val dataList: List<Discovery.Item>
+) :
     ListAdapter<Discovery.Item, RecyclerView.ViewHolder>(DiscoveryDiffCallback()) {
 
-    override fun getItemViewType(position: Int): Int = RecyclerViewHelper.getItemViewType(dataList[position])
+    override fun getItemViewType(position: Int): Int =
+        RecyclerViewHelper.getItemViewType(dataList[position])
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecyclerViewHelper.getViewHolder(parent, viewType)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        RecyclerViewHelper.getViewHolder(parent, viewType)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemData = dataList[position]
@@ -39,8 +46,32 @@ class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
                     }
                     recyclerView.setHasFixedSize(true)
                     recyclerView.isNestedScrollingEnabled = true
+                    //todo("这两个布局中的RecyclerView暂未添加ItemDecoration")
                 }
             }
+            is SquareCardOfColumnViewHolder -> {
+                holder.apply {
+                    title.text = itemData.data.header.title
+                    rightText.text = itemData.data.header.rightText
+                    val itemList = itemData.data.itemList
+                    group.setAllOnClickListener {
+                        //todo(热门分类跳转到全部分类页面)
+                        "该功能暂未开放，尽请期待".toast()
+                    }
+                    recyclerView.setHasFixedSize(true)
+                    recyclerView.adapter = SquareCardOfColumnAdapter().apply {
+                        submitList(itemList)
+                    }
+                    //todo("这两个布局中的RecyclerView暂未添加ItemDecoration")
+                }
+            }
+            is TextCardHeader7ViewHolder -> {
+                holder.apply {
+                    title.text = itemData.data.header.title
+                    rightText.text = itemData.data.header.rightText
+                }
+            }
+
         }
         //TODO("暂未完全完成")
     }
@@ -51,7 +82,10 @@ class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
     /**
      * 热门分类下16个子项的Adapter
      */
-    class SpecialSquareCardCollectionAdapter : ListAdapter<Discovery.ItemX, SpecialSquareCardCollectionAdapter.ViewHolder>(TopCategoriesItemDiffCallback()) {
+    inner class SpecialSquareCardCollectionAdapter :
+        ListAdapter<Discovery.ItemX, SpecialSquareCardCollectionAdapter.ViewHolder>(
+            SquareCardDiffCallback()
+        ) {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -78,5 +112,36 @@ class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
         }
 
         override fun getItemCount() = currentList.size
+    }
+
+    inner class SquareCardOfColumnAdapter :
+        ListAdapter<Discovery.ItemX, SquareCardOfColumnAdapter.ViewHolder>(SquareCardDiffCallback()) {
+
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+            val imageBg: ImageView = view.findViewById(R.id.iv_bg)
+
+            val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+        }
+
+        override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int
+        ): ViewHolder =
+            ViewHolder(R.layout.main_item_sqaure_card_column.inflate(parent)).apply {
+                itemView.setOnClickListener {
+                    "该功能暂未开放，尽请期待".toast()
+                    //todo("在这里为专题策划的子项设置点击事件，跳转到具体的分类页面")
+                }
+            }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val itemData = currentList[position]
+            holder.apply {
+                imageBg.load(itemData.data.image, 4f)
+                title.text = itemData.data.title
+            }
+        }
+
     }
 }

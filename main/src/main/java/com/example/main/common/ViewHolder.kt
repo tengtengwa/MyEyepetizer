@@ -20,7 +20,7 @@ import com.example.main.R
 import com.example.main.logic.model.Discovery
 
 /**
- * 首页-发现中的热门分类ViewHolder
+ * 首页-发现中热门分类的ViewHolder
  */
 class SpecialSquareCardCollectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -33,12 +33,38 @@ class SpecialSquareCardCollectionViewHolder(view: View) : RecyclerView.ViewHolde
     val recyclerView: HorizontalRecyclerView = view.findViewById(R.id.hrv_top_categories_list)
 }
 
+/**
+ * 空ViewHolder
+ */
 class EmptyViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+/**
+ * 首页-发现中专题策划的ViewHolder
+ */
+class SquareCardOfColumnViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+
+    val rightText:CustomFontTextView = view.findViewById(R.id.tv_right)
+
+    val group: Group = view.findViewById(R.id.gp_theme_classification)
+
+    val recyclerView: RecyclerView = view.findViewById(R.id.rv_theme_classification)
+}
+
+/**
+ * 开眼专栏的Header
+ */
+class TextCardHeader7ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+
+    val rightText:CustomFontTextView = view.findViewById(R.id.tv_right)
+}
 
 object RecyclerViewHelper {
 
     fun getItemViewType(item: Discovery.Item) = getItemViewType(item.type, item.data.dataType)
-
 
     private fun getItemViewType(type: String, dataType: String): Int = when (type) {
         "horizontalScrollCard" -> {
@@ -88,7 +114,13 @@ object RecyclerViewHelper {
     }
 
     fun getViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
+
         SPECIAL_SQUARE_CARD_COLLECTION -> SpecialSquareCardCollectionViewHolder(R.layout.main_layout_special_square_card_collection.inflate(parent))
+
+        COLUMN_CARD_LIST -> SquareCardOfColumnViewHolder(R.layout.main_layout_sqaure_card_column.inflate(parent))
+
+        TEXT_CARD_HEADER7 -> TextCardHeader7ViewHolder(R.layout.main_layout_textcard_header7.inflate(parent))
+
         else -> EmptyViewHolder(View(parent.context))
     }
 }
