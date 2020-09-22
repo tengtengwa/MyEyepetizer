@@ -10,10 +10,7 @@ import com.example.base.utils.inflate
 import com.example.base.utils.setAllOnClickListener
 import com.example.base.utils.toast
 import com.example.main.R
-import com.example.main.common.RecyclerViewHelper
-import com.example.main.common.SpecialSquareCardCollectionViewHolder
-import com.example.main.common.SquareCardOfColumnViewHolder
-import com.example.main.common.TextCardHeader7ViewHolder
+import com.example.main.common.*
 import com.example.main.logic.model.Discovery
 import com.example.main.notification.push.load
 
@@ -71,7 +68,11 @@ class DiscoveryAdapter(
                     rightText.text = itemData.data.header.rightText
                 }
             }
-
+            is BannerViewHolder -> {
+                holder.apply {
+                    image.load(itemData.data.image, 4f)
+                }
+            }
         }
         //TODO("暂未完全完成")
     }

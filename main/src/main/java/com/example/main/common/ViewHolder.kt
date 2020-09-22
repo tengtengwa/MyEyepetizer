@@ -2,6 +2,7 @@ package com.example.main.common
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.bean.Const
@@ -26,7 +27,7 @@ class SpecialSquareCardCollectionViewHolder(view: View) : RecyclerView.ViewHolde
 
     val title: CustomFontTextView = view.findViewById(R.id.tv_title)
 
-    val rightText:CustomFontTextView = view.findViewById(R.id.tv_right)
+    val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
 
     val group: Group = view.findViewById(R.id.gp_top_categories)
 
@@ -45,7 +46,7 @@ class SquareCardOfColumnViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val title: CustomFontTextView = view.findViewById(R.id.tv_title)
 
-    val rightText:CustomFontTextView = view.findViewById(R.id.tv_right)
+    val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
 
     val group: Group = view.findViewById(R.id.gp_theme_classification)
 
@@ -59,7 +60,14 @@ class TextCardHeader7ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val title: CustomFontTextView = view.findViewById(R.id.tv_title)
 
-    val rightText:CustomFontTextView = view.findViewById(R.id.tv_right)
+    val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
+}
+
+/**
+ * 开眼专栏的banner
+ */
+class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val image: ImageView = view.findViewById(R.id.iv)
 }
 
 object RecyclerViewHelper {
@@ -120,6 +128,8 @@ object RecyclerViewHelper {
         COLUMN_CARD_LIST -> SquareCardOfColumnViewHolder(R.layout.main_layout_sqaure_card_column.inflate(parent))
 
         TEXT_CARD_HEADER7 -> TextCardHeader7ViewHolder(R.layout.main_layout_textcard_header7.inflate(parent))
+
+        BANNER -> BannerViewHolder(R.layout.main_layout_banner.inflate(parent))
 
         else -> EmptyViewHolder(View(parent.context))
     }
