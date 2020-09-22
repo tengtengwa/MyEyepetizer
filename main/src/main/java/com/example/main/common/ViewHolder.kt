@@ -70,6 +70,16 @@ class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val image: ImageView = view.findViewById(R.id.iv)
 }
 
+/**
+ * 本周榜单的Header
+ */
+class TextCardHeader8ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+
+    val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
+}
+
 object RecyclerViewHelper {
 
     fun getItemViewType(item: Discovery.Item) = getItemViewType(item.type, item.data.dataType)
@@ -130,6 +140,8 @@ object RecyclerViewHelper {
         TEXT_CARD_HEADER7 -> TextCardHeader7ViewHolder(R.layout.main_layout_textcard_header7.inflate(parent))
 
         BANNER -> BannerViewHolder(R.layout.main_layout_banner.inflate(parent))
+
+        TEXT_CARD_HEADER8 -> TextCardHeader8ViewHolder(R.layout.main_layout_textcard_header8.inflate(parent))
 
         else -> EmptyViewHolder(View(parent.context))
     }

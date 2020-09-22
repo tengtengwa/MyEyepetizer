@@ -73,6 +73,12 @@ class DiscoveryAdapter(
                     image.load(itemData.data.image, 4f)
                 }
             }
+            is TextCardHeader8ViewHolder -> {
+                holder.apply {
+                    title.text = itemData.data.header.title
+                    rightText.text = itemData.data.header.rightText
+                }
+            }
         }
         //TODO("暂未完全完成")
     }
