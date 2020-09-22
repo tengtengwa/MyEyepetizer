@@ -17,6 +17,8 @@ class DiscoveryFragment : BaseFragment() {
 
     private val mainViewModel by activityViewModels<MainViewModel>()
 
+    private val adapter = DiscoveryAdapter(viewModel.dataList)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

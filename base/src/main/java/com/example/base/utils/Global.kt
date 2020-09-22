@@ -2,7 +2,9 @@ package com.example.base.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.Group
 import com.example.base.MyApplication
@@ -45,3 +47,9 @@ fun Group.setAllOnClickListener(listener: View.OnClickListener?) {
         rootView.findViewById<View>(id).setOnClickListener(listener)
     }
 }
+
+/**
+ * 加载布局的扩展函数，默认不依附于父布局
+ */
+fun Int.inflate(parent: ViewGroup, attach: Boolean = false): View =
+    LayoutInflater.from(parent.context).inflate(this, parent, attach)

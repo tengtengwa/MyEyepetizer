@@ -11,7 +11,7 @@ import java.lang.Exception
 
 class DiscoveryViewModel(private val repository: MainRepository) : ViewModel() {
 
-    var dataList = ArrayList<Discovery>()
+    var dataList = ArrayList<Discovery.Item>()
 
     val discoveryList = MutableLiveData<Discovery>()
 

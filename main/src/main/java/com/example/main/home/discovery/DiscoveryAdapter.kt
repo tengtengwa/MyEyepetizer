@@ -1,29 +1,45 @@
 package com.example.main.home.discovery
 
-import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.base.customview.CustomFontTextView
+import com.example.base.utils.inflate
+import com.example.base.utils.setAllOnClickListener
 import com.example.base.utils.toast
+import com.example.main.R
 import com.example.main.common.RecyclerViewHelper
 import com.example.main.common.SpecialSquareCardCollectionViewHolder
-import com.example.main.databinding.MainItemSpecialSquareCardCollectionBinding
 import com.example.main.logic.model.Discovery
+import com.example.main.notification.push.load
 
 class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
     ListAdapter<Discovery.Item, RecyclerView.ViewHolder>(DiscoveryDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int = RecyclerViewHelper.getItemViewType(dataList[position])
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO("Not yet implemented")
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecyclerViewHelper.getViewHolder(parent, viewType)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemData = dataList[position]
         when (holder) {
             is SpecialSquareCardCollectionViewHolder -> {
-                holder.bind(itemData)
+                holder.apply {
+                    title.text = itemData.data.header.title
+                    rightText.text = itemData.data.header.rightText
+                    val itemList = itemData.data.itemList
+                    group.setAllOnClickListener {
+                        //todo(热门分类跳转到全部分类页面)
+                        "该功能暂未开放，尽请期待".toast()
+                    }
+                    recyclerView.adapter = SpecialSquareCardCollectionAdapter().apply {
+                        submitList(itemList)
+                    }
+                    recyclerView.setHasFixedSize(true)
+                    recyclerView.isNestedScrollingEnabled = true
+                }
             }
         }
         //TODO("暂未完全完成")
@@ -37,33 +53,28 @@ class DiscoveryAdapter(private val dataList: List<Discovery.Item>) :
      */
     class SpecialSquareCardCollectionAdapter : ListAdapter<Discovery.ItemX, SpecialSquareCardCollectionAdapter.ViewHolder>(TopCategoriesItemDiffCallback()) {
 
-        inner class ViewHolder(private val binding: MainItemSpecialSquareCardCollectionBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-            fun bind(item: Discovery.DataX) {
-                binding.apply {
-                    squareCardData = item
-                    executePendingBindings()
+            val imageBg: ImageView = view.findViewById(R.id.iv_bg)
+
+            val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            ViewHolder(R.layout.main_item_special_square_card_collection.inflate(parent)).apply {
+                itemView.setOnClickListener {
+                    "该功能暂未开放，尽请期待".toast()
+                    //todo("在这里为热门分类的子项设置点击事件，跳转到具体的分类页面")
                 }
             }
-        }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val holder = ViewHolder(
-                MainItemSpecialSquareCardCollectionBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
-                )
-            )
-            holder.itemView.setOnClickListener {
-                "该功能暂未开放，尽请期待".toast()
-                //todo("在这里为热门分类的子项设置点击事件，跳转到具体的分类页面")
-            }
-            return holder
-        }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val itemData = currentList[position]
-            holder.bind(itemData.data)
+            holder.apply {
+                imageBg.load(itemData.data.image, 4f)
+                title.text = itemData.data.title
+            }
         }
 
         override fun getItemCount() = currentList.size

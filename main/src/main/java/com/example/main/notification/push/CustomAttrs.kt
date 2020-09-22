@@ -19,9 +19,6 @@ fun bindImageFromUrl(view: ImageView, url: String) {
     }
 }
 
-@BindingAdapter("roundImageFromUrl")
-fun bindRoundImageFromUrl(view: ImageView, url: String) = view.load(url, 4f)
-
 fun ImageView.load(url: String, corner: Float = 0f) {
     if (corner == 0f) {
         Glide.with(this)
@@ -38,7 +35,7 @@ fun ImageView.load(url: String, corner: Float = 0f) {
 
 @BindingAdapter("pushPageImageFromUrl")
 fun bindPushFragmentImageFromUrl(view: ImageView, url: String) {
-    if (url.isNullOrEmpty() or (url == "http://img.wdjimg.com/image/video/418d281e65bf010c38c7b07bdd7b6a94_0_0.png")) {
+    if (url.isEmpty() or (url == "http://img.wdjimg.com/image/video/418d281e65bf010c38c7b07bdd7b6a94_0_0.png")) {
         Glide.with(view.context)
             .load(R.mipmap.main_ic_launcher)
             .into(view)
