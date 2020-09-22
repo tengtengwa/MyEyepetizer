@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="53dp">
 
+    <View
+        android:id="@+id/top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/base_colorGray"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.example.base.customview.CustomFontTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"

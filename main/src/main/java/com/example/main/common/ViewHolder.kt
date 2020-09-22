@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.RecyclerView
-import com.example.base.bean.Const
 import com.example.base.bean.Const.ItemViewType.BANNER
 import com.example.base.bean.Const.ItemViewType.COLUMN_CARD_LIST
 import com.example.base.bean.Const.ItemViewType.HORIZONTAL_SCROLL_CARD
@@ -14,6 +13,7 @@ import com.example.base.bean.Const.ItemViewType.TAG_BRIEFCARD
 import com.example.base.bean.Const.ItemViewType.TEXT_CARD_HEADER7
 import com.example.base.bean.Const.ItemViewType.TEXT_CARD_HEADER8
 import com.example.base.bean.Const.ItemViewType.UNKNOWN
+import com.example.base.bean.Const.ItemViewType.VIDEO_SMALL_CARD
 import com.example.base.customview.CustomFontTextView
 import com.example.base.customview.HorizontalRecyclerView
 import com.example.base.utils.inflate
@@ -61,6 +61,8 @@ class TextCardHeader7ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val title: CustomFontTextView = view.findViewById(R.id.tv_title)
 
     val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
+
+    val topDivider: View = view.findViewById(R.id.top_divider)
 }
 
 /**
@@ -78,6 +80,22 @@ class TextCardHeader8ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val title: CustomFontTextView = view.findViewById(R.id.tv_title)
 
     val rightText: CustomFontTextView = view.findViewById(R.id.tv_right)
+}
+
+/**
+ * 本周榜单的视频卡片
+ */
+class VideoSmallCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    val title: CustomFontTextView = view.findViewById(R.id.tv_title)
+
+    val videoCover: ImageView = view.findViewById(R.id.iv_video_cover)
+
+    val videoDuration: CustomFontTextView = view.findViewById(R.id.tv_video_duration)
+
+    val category: CustomFontTextView = view.findViewById(R.id.tv_category)
+
+    val imageMore: ImageView = view.findViewById(R.id.iv_more)
 }
 
 object RecyclerViewHelper {
@@ -118,7 +136,7 @@ object RecyclerViewHelper {
         }
         "videoSmallCard" -> {
             when (dataType) {
-                "VideoBeanForClient" -> Const.ItemViewType.VIDEO_SMALL_CARD
+                "VideoBeanForClient" -> VIDEO_SMALL_CARD
                 else -> UNKNOWN
             }
         }
@@ -142,6 +160,8 @@ object RecyclerViewHelper {
         BANNER -> BannerViewHolder(R.layout.main_layout_banner.inflate(parent))
 
         TEXT_CARD_HEADER8 -> TextCardHeader8ViewHolder(R.layout.main_layout_textcard_header8.inflate(parent))
+
+        VIDEO_SMALL_CARD -> VideoSmallCardViewHolder(R.layout.main_layout_video_small_card.inflate(parent))
 
         else -> EmptyViewHolder(View(parent.context))
     }

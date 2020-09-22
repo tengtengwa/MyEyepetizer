@@ -9,6 +9,8 @@
     <color name="base_colorWhite">#FFFF</color>
     <color name="base_colorTintBlue">#34A0FF</color>
     <color name="base_colorTextPrimary">#444444</color>
+    <color name="base_colorGray">#ededed</color>
+    <color name="base_colorGrayDark">#adadad</color>
 
     <color name="base_colorDivider">#888888</color>
 

@@ -13,6 +13,7 @@ import com.example.main.R
 import com.example.main.common.*
 import com.example.main.logic.model.Discovery
 import com.example.main.notification.push.load
+import com.example.main.utils.DateUtil
 
 class DiscoveryAdapter(
     private val fragment: DiscoveryFragment,
@@ -66,6 +67,7 @@ class DiscoveryAdapter(
                 holder.apply {
                     title.text = itemData.data.header.title
                     rightText.text = itemData.data.header.rightText
+                    if (itemData.data.header.title == "推荐主题") topDivider.visibility = View.VISIBLE
                 }
             }
             is BannerViewHolder -> {
@@ -77,6 +79,22 @@ class DiscoveryAdapter(
                 holder.apply {
                     title.text = itemData.data.header.title
                     rightText.text = itemData.data.header.rightText
+                }
+            }
+            is VideoSmallCardViewHolder -> {
+                holder.apply {
+                    title.text = itemData.data.title
+                    videoCover.load(itemData.data.cover.feed, 4f)
+                    videoDuration.text = DateUtil.convertVideoDuration(itemData.data.duration)
+                    category.text =
+                        if (itemData.data.library == DAILY_LIBRARY_TYPE) "#${itemData.data.category} / 开眼精选" else "#${itemData.data.category}"
+                    imageMore.setOnClickListener {
+                        //todo("弹出BottomSheetFragment")
+                    }
+                    itemView.setOnClickListener {
+                        //todo("视频播放模块待完成")
+                        "此功能暂未开放，尽请期待".toast()
+                    }
                 }
             }
         }
@@ -150,5 +168,9 @@ class DiscoveryAdapter(
             }
         }
 
+    }
+
+    companion object {
+        const val DAILY_LIBRARY_TYPE = "DAILY"
     }
 }

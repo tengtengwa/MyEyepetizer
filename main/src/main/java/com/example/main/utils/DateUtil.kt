@@ -104,4 +104,14 @@ object DateUtil {
         return sdf.format(Date(dateMillis))
     }
 
+
+    /**
+     * 转换视频时长的工具函数，我们假设没有超过99分钟的视频【滑稽】
+     * @param sec 转换前视频的时长，单位：秒
+     */
+    fun convertVideoDuration(sec: Int): String {
+        val minute = sec % 60
+        val second = sec - minute * 60
+        return if (minute >= 10) "$minute:$second" else "0$minute:$second"
+    }
 }

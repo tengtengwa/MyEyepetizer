@@ -33,4 +33,20 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginTop">45dp</item>
     </style>
+
+
+    <style name="Eyepetizer.VideoDurationTextView" tools:ignore="ResourceName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">3.5dp</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingEnd">3.5dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@drawable/base_shape_time_radius_black_2dp_bg</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/base_colorGray</item>
+        <item name="typeface">dinTypeface</item>
+    </style>
 </resources>
