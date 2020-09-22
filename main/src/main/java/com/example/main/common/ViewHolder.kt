@@ -98,6 +98,17 @@ class VideoSmallCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageMore: ImageView = view.findViewById(R.id.iv_more)
 }
 
+class BriefCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    val icon: ImageView = view.findViewById(R.id.iv_icon)
+
+    val title :CustomFontTextView = view.findViewById(R.id.tv_title)
+
+    val description: CustomFontTextView = view.findViewById(R.id.tv_description)
+
+    val plusFollow: CustomFontTextView = view.findViewById(R.id.tv_plus_follow)
+}
+
 object RecyclerViewHelper {
 
     fun getItemViewType(item: Discovery.Item) = getItemViewType(item.type, item.data.dataType)
@@ -162,6 +173,8 @@ object RecyclerViewHelper {
         TEXT_CARD_HEADER8 -> TextCardHeader8ViewHolder(R.layout.main_layout_textcard_header8.inflate(parent))
 
         VIDEO_SMALL_CARD -> VideoSmallCardViewHolder(R.layout.main_layout_video_small_card.inflate(parent))
+
+        TAG_BRIEFCARD -> BriefCardViewHolder(R.layout.main_layout_brief_card.inflate(parent))
 
         else -> EmptyViewHolder(View(parent.context))
     }

@@ -5,12 +5,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.base.StartService
 import com.example.base.customview.CustomFontTextView
 import com.example.base.utils.inflate
 import com.example.base.utils.setAllOnClickListener
 import com.example.base.utils.toast
 import com.example.main.R
 import com.example.main.common.*
+import com.example.main.home.daily.DailyAdapter.Companion.DAILY_LIBRARY_TYPE
 import com.example.main.logic.model.Discovery
 import com.example.main.notification.push.load
 import com.example.main.utils.DateUtil
@@ -97,8 +99,17 @@ class DiscoveryAdapter(
                     }
                 }
             }
+            is BriefCardViewHolder -> {
+                holder.apply {
+                    title.text = itemData.data.title
+                    icon.load(itemData.data.icon, 4f)
+                    description.text = itemData.data.description
+                    plusFollow.setOnClickListener {
+                        StartService.startLogin()
+                    }
+                }
+            }
         }
-        //TODO("暂未完全完成")
     }
 
     override fun getItemCount() = dataList.size
@@ -168,9 +179,5 @@ class DiscoveryAdapter(
             }
         }
 
-    }
-
-    companion object {
-        const val DAILY_LIBRARY_TYPE = "DAILY"
     }
 }

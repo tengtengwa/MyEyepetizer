@@ -34,7 +34,7 @@
         <item name="android:layout_marginTop">45dp</item>
     </style>
 
-
+    <!--视频卡片照片右下角视频时长的样式-->
     <style name="Eyepetizer.VideoDurationTextView" tools:ignore="ResourceName">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -48,5 +48,16 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/base_colorGray</item>
         <item name="typeface">dinTypeface</item>
+    </style>
+
+    <!--briefcard右边+关注“按钮”的样式-->
+    <style name="Eyepetizer.FollowTextView" tools:ignore="ResourceName">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:background">@drawable/base_shape_follow_radius_black_2dp_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/base_plus_follow</item>
+        <item name="android:textSize">10sp</item>
+        <item name="typeface">fzdb1Typeface</item>
     </style>
 </resources>

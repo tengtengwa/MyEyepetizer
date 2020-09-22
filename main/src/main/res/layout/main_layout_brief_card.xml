@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/main_ic_launcher_background"/>
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_plus_follow"
+        app:layout_constraintStart_toEndOf="@+id/iv_icon"
+        app:layout_constraintBottom_toTopOf="@id/tv_description"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon"
+        app:typeface="fzdb1Typeface"
+        tools:text="#生活 MV" />
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/main_colorGrayDark"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:text="用一首 BGM，让平淡的日子也有滋有味起来" />
+
+    <com.example.base.customview.CustomFontTextView
+        android:id="@+id/tv_plus_follow"
+        style="@style/Eyepetizer.FollowTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_icon" />
+
+    <View
+        android:id="@+id/main_view4"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/main_colorGray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
