@@ -8,6 +8,7 @@ import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import com.example.base.R
 import com.example.base.utils.DensityUtil
+import com.example.base.utils.logD
 import com.scwang.smart.refresh.layout.api.RefreshHeader
 import com.scwang.smart.refresh.layout.api.RefreshKernel
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -35,7 +36,7 @@ class LoadingHeader @JvmOverloads constructor(
 
     private val minHeight = 50f     //视图默认最小高度
 
-    private lateinit var mState: RefreshState       //当前状态
+    private var mState: RefreshState = RefreshState.None       //当前状态
 
     private var mFinished = false
 
@@ -65,6 +66,7 @@ class LoadingHeader @JvmOverloads constructor(
         newState: RefreshState
     ) {
         mState = newState
+        logD("mstate", "$newState")
         when (newState) {
             RefreshState.None, RefreshState.PullDownToRefresh -> {
                 mFinished = false

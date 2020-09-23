@@ -1,5 +1,6 @@
 package com.example.main.utils
 
+import com.example.main.home.discovery.DiscoveryViewModelFactory
 import com.example.main.logic.MainRepository
 import com.example.main.logic.dao.MainPageDao
 import com.example.main.logic.network.MainPageNetwork
@@ -11,4 +12,5 @@ object InjectUtil {
 
     fun getPushViewModelFactory() = PushViewModelFactory(getMainRepository())
 
+    fun getDiscoveryViewModelFactory() = DiscoveryViewModelFactory(getMainRepository())
 }

@@ -13,9 +13,7 @@ class DiscoveryViewModel(private val repository: MainRepository) : ViewModel() {
 
     var dataList = ArrayList<Discovery.Item>()
 
-    val discoveryList = MutableLiveData<Discovery>()
-
-    var nextPage: String? = null
+    var nextPageUrl: String? = null
 
     private var discoveryParam = MutableLiveData<String>()
 
@@ -36,6 +34,6 @@ class DiscoveryViewModel(private val repository: MainRepository) : ViewModel() {
     }
 
     fun requestNextPageData() {
-        discoveryParam.value = nextPage ?: ""
+        discoveryParam.value = nextPageUrl ?: ""
     }
 }

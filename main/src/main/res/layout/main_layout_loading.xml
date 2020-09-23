@@ -2,8 +2,8 @@
 <ImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loading"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
     android:visibility="invisible"
     android:src="@drawable/main_ic_loading_progress"
     android:layout_gravity="center"/>

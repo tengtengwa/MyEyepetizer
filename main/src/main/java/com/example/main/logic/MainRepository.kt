@@ -26,7 +26,7 @@ class MainRepository private constructor(
     suspend fun refreshNotificationPush(url: String) = requestNotificationPush(url)
 
     private suspend fun requestHomeDiscovery(url: String) = withContext(Dispatchers.IO) {
-        val response = mainNetwork.fetchHomeDaily(url)
+        val response = mainNetwork.fetchHomeDiscovery(url)
         //TODO("在这里通过mainDao缓存数据，也可以在上一行代码前获取Dao层的缓存")
         response
     }

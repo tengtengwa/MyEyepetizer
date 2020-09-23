@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.base.BaseFragment
 import com.example.base.utils.GlobalUtil
 import com.example.base.utils.logD
-import com.example.main.common.MainViewModel
 import com.example.main.R
+import com.example.main.common.MainViewModel
 import com.example.main.logic.model.PushMessage
 import com.example.main.utils.EventObserver
 import com.example.main.utils.InjectUtil
@@ -41,7 +40,6 @@ class PushFragment : BaseFragment() {
         pushAdapter = PushAsyncAdapter()
         rv_push_list.apply {
             adapter = pushAdapter
-            layoutManager = LinearLayoutManager(hostActivity)
             //itemview数据的改变不会影响RecyclerView的宽高时，置为true可以避免RecyclerView重新layout
             //也就是说子item时通过这个方法对RecyclerView优化
             setHasFixedSize(true)
