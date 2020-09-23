@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.StartService
 import com.example.base.customview.CustomFontTextView
+import com.example.base.utils.DensityUtil.dp2px
 import com.example.base.utils.inflate
 import com.example.base.utils.setAllOnClickListener
 import com.example.base.utils.toast
@@ -16,6 +17,8 @@ import com.example.main.home.daily.DailyAdapter.Companion.DAILY_LIBRARY_TYPE
 import com.example.main.logic.model.Discovery
 import com.example.main.notification.push.load
 import com.example.main.utils.DateUtil
+import com.zhpan.bannerview.BaseBannerAdapter
+import com.zhpan.bannerview.BaseViewHolder
 
 class DiscoveryAdapter(
     private val fragment: DiscoveryFragment,
@@ -32,6 +35,21 @@ class DiscoveryAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemData = dataList[position]
         when (holder) {
+            is HorizontalScrollCardViewHolder -> {
+                holder.bannerViewPager.apply {
+                    adapter = HorizontalScrollCardAdapter()
+                    setAutoPlay(true)
+                    setIndicatorVisibility(View.VISIBLE)
+                    setCanLoop(true)
+                    setRoundCorner(dp2px(4f))
+                    setRevealWidth(dp2px(14f))
+                    if (itemData.data.itemList.size == 1) setPageMargin(0) else setPageMargin(dp2px(4f))
+                    setOnClickListener {
+                        //todo:处理点击事件
+                    }
+                    create(itemData.data.itemList)
+                }
+            }
             is SpecialSquareCardCollectionViewHolder -> {
                 holder.apply {
                     title.text = itemData.data.header.title
@@ -115,6 +133,29 @@ class DiscoveryAdapter(
     override fun getItemCount() = dataList.size
 
 
+    inner class HorizontalScrollCardAdapter : BaseBannerAdapter<Discovery.ItemX, HorizontalScrollCardAdapter.ViewHolder>() {
+
+        inner class ViewHolder(view: View) : BaseViewHolder<Discovery.ItemX>(view) {
+
+            override fun bindData(item: Discovery.ItemX, position: Int, pageSize: Int) {
+                val imageBg: ImageView = findView(R.id.iv_bg)
+                val label: CustomFontTextView = findView(R.id.tv_label)
+                if(item.data.label?.text.isNullOrEmpty()) label.visibility = View.VISIBLE
+                imageBg.load(item.data.image, 4f)
+                label.text = item.data.label?.text ?: ""
+            }
+        }
+
+        override fun createViewHolder(itemView: View, viewType: Int) = ViewHolder(itemView)
+
+        override fun onBind(holder: ViewHolder, data: Discovery.ItemX, position: Int, pageSize: Int) =
+            holder.bindData(data, position, pageSize)
+
+        //这里返回的是banner的itemview的布局
+        override fun getLayoutId(viewType: Int) = R.layout.main_item_banner_item
+
+    }
+
     /**
      * 热门分类下16个子项的Adapter
      */
@@ -150,6 +191,9 @@ class DiscoveryAdapter(
         override fun getItemCount() = currentList.size
     }
 
+    /**
+     * 专题策划下四个itemview的Adapter
+     */
     inner class SquareCardOfColumnAdapter :
         ListAdapter<Discovery.ItemX, SquareCardOfColumnAdapter.ViewHolder>(SquareCardDiffCallback()) {
 

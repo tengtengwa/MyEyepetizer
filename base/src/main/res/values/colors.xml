@@ -14,4 +14,22 @@
 
     <color name="base_colorDivider">#888888</color>
 
+    <color name="base_white">#ffffff</color>
+    <color name="base_whiteAlpha85">#26ffffff</color>
+    <color name="base_whiteAlpha80">#33ffffff</color>
+    <color name="base_whiteAlpha60">#66ffffff</color>
+    <color name="base_whiteAlpha50">#80ffffff</color>
+    <color name="base_whiteAlpha35">#a6ffffff</color>
+    <color name="base_whiteAlpha25">#bfffffff</color>
+    <color name="base_whiteAlpha20">#ccffffff</color>
+    <color name="base_whiteAlpha10">#e6ffffff</color>
+    <color name="base_blackAlpha95">#0d000000</color>
+    <color name="base_blackAlpha85">#26000000</color>
+    <color name="base_blackAlpha80">#33000000</color>
+    <color name="base_blackAlpha70">#4d000000</color>
+    <color name="base_blackAlpha60">#66000000</color>
+    <color name="base_blackAlpha55">#73000000</color>
+    <color name="base_blackAlpha50">#80000000</color>
+    <color name="base_blackAlpha45">#8c000000</color>
+    <color name="base_blackAlpha20">#cc000000</color>
 </resources>

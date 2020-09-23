@@ -18,7 +18,18 @@ import com.example.base.customview.CustomFontTextView
 import com.example.base.customview.HorizontalRecyclerView
 import com.example.base.utils.inflate
 import com.example.main.R
+import com.example.main.home.discovery.DiscoveryAdapter
 import com.example.main.logic.model.Discovery
+import com.zhpan.bannerview.BannerViewPager
+
+
+/**
+ * 最上面的banner
+ */
+class HorizontalScrollCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val bannerViewPager: BannerViewPager<Discovery.ItemX, DiscoveryAdapter.HorizontalScrollCardAdapter.ViewHolder> =
+        view.findViewById(R.id.banner_viewpager)
+}
 
 /**
  * 首页-发现中热门分类的ViewHolder
@@ -98,6 +109,9 @@ class VideoSmallCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imageMore: ImageView = view.findViewById(R.id.iv_more)
 }
 
+/**
+ * 推荐主题下的简洁卡片
+ */
 class BriefCardViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val icon: ImageView = view.findViewById(R.id.iv_icon)
@@ -161,6 +175,8 @@ object RecyclerViewHelper {
     }
 
     fun getViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
+
+        HORIZONTAL_SCROLL_CARD -> HorizontalScrollCardViewHolder(R.layout.main_layout_horizontal_scroll_card.inflate(parent))
 
         SPECIAL_SQUARE_CARD_COLLECTION -> SpecialSquareCardCollectionViewHolder(R.layout.main_layout_special_square_card_collection.inflate(parent))
 

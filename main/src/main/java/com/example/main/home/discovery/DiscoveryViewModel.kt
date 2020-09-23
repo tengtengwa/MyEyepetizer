@@ -31,7 +31,7 @@ class DiscoveryViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 
-    fun refreshDataList() {
+    fun requestDataList() {
         discoveryParam.value = MainPageService.DISCOVERY_URL
     }
 
