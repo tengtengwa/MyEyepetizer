@@ -1,5 +1,6 @@
 package com.example.main.home.discovery
 
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.StartService
 import com.example.base.customview.CustomFontTextView
+import com.example.base.utils.DensityUtil
 import com.example.base.utils.DensityUtil.dp2px
 import com.example.base.utils.inflate
 import com.example.base.utils.setAllOnClickListener
@@ -40,6 +42,8 @@ class DiscoveryAdapter(
                     adapter = HorizontalScrollCardAdapter()
                     setAutoPlay(true)
                     setIndicatorVisibility(View.VISIBLE)
+                    setIndicatorSliderColor(Color.GRAY, Color.WHITE)
+                    setIndicatorSliderRadius(dp2px(2f))
                     setCanLoop(true)
                     setRoundCorner(dp2px(4f))
                     setRevealWidth(dp2px(14f))
@@ -97,8 +101,8 @@ class DiscoveryAdapter(
             }
             is TextCardHeader8ViewHolder -> {
                 holder.apply {
-                    title.text = itemData.data.header.title
-                    rightText.text = itemData.data.header.rightText
+                    title.text = itemData.data.text
+                    rightText.text = itemData.data.rightText
                 }
             }
             is VideoSmallCardViewHolder -> {
@@ -140,7 +144,7 @@ class DiscoveryAdapter(
             override fun bindData(item: Discovery.ItemX, position: Int, pageSize: Int) {
                 val imageBg: ImageView = findView(R.id.iv_bg)
                 val label: CustomFontTextView = findView(R.id.tv_label)
-                if(item.data.label?.text.isNullOrEmpty()) label.visibility = View.VISIBLE
+                if(!item.data.label?.text.isNullOrEmpty()) label.visibility = View.VISIBLE
                 imageBg.load(item.data.image, 4f)
                 label.text = item.data.label?.text ?: ""
             }

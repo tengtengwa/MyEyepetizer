@@ -110,8 +110,10 @@ object DateUtil {
      * @param sec 转换前视频的时长，单位：秒
      */
     fun convertVideoDuration(sec: Int): String {
-        val minute = sec % 60
-        val second = sec - minute * 60
-        return if (minute >= 10) "$minute:$second" else "0$minute:$second"
+        val m = sec / 60
+        val minute = if (m < 10) "0${m}" else "$m"
+        val s = sec - m * 60
+        val second = if (s < 10) "0${s}" else "$s"
+        return "$minute:$second"
     }
 }

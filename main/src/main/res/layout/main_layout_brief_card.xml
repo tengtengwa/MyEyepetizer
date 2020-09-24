@@ -47,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:typeface="fzlLTypeface"
         tools:text="用一首 BGM，让平淡的日子也有滋有味起来" />
 
     <com.example.base.customview.CustomFontTextView

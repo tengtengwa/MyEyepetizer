@@ -90,7 +90,7 @@ class DiscoveryFragment : BaseFragment() {
             }
             when (srl_discovery.state) {
                 RefreshState.None, RefreshState.Refreshing -> {
-                    discoveryViewModel.dataList = response.itemList as ArrayList<Discovery.Item>
+                    discoveryViewModel.dataList.clear()
                     discoveryAdapter.submitList(response.itemList)
                 }
                 else -> {}

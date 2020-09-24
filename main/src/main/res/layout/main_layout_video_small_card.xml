@@ -51,6 +51,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_video_cover"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:typeface="fzlLTypeface"
         tools:text="#记录 / 开眼精选" />
 
     <ImageView
