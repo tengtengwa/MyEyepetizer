@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.StartService
 import com.example.base.customview.CustomFontTextView
-import com.example.base.utils.DensityUtil
 import com.example.base.utils.DensityUtil.dp2px
 import com.example.base.utils.inflate
+import com.example.base.utils.logD
 import com.example.base.utils.setAllOnClickListener
 import com.example.base.utils.toast
 import com.example.main.R
 import com.example.main.common.*
 import com.example.main.home.daily.DailyAdapter.Companion.DAILY_LIBRARY_TYPE
 import com.example.main.logic.model.Discovery
-import com.example.main.notification.push.load
+import com.example.main.common.load
 import com.example.main.utils.DateUtil
 import com.zhpan.bannerview.BaseBannerAdapter
 import com.zhpan.bannerview.BaseViewHolder
@@ -89,9 +89,9 @@ class DiscoveryAdapter(
             }
             is TextCardHeader7ViewHolder -> {
                 holder.apply {
-                    title.text = itemData.data.header.title
-                    rightText.text = itemData.data.header.rightText
-                    if (itemData.data.header.title == "推荐主题") topDivider.visibility = View.VISIBLE
+                    title.text = itemData.data.text
+                    rightText.text = itemData.data.rightText
+                    if (title.text.toString() == "推荐主题") topDivider.visibility = View.VISIBLE
                 }
             }
             is BannerViewHolder -> {

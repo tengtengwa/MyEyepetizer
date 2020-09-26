@@ -1,4 +1,4 @@
-package com.example.main.notification.push
+package com.example.main.common
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

@@ -148,8 +148,8 @@ object RecyclerViewHelper {
         }
         "textCard" -> {
             when (dataType) {
-                "TextCardWithRightAndLeftTitle", "header8" -> TEXT_CARD_HEADER8
-                "header7" -> TEXT_CARD_HEADER7
+                "header8" -> TEXT_CARD_HEADER8
+                "TextCardWithRightAndLeftTitle" -> TEXT_CARD_HEADER7
                 else -> UNKNOWN
             }
         }

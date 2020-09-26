@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,13 +15,20 @@ import com.example.base.utils.GlobalUtil
 import com.example.base.utils.logD
 import com.example.main.R
 import com.example.main.common.MainViewModel
-import com.example.main.logic.model.Discovery
 import com.example.main.utils.EventObserver
 import com.example.main.utils.InjectUtil
 import com.scwang.smart.refresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.main_fragment_discovery.*
 
 class DiscoveryFragment : BaseFragment() {
+
+    private val rotateAnimation = RotateAnimation(0f, 360f,
+        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
+        interpolator = LinearInterpolator()
+        duration = 1000L
+        repeatCount = Animation.INFINITE
+        repeatMode = Animation.RESTART
+    }
 
     private val discoveryViewModel by viewModels<DiscoveryViewModel>({ this }, { InjectUtil.getDiscoveryViewModelFactory() })
 
@@ -51,12 +61,14 @@ class DiscoveryFragment : BaseFragment() {
 
     override fun loadData() {
         discoveryViewModel.requestDataList()
+        loadingView?.startAnimation(rotateAnimation)
         startLoading()
     }
 
     override fun loadFailed(msg: String?) {
         super.loadFailed(msg)
         rv_discovery_list.visibility = View.INVISIBLE
+        loadingView?.clearAnimation()
         showLoadErrorView(msg ?: GlobalUtil.getString(R.string.main_load_error_unknown)) {
             loadingView?.visibility = View.VISIBLE
             loadData()
@@ -66,6 +78,7 @@ class DiscoveryFragment : BaseFragment() {
     override fun loadFinished() {
         super.loadFinished()
         rv_discovery_list.visibility = View.VISIBLE
+        loadingView?.clearAnimation()
     }
 
     override fun observe() {

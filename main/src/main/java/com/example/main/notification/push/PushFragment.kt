@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -25,6 +28,14 @@ class PushFragment : BaseFragment() {
 
     //这个activityViewModels方法类似
     private val mainViewModel by activityViewModels<MainViewModel>()
+
+    private val rotateAnimation = RotateAnimation(0f, 360f,
+        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f).apply {
+        interpolator = LinearInterpolator()
+        duration = 1000L
+        repeatCount = Animation.INFINITE
+        repeatMode = Animation.RESTART
+    }
 
     private lateinit var pushAdapter: PushAsyncAdapter
 
@@ -56,12 +67,14 @@ class PushFragment : BaseFragment() {
 
     override fun loadData() {
         pushViewModel.requestDataList()
+        loadingView?.startAnimation(rotateAnimation)
         startLoading()
     }
 
     override fun loadFailed(msg: String?) {
         super.loadFailed(msg)
         rv_push_list.visibility = View.INVISIBLE
+        loadingView?.clearAnimation()
         showLoadErrorView(msg ?: GlobalUtil.getString(R.string.main_load_error_unknown)) {
             loadingView?.visibility = View.VISIBLE
             loadData()
@@ -71,6 +84,7 @@ class PushFragment : BaseFragment() {
     override fun loadFinished() {
         super.loadFinished()
         rv_push_list.visibility = View.VISIBLE
+        loadingView?.clearAnimation()
     }
 
     override fun observe() {

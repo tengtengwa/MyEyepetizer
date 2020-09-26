@@ -9,6 +9,8 @@
         android:id="@+id/top_divider"
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
         android:background="@color/base_colorGray"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
