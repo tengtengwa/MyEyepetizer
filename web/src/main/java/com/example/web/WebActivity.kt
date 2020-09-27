@@ -18,16 +18,16 @@ import kotlinx.android.synthetic.main.web_layout_title.*
 class WebActivity : BaseActivity() {
 
     @Autowired
-    private var title: String = ""
+    var title: String = ""
 
     @Autowired
-    private var url: String = "https://github.com/VIPyinzhiwei/Eyepetizer"
+    var url: String = "https://github.com/VIPyinzhiwei/Eyepetizer"
 
     @Autowired
-    private var isTitleFixed: Boolean = false
+    var isTitleFixed: Boolean = false
 
     @Autowired
-    private var titleTextSize = TITLE_TEXT_SIZE_NORMAL
+    var titleTextSize = TITLE_TEXT_SIZE_NORMAL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
