@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         if (isModule.toBoolean()) {
-            applicationId appId.photo
+            applicationId appId.main
         }
         minSdkVersion cfg.minSdkVersion
         targetSdkVersion cfg.targetSdkVersion
