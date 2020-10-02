@@ -31,10 +31,14 @@ class HorizontalRecyclerView @JvmOverloads constructor(
                     parent.requestDisallowInterceptTouchEvent(false)
                 }
             }
-            else -> {
+            MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 parent.requestDisallowInterceptTouchEvent(false)
             }
+            else -> {
+            }
         }
+        mLastX = curX
+        mLastY = curY
         return super.dispatchTouchEvent(ev)
     }
 }
